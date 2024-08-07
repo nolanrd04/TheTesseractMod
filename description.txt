@@ -1,0 +1,39 @@
+v 1.2.0
+The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small so I recommend playing this with Calamity, as most of the content is currently post Moon Lord. Right now the mod adds:
+
+- The Tesseract (10 Levels).
+- New Pylons (dungeon, no biome)
+- Zenith Weapons.
+- New weapons, items, and buffs.
+- Recipes for hard-to-find vanilla items.
+- COMPATIBLE WITH CALAMITY!
+
+ UPDATES:
+ Join my discord for a better update details, to give feedback, and to see previous updates:
+ https://discord.gg/DWBSnJYyPt
+
+ In this update:
+
+ NEW CONTENT:
+ - Added my super awesome special weapon.
+ - Added the ZENITH YOYO!
+ - 8 New post Moon Lord weapons
+ - 12 New enemies
+ - New materials
+
+ QUALITY OF LIFE:
+ - All tesseract modes start on the recall mode.
+ - Temporal Dash has less acceleration.
+ - Tooltips have been significantly improved for readability.
+ - Slightly improved loading time.
+ - Added recipes for hard-to-find vanilla items.
+
+ REWORKS:
+ - Zenith weapons more balanced to Calamity.
+ - Zenith Summon will occasionally spawn random summons
+ - Zenith Tome will randomly shoot a spell, instead of only shooting a magnet sphere.
+ - Zenith Gun takes 15 shots to load a rocket. Right-clicking will double damage for a time.
+ - Damage classes for projectiles fixed.
+ - Other bug fixes and smoothing
+
+

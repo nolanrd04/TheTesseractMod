@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\tModLoader.targets" />
+  <PropertyGroup>
+    <AssemblyName>TheTesseractMod</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Buffs\ApexOverclockBuff.png" />
+    <None Remove="Buffs\DeathProtectionOne.png" />
+    <None Remove="Buffs\DeathProtectionTwo.png" />
+    <None Remove="Buffs\ShadowflameDragonBuff.png" />
+    <None Remove="Buffs\StardustRelocatorBuff.png" />
+    <None Remove="Buffs\TemporalDashBuff.png" />
+    <None Remove="Buffs\TemporalDashCooldownDebuff.png" />
+    <None Remove="Buffs\TimePunchBuff.png" />
+    <None Remove="Buffs\ZenithMinionBuff.png" />
+    <None Remove="Dusts\BlueElectricDust.PNG" />
+    <None Remove="Dusts\ElectricDust.PNG" />
+    <None Remove="Dusts\MoltenSphereDust.png" />
+    <None Remove="Dusts\RiftLightBlueDust.png" />
+    <None Remove="Dusts\StormCloud1.png" />
+    <None Remove="icon.png" />
+    <None Remove="Items\ApexN31.png" />
+    <None Remove="Items\BlueGlowEffect.png" />
+    <None Remove="Items\ConjuringClimax.png" />
+    <None Remove="Items\Culmination.png" />
+    <None Remove="Items\DeathsSickle.png" />
+    <None Remove="Items\HomingProjectileTestingStaff.png" />
+    <None Remove="Items\Materials\AquaRiftFragment.PNG" />
+    <None Remove="Items\Materials\AtomOfTime.png" />
+    <None Remove="Items\Materials\ChloroRiftFragment.PNG" />
+    <None Remove="Items\Materials\ColdRiftFragment.png" />
+    <None Remove="Items\Materials\DarkRiftFragment.PNG" />
+    <None Remove="Items\Materials\DeathRiftFragment.PNG" />
+    <None Remove="Items\Materials\DustRiftFragment.PNG" />
+    <None Remove="Items\Materials\ElectricRiftFragment.PNG" />
+    <None Remove="Items\Materials\GlowRiftFragment.png" />
+    <None Remove="Items\Materials\HeatRiftFragment.PNG" />
+    <None Remove="Items\Materials\LifeRiftFragment.PNG" />
+    <None Remove="Items\Materials\LightRiftFragment.PNG" />
+    <None Remove="Items\PrimeMeridian.png" />
+    <None Remove="Items\TesseractBGGLOW2.png" />
+    <None Remove="Items\Tesseracts\DungeonPylon.png" />
+    <None Remove="Items\Tesseracts\DungeonPylonItem.png" />
+    <None Remove="Items\Tesseracts\DungeonPylon_PylonCrystal.png" />
+    <None Remove="Items\Tesseracts\DungeonPylon_PylonCrystalHighlight.png" />
+    <None Remove="Items\Tesseracts\DungeonPylon_PylonMapIcon.png" />
+    <None Remove="Items\Tesseracts\Tesseract10.png" />
+    <None Remove="Items\Tesseracts\Tesseract9.png" />
+    <None Remove="Items\Tesseracts\TesseractPylon.png" />
+    <None Remove="Items\Tesseracts\TesseractPylonItem.png" />
+    <None Remove="Items\Tesseracts\TesseractPylon_PylonCrystal.png" />
+    <None Remove="Items\Tesseracts\TesseractPylon_PylonCrystalHighlight.png" />
+    <None Remove="Items\Tesseracts\TesseractPylon_PylonMapIcon.png" />
+    <None Remove="Items\Textures\BlueGlowEffect_Glow" />
+    <None Remove="Items\Weapons\DeveloperTestingWeapons\ZenithYoYoDEV.png" />
+    <None Remove="Items\Weapons\ForGlowEffect.png" />
+    <None Remove="Items\Weapons\Magic\ChainThunderbolt.png" />
+    <None Remove="Items\Weapons\Magic\EtherealSpell.png" />
+    <None Remove="Items\Weapons\Magic\EtherealSpellUnUsed.png" />
+    <None Remove="Items\Weapons\Magic\EtherealStaff.png" />
+    <None Remove="Items\Weapons\Melee\EtherealLance.png" />
+    <None Remove="Items\Weapons\Melee\EtherealSword.png" />
+    <None Remove="Items\Weapons\Melee\ZenithYoYoItem.png" />
+    <None Remove="Items\Weapons\NoSpecificClass\ThePeppermint.png" />
+    <None Remove="Items\Weapons\Ranged\EtherealBlaster.png" />
+    <None Remove="Items\Weapons\Ranged\EtherealLasher.png" />
+    <None Remove="Items\Weapons\Summoner\EtherealBubbler.png" />
+    <None Remove="Items\Weapons\Summoner\EtherealCommander.png" />
+    <None Remove="Items\ZenithSummonStaff.png" />
+    <None Remove="Items\ZenithWhip.png" />
+    <None Remove="NPCs\Enemies\AquaRiftElemental.png" />
+    <None Remove="NPCs\Enemies\ChloroRiftElemental.png" />
+    <None Remove="NPCs\Enemies\ColdRiftElemental.png" />
+    <None Remove="NPCs\Enemies\ColdRiftElementalUnused.png" />
+    <None Remove="NPCs\Enemies\DarkRiftSlime.png" />
+    <None Remove="NPCs\Enemies\DeathRiftElemental.png" />
+    <None Remove="NPCs\Enemies\DustRiftElemental.png" />
+    <None Remove="NPCs\Enemies\DustRiftElementalEyes.png" />
+    <None Remove="NPCs\Enemies\ElectricRiftElemental.png" />
+    <None Remove="NPCs\Enemies\GlowRiftElemental.png" />
+    <None Remove="NPCs\Enemies\GlowRiftElementalGLOW.png" />
+    <None Remove="NPCs\Enemies\HeatRiftElemental.png" />
+    <None Remove="NPCs\Enemies\HeatRiftElementalUNUSED.png" />
+    <None Remove="NPCs\Enemies\LifeRiftElemental.png" />
+    <None Remove="NPCs\Enemies\LifeRiftElementalGLOW.png" />
+    <None Remove="NPCs\Enemies\LifeRiftElementalLarva.png" />
+    <None Remove="NPCs\Enemies\LightRiftSlime.png" />
+    <None Remove="Projectiles\ApexN31Bullet.png" />
+    <None Remove="Projectiles\ApexN31Explosion.png" />
+    <None Remove="Projectiles\ApexN31Rocket.png" />
+    <None Remove="Projectiles\ConjuringClimaxProjectile.png" />
+    <None Remove="Projectiles\CulminationArrow.png" />
+    <None Remove="Projectiles\CulminationBlade.png" />
+    <None Remove="Projectiles\DeathFlameChild.png" />
+    <None Remove="Projectiles\DeathFlameMain.png" />
+    <None Remove="Projectiles\Developer\ZenithYoYoProjectileDEV.png" />
+    <None Remove="Projectiles\Enemy\DarkRiftProjectile.PNG" />
+    <None Remove="Projectiles\Enemy\DeadlyBubbleHostile.png" />
+    <None Remove="Projectiles\Enemy\DeadlyFlame.png" />
+    <None Remove="Projectiles\Enemy\DeadlyIcicleHostile.png" />
+    <None Remove="Projectiles\Enemy\DeadlyThunderbolt.png" />
+    <None Remove="Projectiles\Enemy\DeadlyThunderboltBranch.png" />
+    <None Remove="Projectiles\Enemy\DeathRiftProjectile\DeathRiftSlash.png" />
+    <None Remove="Projectiles\Enemy\GlowRiftProjectile.png" />
+    <None Remove="Projectiles\Enemy\LightRiftProjectile.PNG" />
+    <None Remove="Projectiles\Enemy\OrangeDeathSickle.png" />
+    <None Remove="Projectiles\Enemy\RiftProjectile.PNG" />
+    <None Remove="Projectiles\Magic\ChainThunderbolt.png" />
+    <None Remove="Projectiles\Magic\ChainThunderboltProjectile.png" />
+    <None Remove="Projectiles\Magic\EtherealStaffProjectile\HotMetalShard.png" />
+    <None Remove="Projectiles\Magic\EtherealStaffProjectile\MoltenSphere.png" />
+    <None Remove="Projectiles\Magic\EtherealTomeProjectiles\FriendlyThunderbolt.png" />
+    <None Remove="Projectiles\Magic\EtherealTomeProjectiles\RainDrop.png" />
+    <None Remove="Projectiles\Melee\EtherealLanceProjectiles\DeadlyIcicleFriendly.png" />
+    <None Remove="Projectiles\Melee\EtherealLanceProjectiles\EtherealLanceProjectile.png" />
+    <None Remove="Projectiles\Melee\EtherealLanceProjectiles\EtherealLanceStar.png" />
+    <None Remove="Projectiles\Melee\EtherealSwordProjectiles\DarkEtherealStar.PNG" />
+    <None Remove="Projectiles\Melee\EtherealSwordProjectiles\EtherealSwordSlash.PNG" />
+    <None Remove="Projectiles\Melee\EtherealSwordProjectiles\LightEtherealStar.PNG" />
+    <None Remove="Projectiles\Melee\ZenithYoYoChildProjectiles\ZenithYoYoCrystal.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoChildProjectiles\ZenithYoYoEye.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoChildProjectiles\ZenithYoYoFlame.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoChildProjectiles\ZenithYoYoGoldenShower.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoChildProjectiles\ZenithYoYoStinger.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoProjectile.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoProjectileEnergySphere.png" />
+    <None Remove="Projectiles\Melee\ZenithYoYoProjectileGlow.png" />
+    <None Remove="Projectiles\NoSpecificClass\PeppermintProjectile.png" />
+    <None Remove="Projectiles\PrimeMeridianFlameProjectile.png" />
+    <None Remove="Projectiles\PrimeMeridianProjectile.png" />
+    <None Remove="Projectiles\Ranged\EtherealBlaster\EtherealSkullProjectile.png" />
+    <None Remove="Projectiles\Ranged\EtherealBlaster\GlowRiftProjectileFriendly.png" />
+    <None Remove="Projectiles\Summoner\ChainEtherealBubble.png" />
+    <None Remove="Projectiles\Summoner\EtherealBubble.png" />
+    <None Remove="Projectiles\Summoner\LightDuststorm.png" />
+    <None Remove="Projectiles\Summoner\ShadowFlameDragon\ShadowFlameBreath.png" />
+    <None Remove="Projectiles\Summoner\ShadowFlameDragon\ShadowFlameDragonMinion.png" />
+    <None Remove="Projectiles\Summoner\ShadowFlameDragon\ShadowFlameDragonMinionBG.png" />
+    <None Remove="Projectiles\SuperCulminationArrow.png" />
+    <None Remove="Projectiles\ZenithMinion.png" />
+    <None Remove="Projectiles\ZenithMinionRainbowMissle.png" />
+    <None Remove="Projectiles\ZenithWhipProjectile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Global\Tiles\" />
+    <Folder Include="Items\Textures\" />
+  </ItemGroup>
+</Project>

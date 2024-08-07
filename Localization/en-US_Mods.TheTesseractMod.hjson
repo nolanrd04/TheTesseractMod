@@ -1,0 +1,531 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	funniSword: {
+		DisplayName: funni Sword
+		Tooltip: I didn't feel like deleting this.
+	}
+
+	ConjuringClimax: {
+		DisplayName: Conjuring Climax
+		Tooltip:
+			'''
+			Casts 5 Zenith Missles and a rainbow missle that all chase 
+			your enemies and explode into a multi-magic fury. Also hurls 
+			Crystal Breath and Shadow Beams.
+			'''
+	}
+
+	PrimeMeridian: {
+		DisplayName: Prime Meridian
+		Tooltip:
+			'''
+			"HE'S A WIIIZZZAAARD!"
+
+			Casts 3 homing energy spheres, a supercharged 
+			magic spell, and lots of close range energy 
+			flames that shred through your enemies.
+			'''
+	}
+
+	ApexN31: {
+		DisplayName: Apex N31
+		Tooltip:
+			'''
+			66% chance not to consume ammo
+			Shoots 2 streams of zenith energy bolts that
+			explode on impact. Also shoots a random vanilla
+			bullet, and randomly shoots homing rockets.
+			RIGHT-CLICK ATTACK: For every 15 enemies you hit, 1 rocket will be loaded into the chamber for
+			a maximum of 10 rockets. Right click to launch the rockets in a rapid barrage. 1 rocket loaded 
+			will play the mana recharge sfx. Max rockets loaded will play the mana crystal consume sfx.
+			Right click to overclock and to release the barage.
+			'''
+	}
+
+	Culmination: {
+		DisplayName: Culmination
+		Tooltip:
+			'''
+			50% chance not to consume ammo.
+			"Better than a Power V bow!"
+			Rains stars and arrows from the sky! Also 
+			shoots arrows and a phantom pheonix straight
+			out! Arrows shot straight out have a chance
+			to be a super arrow.
+			'''
+	}
+
+	DeathsSickle: {
+		DisplayName: Death's Sickle
+		Tooltip:
+			'''
+			"I just LOVE the smell of fear!"
+			Shoots out red flames that home in on targets.
+			Make sure to stay close!
+			'''
+	}
+
+	ZenithWhip: {
+		DisplayName: Pinnacle
+		Tooltip:
+			'''
+			20 summon tag damage.
+			Landing an attack increases attack speed.
+			Unleashes a fury of different whips. Also
+			throws whip counterweights, though this
+			might be a bit... much.
+			'''
+	}
+
+	ZenithSummonStaff: {
+		DisplayName: Apogaios
+		Tooltip:
+			'''
+			Summons a zenith star to fight for you
+			The zenith star will strike your enemies,
+			and also occasionally summon a random
+			minion to fight for you!
+			'''
+	}
+
+	HomingProjectileTestingStaff: {
+		DisplayName: Homing Projectile Testing Staff
+		Tooltip: ""
+	}
+
+	Tesseract1: {
+		DisplayName: Tesseract (level 1)
+		Tooltip:
+			'''
+			Teleports the player to spawn Consumes all mana and 100 hp.
+			Your body is not ready for this...
+			'''
+	}
+
+	AtomOfTime: {
+		DisplayName: Atom Of Time
+		Tooltip: Used to upgrade the Tesseract. Drops from bosses.
+	}
+
+	Tesseract2: {
+		DisplayName: Tesseract (Level 2)
+		Tooltip:
+			'''
+			Teleports you home.
+			Now you're getting it...
+			'''
+	}
+
+	TesseractPylonItem: {
+		Tooltip:
+			'''
+			You need at least a level 3 tesseract to use this. Doesn't
+			require NPC's.
+			(Doesn't work in mutiplayer and idk why).
+			'''
+		DisplayName: Tesseract Pylon
+	}
+
+	Tesseract3: {
+		DisplayName: Tesseract (Level 3)
+		Tooltip:
+			'''
+			Has previous level abilities. If this is inventory, you can
+			teleport to the tesseract pylon.
+			'''
+	}
+
+	Tesseract4: {
+		DisplayName: Tesseract (Level 4)
+		Tooltip:
+			'''
+			Has previous level abilities. Allows the user to teleport to the
+			dungeon pylon. Pylon has to be in the dungeon biome in order to be used.
+			'''
+	}
+
+	DungeonPylonItem: {
+		DisplayName: Dungeon Pylon
+		Tooltip:
+			'''
+			Pylon has to be in the dungeon in order to be used.
+			You need a level 4+ tesseract to interact
+			'''
+	}
+
+	Tesseract5: {
+		DisplayName: Tesseract (Level 5)
+		Tooltip:
+			'''
+			Has previous level abilites. Right click to switch between functions.
+			Function 1 (Recall):
+				Teleports you home.
+			Function 2 (Time Warp):
+				Hold down to speed up time.
+			'''
+	}
+
+	Tesseract6: {
+		DisplayName: Tesseract (Level 6)
+		Tooltip:
+			'''
+			Has previous level abilites. New ability: Phase Shift.
+			Press TESSERACT TELEPORT KEY to teleport to the mouse cursor. Can be
+			changed in controls and can be used from anywhere in the inventory.
+			'''
+	}
+
+	Tesseract7: {
+		DisplayName: Tesseract (Level 7)
+		Tooltip:
+			'''
+			Has previous level abilites. New ability: Temporal Dash.
+			Right click to switch between functions.
+			Function 1 (Recall):
+				Teleports you home.
+			Function 2 (Time Warp):
+				Hold down to speed up time.
+			Function 3 (Temporal Dash):
+				Using the item allows you to get out of a pickle by greatly increasing
+				movement speed and life regeneration for 10 seconds. You can not attack during this time.
+				1 minute cooldown.
+			'''
+	}
+
+	Tesseract8: {
+		DisplayName: Tesseract (Level 8)
+		Tooltip:
+			'''
+			Has previous level abilities. New ability: Stardust Relocator.
+			Press TESSERACT TELEPORT KEY to teleport in up to a burst of three. You have a 
+			1 second window when you are allowed to teleport. Once that window closes or you 
+			teleport 3 times, you will be inflicted with the chaos debuff.
+			'''
+	}
+
+	Tesseract9: {
+		DisplayName: Tesseract (Level 9)
+		Tooltip:
+			'''
+			Has previous level abilites. New ability: Universal Pylon Locator. Allows you to
+			teleport to any pylon from anywhere in the world if this is in your inventory.
+			'''
+	}
+
+	Tesseract10: {
+		DisplayName: Tesseract (Level 10)
+		Tooltip:
+			'''
+			Has previous level abilites. New ability: Time Punch. 
+			Right click to switch between abilities. Allows you to attack while the temporal 
+			dash buff is active.
+			'''
+	}
+
+	TesseractDeveloperItem: {
+		Tooltip: ""
+		DisplayName: Tesseract Developer Item
+	}
+
+	ThePeppermint: {
+		DisplayName: The peppermint
+		Tooltip:
+			'''
+			Mint Gaming's Official Weapon!
+			After hitting an enemy, it will bounce off in the direction of another enemy.
+			It is basically M.O.A.R. glaives from BTD 6 lol.
+			WORM BOSSES BEWARE!
+			'''
+	}
+
+	DarkRiftFragment: {
+		DisplayName: Dark Rift Fragment
+		Tooltip: The matter of dark energy.
+	}
+
+	LightRiftFragment: {
+		DisplayName: Light Rift Fragment
+		Tooltip: The matter of light energy
+	}
+
+	AquaRiftFragment: {
+		DisplayName: Aqua Rift Fragment
+		Tooltip: The sea has blessed you with its essence.
+	}
+
+	ColdRiftFragment: {
+		DisplayName: Cold Rift Fragment
+		Tooltip: Cold to the touch! Makes COOL things.
+	}
+
+	ZenithYoYoItem: {
+		DisplayName: Zenith YoYo
+		Tooltip:
+			'''
+			Throws a Zenith YoYo that shoots homing Zenith Energy Spheres. Automatically 
+			throws ALL counterweights. Has a special attack based on color:
+			RED: Shoots ichor.
+			ORANGE: Sets enemies on fire.
+			YELLOW: Spawns bees.
+			GREEN: Shoots stingers.
+			BLUE: Inflicts frostburn.
+			PURPLE: Throws cursed flames.
+			PINK: Spawns crystal shards.
+			WHITE: Shoots little eyes.
+			'''
+	}
+
+	ChainThunderbolt: {
+		DisplayName: Chain Thunderbolt
+		Tooltip: ""
+	}
+
+	ElectricRiftFragment: {
+		DisplayName: Electric Rift Fragment
+		Tooltip: ""
+	}
+
+	EtherealSword: {
+		DisplayName: Ethereal Sword
+		Tooltip: True melee grants death protection II.
+	}
+
+	ChloroRiftFragment: {
+		DisplayName: Chloro Rift Fragment
+		Tooltip: ""
+	}
+
+	DeathRiftFragment: {
+		DisplayName: Death Rift Fragment
+		Tooltip: ""
+	}
+
+	DustRiftFragment: {
+		DisplayName: Dust Rift Fragment
+		Tooltip: ""
+	}
+
+	GlowRiftFragment: {
+		DisplayName: Glow Rift Fragment
+		Tooltip: ""
+	}
+
+	HeatRiftFragment: {
+		DisplayName: Heat Rift Fragment
+		Tooltip: ""
+	}
+
+	LifeRiftFragment: {
+		DisplayName: Life Rift Fragment
+		Tooltip: ""
+	}
+
+	EtherealLance: {
+		DisplayName: Ethereal Lance
+		Tooltip:
+			'''
+			Striking an enemy will spawn a swarm
+			of deadly icicles and protect the holder
+			from death by briefly doubling defense.
+			'''
+	}
+
+	EtherealStaff: {
+		DisplayName: Ethereal Caster
+		Tooltip:
+			'''
+			Shoots a molten sphere that explodes into
+			hot metal shards.
+			'''
+	}
+
+	EtherealSpell: {
+		DisplayName: Ethereal Spell
+		Tooltip:
+			'''
+			Casts a storm spell with lightning and rain. The lightning
+			Will home if close to an enemy.
+			The clouds are purely visual.
+			If they were projectiles lag would be significantly higher.
+			'''
+	}
+
+	EtherealLasher: {
+		Tooltip:
+			'''
+			Has a chance to shoot leaf rays or icicles. 
+			66% chance not to consume ammo.
+			'''
+		DisplayName: Ethereal Lasher
+	}
+
+	EtherealBlaster: {
+		Tooltip:
+			'''
+			A burst shotgun that sprays spore clouds. will ocasionally shoot 
+			a deadly, ethereal skull.
+			45% chance not to consume ammo.
+			'''
+		DisplayName: Ethereal Blaster
+	}
+
+	EtherealBubbler: {
+		DisplayName: Ethereal Bubbler
+		Tooltip:
+			'''
+			Uses 55 fixed mana
+			A summoner attack weapon. Shoots a homing bubble. Landed shots
+			spawn deadly dust and deal chain damage.
+			'''
+	}
+
+	EtherealCommander: {
+		DisplayName: Ethereal Commander
+		Tooltip: Summons a Shadowflame Dragon to fight for you.
+	}
+
+	ZenithYoYoDEV: {
+		DisplayName: Zenith Yo Yo D E V
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	ConjuringClimaxProjectile.DisplayName: Conjuring Climax Projectile
+	PrimeMeridianFlameProjectile.DisplayName: Prime Meridian Flame
+	PrimeMeridianProjectile.DisplayName: Prime Meridian Projectile
+	ApexN31Projectile.DisplayName: Apex N31
+	ApexN31Rocket.DisplayName: Apex N31 Rocket
+	ApexN31Bullet.DisplayName: Apex N31 Bullet
+	CulminationArrow.DisplayName: Culmination Arrow
+	CulminationLanceProjectile.DisplayName: Culmination Lance
+	CulminationBlade.DisplayName: Culmination Blade
+	SuperCulminationArrow.DisplayName: Super Culmination Arrow
+	DeathFlame.DisplayName: Death Flame
+	DeathFlameMain.DisplayName: Death Flame
+	DeathFlameChild.DisplayName: Death Flame
+	ZenithWhipProjectile.DisplayName: Zenith Whip
+	ZenithMinion.DisplayName: Zenith Minion
+	ZenithMinionRainbowMissle.DisplayName: Rainbow Missle
+	ApexN31Explosion.DisplayName: Apex N31
+	PeppermintProjectile.DisplayName: A Peppermint
+	RiftProjectile.DisplayName: Rift Projectile
+	LightRiftProjectile.DisplayName: Light Rift
+	DarkRiftProjectile.DisplayName: Dark Rift
+	ZenithYoYoProjectile.DisplayName: Zenith Yo Yo
+	ZenithYoYoProjectileEnergySphere.DisplayName: Zenith Yo Yo Projectile Energy Sphere
+	DeadlyIcicleHostile.DisplayName: Deadly Icicle
+	ChainThunderboltProjectile.DisplayName: Chain Thunderbolt
+	DeadlyBubbleHostile.DisplayName: Deadly Bubble
+	DeadlyThunderbolt.DisplayName: Deadly Thunderbolt
+	DeadlyThunderboltBranch.DisplayName: Deadly Thunderbolt Branch
+	EtherealSwordSwingProjectile.DisplayName: Ethereal Sword Swing Projectile
+	EtherealSwordSlash.DisplayName: Ethereal Sword Slash
+	LightEtherealStar.DisplayName: Light Ethereal Star
+	DarkEtherealStar.DisplayName: Dark Ethereal Star
+	DeadlyFlame.DisplayName: Deadly Flame
+	GlowRiftProjectile.DisplayName: Glow Rift Projectile
+	OrangeDeathSickle.DisplayName: Orange Death Sickle
+	DeathRiftSlash.DisplayName: Death Rift Slash
+	EtherealLanceProjectile.DisplayName: Ethereal Lance Projectile
+	EtherealLanceStar.DisplayName: Ethereal Lance Star
+	DeadlyIcicleFriendly.DisplayName: Deadly Icicle Friendly
+	MoltenSphere.DisplayName: Molten Sphere
+	HotMetalShard.DisplayName: Hot Metal Shard
+	FriendlyThunderbolt.DisplayName: Friendly Thunderbolt
+	RainDrop.DisplayName: Rain Drop
+	EtherealSkullProjectile.DisplayName: Ethereal Skull Projectile
+	GlowRiftProjectileFriendly.DisplayName: Glow Rift Projectile Friendly
+	EtherealBubble.DisplayName: Ethereal Bubble
+	LightDustStorm.DisplayName: Light Dust Storm
+	ChainEtherealBubble.DisplayName: Chain Ethereal Bubble
+	ShadowFlameDragonMinion.DisplayName: Shadow Flame Dragon Minion
+	ShadowFlameBreath.DisplayName: Shadow Flame Breath
+	ZenithYoYoCrystal.DisplayName: Zenith Yo Yo Crystal
+	ZenithYoYoFlame.DisplayName: Zenith Yo Yo Flame
+	ZenithYoYoGoldenShower.DisplayName: Zenith Yo Yo Golden Shower
+	ZenithYoYoStinger.DisplayName: Zenith Yo Yo Stinger
+	ZenithYoYoEye.DisplayName: Zenith Yo Yo Eye
+	ZenithYoYoProjectileDEV.DisplayName: Zenith Yo Yo Projectile D E V
+}
+
+Buffs: {
+	ZenithMinionBuff: {
+		DisplayName: Zenith Star
+		Description: The power of the cosmos, in the palm of your hand
+	}
+
+	TimeSlapBuff: {
+		DisplayName: Temporal Dash
+		Description: You cannot use items and your time has increased.
+	}
+
+	TemporalDashBuff: {
+		DisplayName: Temporal Dash
+		Description: You cannot use items and your time has increased.
+	}
+
+	TemporalDashCooldownDebuff: {
+		DisplayName: Temporal Dash Cooldown
+		Description: You can not temporal dash.
+	}
+
+	StardustRelocatorBuff: {
+		DisplayName: Stardust Relocator Buff
+		Description: You are allowed to teleport.
+	}
+
+	TimePunchBuff: {
+		DisplayName: Time Punch Buff
+		Description: You are faster (like a lot faster)!
+	}
+
+	DeathProtectionOne: {
+		DisplayName: Death Protection I
+		Description: Very briefly increases defense.
+	}
+
+	DeathProtectionTwo: {
+		DisplayName: Death Protection Two
+		Description: Death Protection is even more effective and lasts even longer.
+	}
+
+	ShadowFlameDragonBuff: {
+		Description: A shadowflame dragon fights for you!
+		DisplayName: Shadow Flame Dragon
+	}
+
+	ApexOverclockBuff: {
+		DisplayName: Apex Overclock Buff
+		Description: Damage is doubled.
+	}
+}
+
+Tiles: {
+	Tesseract3.MapEntry: Tesseract3
+	TesseractPylon.MapEntry: Tesseract Pylon
+	DungeonPylon.MapEntry: Dungeon Pylon
+}
+
+Keybinds: {
+	"Tesseract Mouse Teleport.DisplayName": Tesseract Mouse Teleport
+	TesseractMouseTeleport.DisplayName: Tesseract Mouse Teleport
+}
+
+NPCs: {
+	LightRiftSlime.DisplayName: Light Rift Slime
+	DarkRiftSlime.DisplayName: Dark Rift Slime
+	ColdRiftElemental.DisplayName: Cold Rift Elemental
+	AquaRiftElemental.DisplayName: Aqua Rift Elemental
+	ElectricRiftElemental.DisplayName: Electric Rift Elemental
+	HeatRiftElemental.DisplayName: Heat Rift Elemental
+	GlowRiftElemental.DisplayName: Glow Rift Elemental
+	LifeRiftElemental.DisplayName: Life Rift Elemental
+	LifeRiftElementalLarva.DisplayName: Life Rift Elemental Larva
+	DeathRiftElemental.DisplayName: Death Rift Elemental
+	DustRiftElemental.DisplayName: Dust Rift Elemental
+	ChloroRiftElemental.DisplayName: Chloro Rift Elemental
+}
+
+DropCondition.MoonlordDefeated: Mods.TheTesseractMod.DropCondition.MoonlordDefeated
