@@ -15,6 +15,8 @@ using Microsoft.CodeAnalysis;
 using Terraria.DataStructures;
 using TheTesseractMod.Projectiles.Melee.ZenithYoYoChildProjectiles;
 using Terraria.Audio;
+using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Melee
 {
@@ -31,6 +33,7 @@ namespace TheTesseractMod.Projectiles.Melee
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
                 ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 750f;
+                ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 10f;
             }
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 20f;
         }
@@ -63,7 +66,7 @@ namespace TheTesseractMod.Projectiles.Melee
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(20f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CrystalStorm, Projectile.damage/2, 0f);
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(20f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CrystalStorm, Projectile.damage, 0f);
                 }
             }
 
@@ -100,7 +103,7 @@ namespace TheTesseractMod.Projectiles.Melee
                 {
                     damage = Projectile.damage / 2;
                 }
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(speed, speed).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<ZenithYoYoProjectileEnergySphere>(), damage/2, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(speed, speed).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<ZenithYoYoProjectileEnergySphere>(), damage, Projectile.knockBack, Projectile.owner);
             }
             counter++;
 
@@ -144,16 +147,16 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(50, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 125, Color.Red, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(50, 0).RotatedBy(MathHelper.ToRadians(i * 36)), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 125, Color.Red, .5f);
                 }
             }
 
 
             if (attackTypeCounter % 30 == 0)
             {
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.GoldenShowerFriendly, Projectile.damage/2, 0f);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.GoldenShowerFriendly, Projectile.damage, 0f);
             }
             attackTypeCounter++;
         }
@@ -164,19 +167,19 @@ namespace TheTesseractMod.Projectiles.Melee
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(200, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 125, Color.DarkGreen, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(200, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 125, Color.Green, .5f);
                 }
             }
 
 
             if (attackTypeCounter % 20 == 0 && TargetInRange(200))
             {
-                NPC target = Main.npc[findTarget()];
+                NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
                 Vector2 direction = target.Center - Projectile.Center;
                 direction.Normalize();
 
                 SoundEngine.PlaySound(SoundID.Item17, Projectile.position);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ZenithYoYoStinger>(), Projectile.damage/2, 0f);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ZenithYoYoStinger>(), Projectile.damage, 0f);
             }
             attackTypeCounter++;
         }
@@ -187,13 +190,13 @@ namespace TheTesseractMod.Projectiles.Melee
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(300, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 125, Color.Gold, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(300, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 125, Color.Gold, .5f);
                 }
             }
 
             if (attackTypeCounter % 20 == 0 && TargetInRange(300))
             {
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + new Vector2(20f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.Bee, Projectile.damage/2, 0f);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + new Vector2(20f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.Bee, Projectile.damage, 0f);
             }
             attackTypeCounter++;
         }
@@ -202,9 +205,9 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 125, Color.Violet, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * (360 / 8))), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 125, Color.Pink, .5f);
                 }
             }
             attackTypeCounter++;
@@ -214,9 +217,9 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 0, Color.Blue, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * (360 / 8))), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 0, Color.SkyBlue, .5f);
                 }
             }
             attackTypeCounter++;
@@ -226,9 +229,9 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 125, Color.OrangeRed, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(30, 0).RotatedBy(MathHelper.ToRadians(i * (360 / 8))), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 125, Color.OrangeRed, .5f);
                 }
             }
             attackTypeCounter++;
@@ -238,9 +241,9 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 15; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(70, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 0, Color.White, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(70, 0).RotatedBy(MathHelper.ToRadians(i * (360 / 15))), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 0, Color.White, .5f);
                 }
             }
 
@@ -249,7 +252,7 @@ namespace TheTesseractMod.Projectiles.Melee
                 Vector2 offset = Projectile.Center + new Vector2(60, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
                 Vector2 direction = Projectile.Center - offset;
                 direction.Normalize();
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), offset, direction * 20f, ModContent.ProjectileType<ZenithYoYoEye>(), Projectile.damage/2, 0f);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), offset, direction * 20f, ModContent.ProjectileType<ZenithYoYoEye>(), Projectile.damage, 0f);
             }
             attackTypeCounter++;
         }
@@ -257,15 +260,15 @@ namespace TheTesseractMod.Projectiles.Melee
         {
             if (attackTypeCounter % 4 == 0)
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 14; i++)
                 {
-                    Dust.NewDust(Projectile.Center + new Vector2(50, 0).RotatedBy(MathHelper.ToRadians(i * 18)), 1, 1, DustID.FireworksRGB, 0, 0, 0, Color.Purple, 1f);
+                    Dust.NewDust(Projectile.Center + new Vector2(50, 0).RotatedBy(MathHelper.ToRadians(i * (360/14))), 1, 1, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 0, Color.Purple, .5f);
                 }
             }
 
             if (attackTypeCounter % 30 == 0)
             {
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CursedFlameFriendly, Projectile.damage/2, 0f); 
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CursedFlameFriendly, Projectile.damage, 0f); 
             }
             attackTypeCounter++;
         }
@@ -273,10 +276,9 @@ namespace TheTesseractMod.Projectiles.Melee
         private bool TargetInRange(int range)
         {
             bool inRange = false;
-            int targetType = findTarget();
-            if (targetType != -1)
+            NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
+            if (target != null)
             {
-                NPC target = Main.npc[findTarget()];
                 float dist = Vector2.Distance(target.Center, Projectile.Center);
                 if (dist < range)
                 {
@@ -285,27 +287,6 @@ namespace TheTesseractMod.Projectiles.Melee
             }
             return inRange;
         }
-        public int findTarget() // returns the closest npc
-        {
-            int closestNPCIndex = -1;
-            float closestDistance = float.MaxValue;
-
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                NPC npc = Main.npc[i];
-
-                if (npc.active && !npc.townNPC && npc.CanBeChasedBy())
-                {
-                    float distance = Vector2.Distance(Projectile.position, npc.position);
-
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestNPCIndex = i;
-                    }
-                }
-            }
-            return closestNPCIndex;
-        }
+        
     }
 }

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System.Reflection;
+using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
 {
@@ -49,7 +51,7 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
             timer++;
             float fade = (float)Math.Sin(timer * MathHelper.TwoPi / 120f);
             fade = (fade + 1f) / 2f;
-            scalingFactor = Lerp(0.25f, 0.5f, fade);
+            scalingFactor = GlobalMathFunctions.Lerp(0.25f, 0.5f, fade);
             rotationFactor += 8f;
 
             float fading = (timer % 60) / 60f;
@@ -68,7 +70,7 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, new Vector3(color.R/255f, color.G/255f, color.B/255f));
-            Dust.NewDust(Projectile.position, Projectile.width / 2, Projectile.height / 2, 263, Projectile.velocity.X * 0.83f, Projectile.velocity.Y * 0.83f, 0, color, 1f);
+            Dust.NewDust(Projectile.position, Projectile.width / 2, Projectile.height / 2, ModContent.DustType<SharpRadialGlowDust>(), 0, 0, 0, color, .4f);
             Projectile.ai[0]++;
             
             //***Will speed up proj if too slow***//
@@ -76,66 +78,15 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
             //************************************//
             if (Projectile.ai[0] > 10)
             {
-                NPC target = null;
-                if (findTarget() != -1)
-                {
-                    target = Main.npc[findTarget()];
-                }
-                if (!IsTargetValid(target))
-                {
-                    Projectile.velocity = Projectile.oldVelocity;
-                }
+                NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
 
-                if (target.CanBeChasedBy() && !target.friendly && target.active && IsTargetValid(target))
+                if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 300f))
                 {
-                    /*homing segment*/
-                    float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                    float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                    float distance = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-
-                    if (distance < 300 && distance > 0)
-                    {
-                        distance = 4f / distance;
-                        goToX *= distance;
-                        goToY *= distance;
-
-                        Projectile.velocity.X += goToX; // higher int values make it turn slower
-                        Projectile.velocity.Y += goToY;
-                    }
+                    Vector2 desiredVelocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * travelingSpeed;
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredVelocity, .3f);
                 }
             }
             travelingSpeed *= 0.99f;
-        }
-        public int findTarget() // returns the closest npc
-        {
-            int closestNPCIndex = -1;
-            float closestDistance = float.MaxValue;
-
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                NPC npc = Main.npc[i];
-
-                if (npc.active && !npc.townNPC)
-                {
-                    float distance = Vector2.Distance(Projectile.position, npc.position);
-
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestNPCIndex = i;
-                    }
-                }
-            }
-            return closestNPCIndex;
-        }
-        private bool IsTargetValid(NPC target) // a check to make sure the target exists
-        {
-            return target != null && target.active && !target.friendly;
-        }
-        public float Lerp(float x, float y, float amount)
-        {
-            amount = MathHelper.Clamp(amount, 0f, 1f);
-            return x + amount * (y - x);
         }
     }
 }

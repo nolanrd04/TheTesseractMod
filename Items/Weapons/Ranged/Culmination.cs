@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheTesseractMod.Global.Projectiles.Ranged;
+using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons;
 using TheTesseractMod.Projectiles.Ranged;
 
 namespace TheTesseractMod.Items.Weapons.Ranged
@@ -48,46 +49,26 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            Recipe recipe2 = CreateRecipe();
             recipe.AddIngredient(ItemID.WoodenBow, 1);
-            recipe.AddIngredient(ItemID.DemonBow, 1);
-            recipe.AddIngredient(2888, 1); //bees knees
-            recipe.AddIngredient(ItemID.MoltenFury, 1);
             recipe.AddIngredient(ItemID.HellwingBow, 1);
             recipe.AddIngredient(ItemID.ShadowFlameBow, 1);
             recipe.AddIngredient(ItemID.Marrow, 1);
             recipe.AddIngredient(ItemID.DaedalusStormbow, 1);
             recipe.AddIngredient(3854, 1); //phantom pheonix
             recipe.AddIngredient(4953, 1); //eventide
+            recipe.AddIngredient(ModContent.ItemType<TerraTalonbow>());
             recipe.AddIngredient(ItemID.Tsunami, 1);
             recipe.AddIngredient(ItemID.Phantasm, 1);
             recipe.AddIngredient(ItemID.LunarBar, 5);
             recipe.AddTile(TileID.LunarCraftingStation);
 
-            recipe2.AddIngredient(ItemID.WoodenBow, 1);
-            recipe2.AddIngredient(ItemID.TendonBow, 1);
-            recipe2.AddIngredient(2888, 1); //bees knees
-            recipe2.AddIngredient(ItemID.MoltenFury, 1);
-            recipe2.AddIngredient(ItemID.HellwingBow, 1);
-            recipe2.AddIngredient(ItemID.ShadowFlameBow, 1);
-            recipe2.AddIngredient(ItemID.Marrow, 1);
-            recipe2.AddIngredient(ItemID.DaedalusStormbow, 1);
-            recipe2.AddIngredient(3854, 1); //phantom pheonix
-            recipe2.AddIngredient(4953, 1); //eventide
-            recipe2.AddIngredient(ItemID.Tsunami, 1);
-            recipe2.AddIngredient(ItemID.Phantasm, 1);
-            recipe2.AddIngredient(ItemID.LunarBar, 5);
-            recipe2.AddTile(TileID.LunarCraftingStation);
-
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind<ModItem>("AuricBar", out ModItem AuricBar))
             {
 
                 recipe.AddIngredient(AuricBar.Type, 5);
-                recipe2.AddIngredient(AuricBar.Type, 5);
             }
 
                 recipe.Register();
-                recipe2.Register();
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -169,15 +150,6 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-40f, 4f);
-        }
-
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (Item.useTime > 10)
-            {
-                Item.useTime -= 2;
-                Item.useAnimation -= 2;
-            }
         }
     }
 }

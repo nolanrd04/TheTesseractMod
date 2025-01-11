@@ -8,7 +8,8 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Buffs;
+using TheTesseractMod.Buffs.MinionBuffs;
+using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons;
 using TheTesseractMod.Projectiles.Summoner;
 
 namespace TheTesseractMod.Items.Weapons.Summoner
@@ -53,16 +54,14 @@ namespace TheTesseractMod.Items.Weapons.Summoner
             recipe.AddIngredient(ItemID.AbigailsFlower, 1);
             recipe.AddIngredient(ItemID.FlinxStaff, 1);
             recipe.AddIngredient(ItemID.SlimeStaff, 1);
-            recipe.AddIngredient(ItemID.HornetStaff, 1);
-            recipe.AddIngredient(ItemID.ImpStaff, 1);
             recipe.AddIngredient(ItemID.SpiderStaff, 1);
             recipe.AddIngredient(ItemID.SanguineStaff, 1);
             recipe.AddIngredient(4758, 1);
             recipe.AddIngredient(ItemID.OpticStaff, 1);
             recipe.AddIngredient(ItemID.PygmyStaff, 1);
-            recipe.AddIngredient(ItemID.DeadlySphereStaff, 1);
             recipe.AddIngredient(ItemID.RavenStaff, 1);
             recipe.AddIngredient(ItemID.TempestStaff, 1);
+            recipe.AddIngredient(ModContent.ItemType<TerraTotem>());
             recipe.AddIngredient(ItemID.StardustDragonStaff, 1);
             recipe.AddIngredient(5005, 1);
             recipe.AddIngredient(ItemID.RainbowCrystalStaff, 1);

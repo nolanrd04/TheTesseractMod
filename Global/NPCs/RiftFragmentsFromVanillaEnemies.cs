@@ -75,7 +75,7 @@ namespace TheTesseractMod.Global.NPCs
             return false;
         }
 
-        public bool ChloroCheck(NPC npc)
+        public static bool ChloroCheck(NPC npc)
         {
             int type = npc.type;
 

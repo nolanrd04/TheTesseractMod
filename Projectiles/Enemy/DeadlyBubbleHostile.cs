@@ -15,6 +15,7 @@ namespace TheTesseractMod.Projectiles.Enemy
 {
     internal class DeadlyBubbleHostile:ModProjectile
     {
+        public override string Texture => "TheTesseractMod/Textures/VanillaBubble";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
@@ -55,8 +56,7 @@ namespace TheTesseractMod.Projectiles.Enemy
                 Random rand = new Random();
                 float rotation = (float)(rand.NextDouble() * 360);
                 Vector2 velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation));
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 34, velocity.X, velocity.Y, 0, default(Color), 1.2f);
-                //Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RiftLightBlueDust>(), velocity.X, velocity.Y, 0, default(Color), 1f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BubbleBlock, velocity.X, velocity.Y, 0, default(Color), 1f);
             }
         }
     }

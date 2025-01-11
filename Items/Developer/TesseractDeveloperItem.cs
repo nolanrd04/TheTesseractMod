@@ -141,13 +141,5 @@ namespace TheTesseractMod.Items.Developer
             amount = Math.Clamp(1, x, y);
             return x + amount * (y - x);
         }
-
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.RecallPotion, 1);
-            recipe.Register();
-        }
     }
 }

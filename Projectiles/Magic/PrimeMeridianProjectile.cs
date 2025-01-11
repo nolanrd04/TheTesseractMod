@@ -3,6 +3,9 @@ using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace TheTesseractMod.Projectiles.Magic
 {
@@ -37,7 +40,7 @@ namespace TheTesseractMod.Projectiles.Magic
             Lighting.AddLight(Projectile.position, 0.3f, 0.94f, 0.48f);
             if (Projectile.ai[0] % 3 == 0)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 107, Projectile.velocity.X, Projectile.velocity.Y, 115, default(Color), 1f);
+                Dust.NewDust(Projectile.position, Projectile.width / 2, Projectile.height / 2, ModContent.DustType<SharpRadialGlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Lime, 1f);
             }
             
             Projectile.ai[0]++;
@@ -57,24 +60,12 @@ namespace TheTesseractMod.Projectiles.Magic
 
             if (Projectile.ai[0] > 10)
             {
-                NPC target = Main.npc[findTarget()];
+                NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center, lastHit);
 
-                if (target.CanBeChasedBy() && !target.friendly && target.active && IsTargetValid(target))
+                if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 1000f, lastHit))
                 {
-                    /*homing segment*/
-                    float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                    float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                    float distance = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-
-                    if (distance < 2000 && distance > 0)
-                    {
-                        distance = 4f / distance;
-                        goToX *= distance;
-                        goToY *= distance;
-
-                        Projectile.velocity.X += goToX / 0.6f; // higher int values make it turn slower
-                        Projectile.velocity.Y += goToY / 0.6f;
-                    }
+                    Vector2 desiredVelocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 20f;
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredVelocity, .25f);
                 }
             }
         }
@@ -83,31 +74,23 @@ namespace TheTesseractMod.Projectiles.Magic
             lastHit = target;
             counterForNoHoming = 7;
         }
-        public int findTarget() // returns the closest npc
+
+        public override bool PreDraw(ref Color lightColor)
         {
-            int closestNPCIndex = -1;
-            float closestDistance = float.MaxValue;
 
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                NPC npc = Main.npc[i];
+            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 
-                if (npc.active && !npc.townNPC && npc != lastHit)
-                {
-                    float distance = Vector2.Distance(Projectile.position, npc.position);
+            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
 
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestNPCIndex = i;
-                    }
-                }
-            }
-            return closestNPCIndex;
-        }
-        private bool IsTargetValid(NPC target) // a check to make sure the target exists
-        {
-            return target != null && target.active && !target.friendly;
+            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(sourceRectangle),
+                Color.White,
+                Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+
+            return false;
         }
     }
 }

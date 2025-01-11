@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Microsoft.CodeAnalysis;
+using TheTesseractMod.GlobalFuncitons;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.Enemy
 {
@@ -26,17 +28,13 @@ namespace TheTesseractMod.Projectiles.Enemy
             Projectile.penetrate = 1;
             Projectile.ignoreWater = true;
         }
-        public float Lerp(float x, float y, float amount)
-        {
-            amount = MathHelper.Clamp(amount, 0f, 1f);
-            return x + amount * (y - x);
-        }
+        
         public override bool PreDraw(ref Color lightColor)
         {
             timer++;
             float fade = (float)Math.Sin(timer * MathHelper.TwoPi / 120f);
             fade = (fade + 1f) / 2f;
-            scalingFactor = Lerp(0.25f, 0.5f, fade);
+            scalingFactor = GlobalMathFunctions.Lerp(0.25f, 0.5f, fade);
 
             Color color = (Color)GetAlpha(Color.White);
 
@@ -61,7 +59,7 @@ namespace TheTesseractMod.Projectiles.Enemy
 
             if (timer % 3 == 0)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 27, Projectile.velocity.X, Projectile.velocity.Y, 150, default(Color), 1f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<SharpRadialGlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(133 / 255f, 33 / 255f, 255 / 255f), .7f);
             }
         }
         public override Color? GetAlpha(Color lightColor)

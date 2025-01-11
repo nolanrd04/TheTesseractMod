@@ -33,13 +33,7 @@ Items: {
 		Tooltip:
 			'''
 			66% chance not to consume ammo
-			Shoots 2 streams of zenith energy bolts that
-			explode on impact. Also shoots a random vanilla
-			bullet, and randomly shoots homing rockets.
-			RIGHT-CLICK ATTACK: For every 15 enemies you hit, 1 rocket will be loaded into the chamber for
-			a maximum of 10 rockets. Right click to launch the rockets in a rapid barrage. 1 rocket loaded 
-			will play the mana recharge sfx. Max rockets loaded will play the mana crystal consume sfx.
-			Right click to overclock and to release the barage.
+			Shoots 2 bullets of choice and 4 random vanilla bullets.
 			'''
 	}
 
@@ -389,6 +383,227 @@ Items: {
 		DisplayName: Zenith Yo Yo D E V
 		Tooltip: ""
 	}
+
+	UnholyCaster: {
+		DisplayName: Unholy Caster
+		Tooltip: Color changes depending on world evil.
+	}
+
+	CursedStaff: {
+		DisplayName: Cursed Staff
+		Tooltip: Inspired by Pixel Gun.
+	}
+
+	NightsRod: {
+		DisplayName: Night's Rod
+		Tooltip: Ayo? Shoots a controllable shadow ball.
+	}
+
+	TrueNightsRod: {
+		Tooltip: Casts 3 Flaming Spheres.
+		DisplayName: True Night's Rod
+	}
+
+	TerraTorch: {
+		Tooltip: ""
+		DisplayName: Terra Torch
+	}
+
+	NightsTome: {
+		Tooltip: Damage and hitbox are dependent on how close the player is to the projectile.
+		DisplayName: Night's Tome
+	}
+
+	PurpleHeart: {
+		Tooltip: ""
+		DisplayName: Purple Heart
+	}
+
+	StingerStorm: {
+		Tooltip: The magic of the Jungle Slime
+		DisplayName: Stinger Storm
+	}
+
+	TrueNightsTome: {
+		Tooltip: Damage and hitbox are dependent on how close the player is to the projectile.
+		DisplayName: True Night's Tome
+	}
+
+	ShatterPoint: {
+		DisplayName: Shatter Point
+		Tooltip: Shoots a splitting crystal.
+	}
+
+	TerraTome: {
+		Tooltip: Releases a barrage of terra flames.
+		DisplayName: Terra Tome
+	}
+
+	BoneBow: {
+		Tooltip: Turns wooden arrows into bone arrows.
+		DisplayName: Bone Bow
+	}
+
+	NightsLongBow: {
+		Tooltip:
+			'''
+			30% chance not to consume ammo
+			Shoots a burst of 4 arrows.
+			'''
+		DisplayName: Night's Long Bow
+	}
+
+	TrueNightsLongBow: {
+		Tooltip:
+			'''
+			40% chance not to consume ammo.
+			Shoots a burst of arrows. Has a chance to shoot cursed or venom arrows.
+			'''
+		DisplayName: True Night's Long Bow
+	}
+
+	TerraTalonbow: {
+		DisplayName: Terra Talonbow
+		Tooltip: 50% chance not to consume ammo.
+	}
+
+	NightsSixShooter: {
+		Tooltip:
+			'''
+			Shoots a rapid burst of Night's Bullets. 
+			Only consumes ammo on the first shot.
+			Clutching 1v1s since 2018!
+			'''
+		DisplayName: Night's Six-Shooter
+	}
+
+	TrueNightsSixShooter: {
+		Tooltip: ""
+		DisplayName: True Night's Six Shooters
+	}
+
+	Gigashark: {
+		Tooltip:
+			'''
+			50% chance not to consume ammo.
+			Has a chance to shoot a bullet that does chain damage.
+			Get it cause mega, then giga, then next is terra haha!
+			'''
+		DisplayName: Gigashark
+	}
+
+	TerraTurret: {
+		Tooltip: ""
+		DisplayName: Terra Turret
+	}
+
+	Petashark: {
+		Tooltip: ""
+		DisplayName: Petashark
+	}
+
+	NightsSling: {
+		Tooltip: ""
+		DisplayName: Nights Sling
+	}
+
+	TrueNightsSling: {
+		Tooltip: ""
+		DisplayName: True Nights Sling
+	}
+
+	TrueYeletes: {
+		DisplayName: True Yeletes
+		Tooltip: ""
+	}
+
+	TerraThrow: {
+		Tooltip: Every 10 hits will spawn damaging stars.
+		DisplayName: Terra Throw
+	}
+
+	CreeperStaff: {
+		Tooltip:
+			'''
+			Summons a creeper to fight for you.
+			Can be crafted in both crimson and corruption worlds.
+			Creeper will change color depending on world type!
+			'''
+		DisplayName: Creeper Staff
+	}
+
+	DarkCasterStaff: {
+		Tooltip: Summons a dark caster to fight for you.
+		DisplayName: Dark Caster Staff
+	}
+
+	NightsLegatus: {
+		Tooltip:
+			'''
+			Summmons Night's crescent moons to fight for you.
+			Stage 1: will latch on and deal damage.
+			Stage 2: will dash towards its target and deal extra damage.
+			This thing is better than it looks...
+			'''
+		DisplayName: Night's Legatus
+	}
+
+	TrueNightsLegatus: {
+		Tooltip:
+			'''
+			Summons an advanced Night's crescent moon to fight for you.
+			Stage 1: will ricochete between enemies rapidly. Amazing crowd control.
+			Stage 2: will dash towards its target.
+			'''
+		DisplayName: True Nights Legatus
+	}
+
+	HolyCommander: {
+		DisplayName: Holy Commander
+		Tooltip:
+			'''
+			Summons a Golden Mage to fight for you.
+			The golden mage will switch betwen attacking, where it will attack a target,
+			and defending, where it will give the player random buffs.
+			'''
+	}
+
+	PrototypePSR1: {
+		Tooltip: ""
+		DisplayName: Prototype P S R1
+	}
+
+	TrueHolyCommander: {
+		Tooltip:
+			'''
+			Summons a True Golden Mage to fight for you.
+			The true golden mage will switch betwen attacking, where it will attack a target,
+			and defending, where it will give the player random buffs. It has a bigger list of
+			buffs to pick from.
+			'''
+		DisplayName: True Holy Commander
+	}
+
+	TerraTotem: {
+		Tooltip:
+			'''
+			Summons an offensive Tiki Terra Spirit to fight for you..
+			Consumes all minion slots, and the strength of the minion is determined by how 
+			many slots are consumed.
+			'''
+		DisplayName: Terra Totem
+	}
+
+	TerraTrident: {
+		Tooltip:
+			'''
+			This weapon is to be used with the Terra Totem. 
+			Shoots a terra spear that marks an enemy. Marked enemies will send the Terra Tiki Spirit
+			into a melee frenzy which will heal the player for 10% of the damage dealt. Also will
+			mark enemies like a whip.
+			'''
+		DisplayName: Terra Trident
+	}
 }
 
 Projectiles: {
@@ -448,6 +663,65 @@ Projectiles: {
 	ZenithYoYoStinger.DisplayName: Zenith Yo Yo Stinger
 	ZenithYoYoEye.DisplayName: Zenith Yo Yo Eye
 	ZenithYoYoProjectileDEV.DisplayName: Zenith Yo Yo Projectile D E V
+	CursedStaffProj.DisplayName: Cursed Staff Proj
+	CursedStaffProjChild.DisplayName: Cursed Staff Proj Child
+	UnholyCasterProj.DisplayName: Unholy Caster Proj
+	NightsRodBeam.DisplayName: Nights Rod Beam
+	TerraTorchFlamePositive.DisplayName: Terra Torch Flame Positive
+	TerraTorchFlameNegative.DisplayName: Terra Torch Flame Negative
+	TerraTorchProjImpact.DisplayName: Terra Torch Proj Impact
+	NightsTomeProjectile.DisplayName: Nights Tome Projectile
+	StingerStormProj.DisplayName: Stinger Storm Proj
+	TrueNightsTomeProj.DisplayName: True Nights Tome Proj
+	ShatterPointCrystal.DisplayName: Shatter Point Crystal
+	ShatterPointCrystalChild.DisplayName: Shatter Point Crystal Child
+	TerraTomeFlame.DisplayName: Terra Tome Flame
+	TerraArrow.DisplayName: Terra Arrow
+	NightsBullet.DisplayName: Nights Bullet
+	TrueNightsBullet.DisplayName: True Nights Bullet
+	GigasharkBullet.DisplayName: Gigashark Bullet
+	SDMGGunProj.DisplayName: S D M G Gun Proj
+	Vortex_BeaterGunProj.DisplayName: Vortex_ Beater Gun Proj
+	UziGunProj.DisplayName: Uzi Gun Proj
+	Chain_GunGunProj.DisplayName: Chain_ Gun Gun Proj
+	Candy_Corn_RifleGunProj.DisplayName: Candy_ Corn_ Rifle Gun Proj
+	TerraTurretProj.DisplayName: Terra Turret Proj
+	TerraTurretLeg.DisplayName: Terra Turret Leg
+	Clockwork_Assault_RifleProj.DisplayName: Clockwork_ Assault_ Rifle Proj
+	TrueNightsSixShooterPurpleProj.DisplayName: True Nights Six Shooter Purple Proj
+	TrueNightsSixShooterGreenProj.DisplayName: True Nights Six Shooter Green Proj
+	PetasharkBullet.DisplayName: Petashark Bullet
+	PetasharkBubble.DisplayName: Petashark Bubble
+	NightsSlingProj.DisplayName: Nights Sling Proj
+	TrueNightsSlingProj.DisplayName: True Nights Sling Proj
+	TrueYeletesProj.DisplayName: True Yeletes Proj
+	TerraYoyoProj.DisplayName: Terra Yoyo Proj
+	TerraYoyoBurst.DisplayName: Terra Yoyo Burst
+	CreeperMinion.DisplayName: Creeper Minion
+	DarkCaster.DisplayName: Dark Caster
+	WaterSphere.DisplayName: Water Sphere
+	NightsCrescentProj.DisplayName: Nights Crescent Proj
+	TrueNightsCrescentProj.DisplayName: True Nights Crescent Proj
+	GoldenKnightProj.DisplayName: Golden Knight Proj
+	PrototypeProjectile.DisplayName: Prototype Projectile
+	GoldenKnightMagic.DisplayName: Golden Knight Magic
+	GoldenKnightFriendlyMagic.DisplayName: Golden Knight Friendly Magic
+	TrueGoldenMageMinion.DisplayName: True Golden Mage Minion
+	TrueGoldenMageMagic.DisplayName: True Golden Mage Magic
+	TrueGoldenMageFriendlyMagic.DisplayName: True Golden Mage Friendly Magic
+	TerraSpiritOffenseMinion.DisplayName: Terra Spirit Offense Minion
+	TerraMagicPosative.DisplayName: Terra Magic Posative
+	TerraMagicNegative.DisplayName: Terra Magic Negative
+	TerraDaggerLevel1.DisplayName: Terra Dagger Level1
+	TerraMagicPositive.DisplayName: Terra Magic Positive
+	TerraBlaze.DisplayName: Terra Blaze
+	SuperTerraBlaze.DisplayName: Super Terra Blaze
+	TerraDaggerChild.DisplayName: Terra Dagger Child
+	TerraDaggerLevel3.DisplayName: Terra Dagger Level3
+	TerraDaggerLevel2.DisplayName: Terra Dagger Level2
+	TerraSpear.DisplayName: Terra Spear
+	TerraHeal.DisplayName: Terra Heal
+	TerraTridentProjectile.DisplayName: Terra Trident Projectile
 }
 
 Buffs: {
@@ -497,8 +771,88 @@ Buffs: {
 	}
 
 	ApexOverclockBuff: {
-		DisplayName: Apex Overclock Buff
+		DisplayName: Apex Overclock
 		Description: Damage is doubled.
+	}
+
+	CreeperMinionBuff: {
+		Description: A creeper is fighting for you!
+		DisplayName: Creeper Minion
+	}
+
+	CreeperMinionBuffPurple: {
+		Description: A creeper is fighting for you!
+		DisplayName: Creeper Minion
+	}
+
+	DarkCasterMinionBuff: {
+		Description: A dark caster is fighting for you!
+		DisplayName: Dark Caster Minion
+	}
+
+	NightsCrescentMinionBuff: {
+		Description: A crescent moon is fighting for you!
+		DisplayName: Crescent Moon Minion
+	}
+
+	TrueCrescentMinionBuff: {
+		Description: A crescent moon is fighting for you!
+		DisplayName: True Crescent Minion
+	}
+
+	GoldenKnightMinionBuff: {
+		DisplayName: Golden Mage
+		Description: A Golden Mage is fighting for you!
+	}
+
+	HolyEndurance: {
+		DisplayName: Holy Endurance
+		Description: Decreases damage taken by an additional 5%.
+	}
+
+	HolyLifeForce: {
+		DisplayName: Holy Life Force
+		Description: Increases max life by 10%
+	}
+
+	HolyRage: {
+		DisplayName: Holy Rage
+		Description: Increases crit chance by 5%.
+	}
+
+	HolyRegen: {
+		DisplayName: Holy Regen
+		Description: Increases life regen.
+	}
+
+	HolySkin: {
+		DisplayName: Holy Skin
+		Description: Increases defense by 4.
+	}
+
+	HolySwiftness: {
+		DisplayName: Holy Swiftness
+		Description: increases movement speed.
+	}
+
+	HolyWrath: {
+		DisplayName: Holy Wrath
+		Description: Increases damage by 5%.
+	}
+
+	TrueGoldenMageMinionBuff: {
+		Description: A more powerful Golden Mage is fighting for you!
+		DisplayName: True Golden Mage Minion Buff
+	}
+
+	TargetMarked: {
+		DisplayName: Target Marked
+		Description: Mods.TheTesseractMod.Buffs.TargetMarked.Description
+	}
+
+	TerraSpiritMinionBuff: {
+		Description: A Terra Tiki Spirit is fighting for you!
+		DisplayName: Terra Spirit Minion Buff
 	}
 }
 

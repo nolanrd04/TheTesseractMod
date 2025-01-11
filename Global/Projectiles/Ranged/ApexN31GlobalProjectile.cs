@@ -32,16 +32,16 @@ namespace TheTesseractMod.Global.Projectiles.Ranged
                         EditPlayer.ApexN31BulletHits++;
                         if (EditPlayer.ApexN31BulletHits % 15 == 0) //for every four hits:
                         {
-                            SoundEngine.PlaySound(SoundID.MaxMana, player.position);
-                            EditPlayer.ApexN31LoadedRocketCount++;
-                            EditPlayer.maxRocketIdx++;
+                            //SoundEngine.PlaySound(SoundID.MaxMana, player.position);
+                            //EditPlayer.ApexN31LoadedRocketCount++;
+                            //EditPlayer.maxRocketIdx++;
                         }
                     }
 
                     if (EditPlayer.maxRocketIdx == 10)
                     {
-                        EditPlayer.maxRocketIdx++;
-                        SoundEngine.PlaySound(SoundID.Item29, player.position); //only runs once. the right click code in ApexN31 will reset this
+                       // EditPlayer.maxRocketIdx++;
+                       // SoundEngine.PlaySound(SoundID.Item29, player.position); //only runs once. the right click code in ApexN31 will reset this
                     }
                 }
             }

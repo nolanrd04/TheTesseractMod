@@ -9,8 +9,11 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
+using TheTesseractMod.ItemDropRulesANDConditions;
 using TheTesseractMod.Items.Materials;
 using TheTesseractMod.Items.Weapons.NoSpecificClass;
+using TheTesseractMod.Items.Weapons.Ranged;
 
 namespace TheTesseractMod.Global.Bosses
 {
@@ -27,6 +30,27 @@ namespace TheTesseractMod.Global.Bosses
             if (npc.type == NPCID.MoonLordCore)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThePeppermint>()));
+            }
+
+            // add Petashark to Duke Fishron drop loot
+            if (npc.type == NPCID.DukeFishron)
+            {
+                npcLoot.Add(ItemDropRule.ByCondition(new IsNormalMode(), ModContent.ItemType<Petashark>(), 6));
+                
+            }
+        }
+    }
+
+    public class BossBagLoot : GlobalItem
+    {
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
+        {
+            // Add Petashark to Duke Fishron Bag
+            if (item.type == ItemID.FishronBossBag)
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Petashark>(), 6));
+                LeadingConditionRule notExpert = new LeadingConditionRule(new Conditions.NotExpert());
+                notExpert.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Petashark>(), 6));
             }
         }
     }

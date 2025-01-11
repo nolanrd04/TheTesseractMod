@@ -70,9 +70,19 @@ namespace TheTesseractMod.NPCs.Enemies
             float x = target.position.X - NPC.Center.X;
             float y = target.position.Y - NPC.Center.Y;
             float distance = (float)Math.Sqrt(x*x + y*y);
+
+            int countOfMinions = 0;
+            for (int i = 0; i < Main.npc.Length; i++)
+            {
+                if (Main.npc[i].type == ModContent.NPCType<LifeRiftElementalLarva>())
+                {
+                    countOfMinions++;
+                }
+            }
+
             if (timer >= 300 && distance < 700)
             {
-                if ((timer - 300) % 10 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+                if ((timer - 300) % 10 == 0 && Main.netMode != NetmodeID.MultiplayerClient && countOfMinions < 10)
                 {
                     NPC.NewNPC(NPC.InheritSource(NPC), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<LifeRiftElementalLarva>());
                 }

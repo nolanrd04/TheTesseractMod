@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Melee.EtherealSwordProjectiles
 {
@@ -41,7 +42,7 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealSwordProjectiles
             timer++;
             float fade = (float)Math.Sin(timer * MathHelper.TwoPi / 120f);
             fade = (fade + 1f) / 2f;
-            scalingFactor = Lerp(0.25f, 0.5f, fade);
+            scalingFactor = GlobalMathFunctions.Lerp(0.25f, 0.5f, fade);
 
             rotationFactor += 8f;
 
@@ -67,68 +68,14 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealSwordProjectiles
             //***Will speed up proj if too slow***//
             Projectile.velocity = Vector2.Normalize(Projectile.velocity) * travelingSpeed;
             //************************************//
-            if (Projectile.ai[0] > 10)
+            NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
+
+            if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 400f))
             {
-                NPC target = null;
-                if (findTarget() != -1)
-                {
-                    target = Main.npc[findTarget()];
-                }
-                if (!IsTargetValid(target))
-                {
-                    Projectile.velocity = Projectile.oldVelocity;
-                }
-
-                if (target.CanBeChasedBy() && !target.friendly && target.active && IsTargetValid(target))
-                {
-                    /*homing segment*/
-                    float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                    float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                    float distance = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-
-                    if (distance < 300 && distance > 0)
-                    {
-                        distance = 4f / distance;
-                        goToX *= distance;
-                        goToY *= distance;
-
-                        Projectile.velocity.X += goToX; // higher int values make it turn slower
-                        Projectile.velocity.Y += goToY;
-                    }
-                }
+                Projectile.velocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * travelingSpeed;
+                return;
             }
             travelingSpeed *= 0.99f;
-        }
-        public int findTarget() // returns the closest npc
-        {
-            int closestNPCIndex = -1;
-            float closestDistance = float.MaxValue;
-
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                NPC npc = Main.npc[i];
-
-                if (npc.active && !npc.townNPC)
-                {
-                    float distance = Vector2.Distance(Projectile.position, npc.position);
-
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestNPCIndex = i;
-                    }
-                }
-            }
-            return closestNPCIndex;
-        }
-        private bool IsTargetValid(NPC target) // a check to make sure the target exists
-        {
-            return target != null && target.active && !target.friendly;
-        }
-        public float Lerp(float x, float y, float amount)
-        {
-            amount = MathHelper.Clamp(amount, 0f, 1f);
-            return x + amount * (y - x);
         }
     }
 }

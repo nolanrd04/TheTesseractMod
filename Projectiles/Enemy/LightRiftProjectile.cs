@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Microsoft.CodeAnalysis;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.Enemy
 {
@@ -70,8 +71,7 @@ namespace TheTesseractMod.Projectiles.Enemy
         {
             Projectile.Center = Projectile.position + new Vector2(Projectile.width / 2, Projectile.height / 2);
             Lighting.AddLight(Projectile.position, 226/255f, 230/255f, 168/255f);
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 204, Projectile.velocity.X, Projectile.velocity.Y, 150, default(Color), 1.5f);
-            //Projectile.rotation += MathHelper.ToRadians(4f);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<SharpRadialGlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(255 / 255f, 246 / 255f, 150 / 255f), .7f);
         }
         public override Color? GetAlpha(Color lightColor)
         {

@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Buffs;
+using TheTesseractMod.Buffs.MinionBuffs;
 
 namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
 {
@@ -311,13 +311,13 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
                 {
                     // Speed up the minion if it's away from the player
                     speed = 40f;
-                    inertia = 200f;
+                    inertia = 20f;
                 }
                 else
                 {
                     // Slow down the minion if closer to the player
                     speed = 4f;
-                    inertia = 80f;
+                    inertia = 40f;
                 }
 
                 if (distanceToIdlePosition > 20f)

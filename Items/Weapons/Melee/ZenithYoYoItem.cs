@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheTesseractMod.Items.Weapons.Ranged;
+using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons;
 using TheTesseractMod.Projectiles.Magic;
 using TheTesseractMod.Projectiles.Melee;
 
@@ -27,10 +28,10 @@ namespace TheTesseractMod.Items.Weapons.Melee
         public override void SetDefaults()
         {
 
-            Item.damage = 110;
+            Item.damage = 180;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Item.damage = 140;
+                Item.damage = 210;
             }
             Item.DamageType = DamageClass.Melee;
             Item.value = 1500000;
@@ -62,47 +63,24 @@ namespace TheTesseractMod.Items.Weapons.Melee
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            Recipe recipe2 = CreateRecipe();
             recipe.AddIngredient(ItemID.WoodYoyo, 1);
             recipe.AddIngredient(ItemID.Rally, 1);
-            recipe.AddIngredient(ItemID.CorruptYoyo, 1);
-            recipe.AddIngredient(ItemID.JungleYoyo, 1);
             recipe.AddIngredient(ItemID.HiveFive, 1);
-            recipe.AddIngredient(ItemID.Cascade, 1);
-            recipe.AddIngredient(ItemID.Valor, 1);
             recipe.AddIngredient(ItemID.Chik, 1);
             recipe.AddIngredient(ItemID.HelFire, 1);
             recipe.AddIngredient(ItemID.Amarok, 1);
             recipe.AddIngredient(ItemID.Yelets, 1);
             recipe.AddIngredient(ItemID.Kraken, 1);
-            recipe.AddIngredient(3292, 1);
+            recipe.AddIngredient(ModContent.ItemType<TerraThrow>());
             recipe.AddIngredient(ItemID.Terrarian, 1);
             recipe.AddTile(TileID.LunarCraftingStation);
-
-            recipe2.AddIngredient(ItemID.WoodYoyo, 1);
-            recipe2.AddIngredient(ItemID.Rally, 1);
-            recipe2.AddIngredient(ItemID.CrimsonYoyo, 1);
-            recipe2.AddIngredient(ItemID.JungleYoyo, 1);
-            recipe2.AddIngredient(ItemID.HiveFive, 1);
-            recipe2.AddIngredient(ItemID.Cascade, 1);
-            recipe2.AddIngredient(ItemID.Valor, 1);
-            recipe2.AddIngredient(ItemID.Chik, 1);
-            recipe2.AddIngredient(ItemID.HelFire, 1);
-            recipe2.AddIngredient(ItemID.Amarok, 1);
-            recipe2.AddIngredient(ItemID.Yelets, 1);
-            recipe2.AddIngredient(ItemID.Kraken, 1);
-            recipe2.AddIngredient(3292, 1);
-            recipe2.AddIngredient(ItemID.Terrarian, 1);
-            recipe2.AddTile(TileID.LunarCraftingStation);
 
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem AuricBar))
             {
                 recipe.AddIngredient(AuricBar.Type, 5);
-                recipe2.AddIngredient(AuricBar.Type, 5);
             }
 
             recipe.Register();
-            recipe2.Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

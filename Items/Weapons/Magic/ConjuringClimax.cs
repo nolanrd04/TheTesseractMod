@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheTesseractMod.Global.Projectiles.Magic;
+using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons;
 using TheTesseractMod.Projectiles.Magic;
 
 namespace TheTesseractMod.Items.Weapons.Magic
@@ -45,17 +46,12 @@ namespace TheTesseractMod.Items.Weapons.Magic
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.WandofSparking, 1);
-            recipe.AddIngredient(ItemID.AmberStaff, 1);
             recipe.AddIngredient(ItemID.ThunderStaff, 1);
-            recipe.AddIngredient(ItemID.MeteorStaff, 1);
             recipe.AddIngredient(ItemID.FrostStaff, 1);
             recipe.AddIngredient(ItemID.CrystalSerpent, 1);
             recipe.AddIngredient(ItemID.RainbowRod, 1);
-            recipe.AddIngredient(ItemID.VenomStaff, 1);
-            recipe.AddIngredient(ItemID.ShadowbeamStaff, 1);
-            recipe.AddIngredient(ItemID.SpectreStaff, 1);
-            recipe.AddIngredient(ItemID.InfernoFork, 1);
             recipe.AddIngredient(ItemID.Razorpine, 1);
+            recipe.AddIngredient(ModContent.ItemType<TerraTorch>());
             recipe.AddIngredient(ItemID.NebulaBlaze, 1);
             recipe.AddIngredient(ItemID.LunarBar, 10);
             recipe.AddTile(TileID.LunarCraftingStation);

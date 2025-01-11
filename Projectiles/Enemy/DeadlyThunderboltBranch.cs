@@ -39,13 +39,11 @@ namespace TheTesseractMod.Projectiles.Enemy
                 float rotation = (float)(rand.NextDouble() * 100 - 50);
                 Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation));
             }
-            Dust.NewDust(Projectile.position, Projectile.width-40, Projectile.height-40, ModContent.DustType<BlueElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
+            //Dust.NewDust(Projectile.position, Projectile.width-15, Projectile.height-15, ModContent.DustType<BlueElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
             for (int i = 0; i < 3; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width-40, Projectile.height-40, ModContent.DustType<ElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.White, 1f);
+                Dust.NewDust(Projectile.position, Projectile.width-15, Projectile.height-15, ModContent.DustType<ElectricDust>(), 0, 0, 0, Color.Blue, 1f);
             }
-
-
             Projectile.ai[0]++;
         }
     }

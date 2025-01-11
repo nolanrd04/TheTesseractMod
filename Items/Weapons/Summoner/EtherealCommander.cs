@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Buffs;
+using TheTesseractMod.Buffs.MinionBuffs;
 using TheTesseractMod.Items.Materials;
 using TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon;
 

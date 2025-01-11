@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons;
 using TheTesseractMod.Projectiles.Magic;
 using TheTesseractMod.Projectiles.Summoner;
 
@@ -39,35 +40,19 @@ namespace TheTesseractMod.Items.Weapons.Magic
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            Recipe recipe2 = CreateRecipe();
-            recipe.AddIngredient(ItemID.WaterBolt, 1);
             recipe.AddIngredient(ItemID.BookofSkulls, 1);
-            recipe.AddIngredient(ItemID.CrystalStorm, 1);
-            recipe.AddIngredient(ItemID.CursedFlames, 1);
+            recipe.AddIngredient(ModContent.ItemType<TerraTome>());
             recipe.AddIngredient(ItemID.RazorbladeTyphoon, 1);
-            recipe.AddIngredient(ItemID.MagnetSphere, 1);
             recipe.AddIngredient(ItemID.NebulaArcanum, 1);
             recipe.AddIngredient(ItemID.LunarFlareBook, 1);
             recipe.AddTile(TileID.LunarCraftingStation);
 
-            recipe2.AddIngredient(ItemID.WaterBolt, 1);
-            recipe2.AddIngredient(ItemID.BookofSkulls, 1);
-            recipe2.AddIngredient(ItemID.CrystalStorm, 1);
-            recipe2.AddIngredient(ItemID.GoldenShower, 1);
-            recipe2.AddIngredient(ItemID.RazorbladeTyphoon, 1);
-            recipe2.AddIngredient(ItemID.MagnetSphere, 1);
-            recipe2.AddIngredient(ItemID.NebulaArcanum, 1);
-            recipe2.AddIngredient(ItemID.LunarFlareBook, 1);
-            recipe2.AddTile(TileID.LunarCraftingStation);
-
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("AuricBar", out ModItem AuricBar))
             {
                 recipe.AddIngredient(AuricBar.Type, 5);
-                recipe2.AddIngredient(AuricBar.Type, 5);
             }
 
             recipe.Register();
-            recipe2.Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

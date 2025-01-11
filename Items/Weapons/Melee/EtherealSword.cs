@@ -47,7 +47,9 @@ namespace TheTesseractMod.Items.Weapons.Melee
         public override void UpdateInventory(Player player)
         {
             if (comboExpireTimer++ >= 120)
+            {
                 attackType = 0;
+            } 
         }
 
         public override void AddRecipes()

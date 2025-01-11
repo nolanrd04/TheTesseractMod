@@ -20,7 +20,7 @@ namespace TheTesseractMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.moveSpeed *= 4;
-            player.runAcceleration *= 1.1f; ;
+            player.runAcceleration *= 1.1f;
             player.wingTime += 0.6f;
             player.lifeRegen += 10;
             if (player.buffTime[buffIndex] % 2 == 0)

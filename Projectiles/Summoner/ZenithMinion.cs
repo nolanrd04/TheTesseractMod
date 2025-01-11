@@ -6,8 +6,10 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Buffs;
+using TheTesseractMod.Buffs.MinionBuffs;
 using TheTesseractMod.Global.Projectiles.Summon;
+using TheTesseractMod.Projectiles.EvilWeapons;
+using TheTesseractMod.Projectiles.TrueExcaliburWeapons;
 
 namespace TheTesseractMod.Projectiles.Summoner
 {
@@ -21,11 +23,12 @@ namespace TheTesseractMod.Projectiles.Summoner
         float farSpeed = 60f;       // Temporary speed value used in distance calculations (So we don't change our original speed)
         float inertia = 20f;        // Determines how long an object will move after having velocity applied
         float farInertia = 20f;     // Temporary intertia used in distance calculations (So we don't change our original interia)
-        float attackSight = 600f;   // How far away an enemy must be for the minion to "see" it
+        float attackSight = 400f;   // How far away an enemy must be for the minion to "see" it
         float idleRange = 60f;      // The range in which the minion will idle over the player
         float deadzoneRange = 40f;  // The deadzone range in which the minion will not latch onto an enemy
         float orbitSpeed = 0.125f;  // degrees of position of minion incremented each update. Used in Movement()
         float newAngle = 0f;        // new angle in degrees that will be added to the position.
+        float angleCounter = 0;
         //------------------------------------------------------------------------------------------------------------------------
 
         public override void SetStaticDefaults()
@@ -115,6 +118,7 @@ namespace TheTesseractMod.Projectiles.Summoner
 
         private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition)
         {
+            angleCounter += .2f;
             /***THE FOLLOWING CODE IS FOR MY OWN AI WHERE I WANT THE MINIONS TO CIRCLE THE PLAYER WHEN IDLE***/
             /*************THE ORIGINAL AI CODE WILL BE BELOW THE LINE OF STARS, COMMENTED OUT*****************/
             float orbitRadius = 100f; // distance from player
@@ -130,7 +134,7 @@ namespace TheTesseractMod.Projectiles.Summoner
                     numOfSameMinion++;
                 }
             }
-            float angleBetweenMinions = (float)(Math.PI * 2 / numOfSameMinion); // angle between each minion. if one minion exists then 360 deg, if 2 minions exist then 180 deg, etc.
+            float angleBetweenMinions = MathHelper.ToRadians((360f / numOfSameMinion) + angleCounter); // angle between each minion. if one minion exists then 360 deg, if 2 minions exist then 180 deg, etc.
 
             // calculate the angle of the position
             for (int i = 0; i < Main.maxProjectiles; i++)
@@ -385,7 +389,7 @@ namespace TheTesseractMod.Projectiles.Summoner
         private void SpawnMinion()
         {
             Random rand = new Random();
-            int random = rand.Next(13);
+            int random = rand.Next(15);
             int projectile = ModContent.ProjectileType<ZenithMinionRainbowMissle>();
             ZenithMinionSummonGlobalOverride.shotByZenithMinion = true;
             switch (random)
@@ -433,6 +437,12 @@ namespace TheTesseractMod.Projectiles.Summoner
                     break;
                 case 12:
                     projectile = ProjectileID.RainbowCrystal;
+                    break;
+                case 13:
+                    projectile = ModContent.ProjectileType<CreeperMinion>();
+                    break;
+                case 14:
+                    projectile = ModContent.ProjectileType<TrueGoldenMageMinion>();
                     break;
                 default:
                     projectile = ModContent.ProjectileType<ZenithMinionRainbowMissle>();

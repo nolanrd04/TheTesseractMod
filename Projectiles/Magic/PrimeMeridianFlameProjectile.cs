@@ -3,6 +3,7 @@ using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.Magic
 {
@@ -27,7 +28,7 @@ namespace TheTesseractMod.Projectiles.Magic
             Projectile.ai[1]++;
             floatScale *= 0.98f;
 
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Projectile.velocity.X *= 0.985f, Projectile.velocity.Y *= 0.985f, 150, default(Color), floatScale);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RadialGlowDust>(), Projectile.velocity.X *= 0.985f, Projectile.velocity.Y *= 0.985f, 150, Color.Lime, floatScale);
         }
     }
 }

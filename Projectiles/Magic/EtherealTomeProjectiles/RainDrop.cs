@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using TheTesseractMod.Global.Projectiles.Ranged;
 using TheTesseractMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.Magic.EtherealTomeProjectiles
 {    internal class RainDrop : ModProjectile
@@ -39,7 +40,7 @@ namespace TheTesseractMod.Projectiles.Magic.EtherealTomeProjectiles
             if (Projectile.ai[0] % 3 == 0)
             {
                 Dust.NewDust(Projectile.Center, 15, 15, 172, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 200, default(Color), 1f);
-                Dust.NewDust(Projectile.Center, 15, 15, DustID.Shadowflame, Projectile.velocity.X * 0.7f, Projectile.velocity.Y * 0.7f, 225, default(Color), 1f);
+                Dust.NewDust(Projectile.Center, 15, 15, ModContent.DustType<RadialGlowDust>(), Projectile.velocity.X * 0.7f, Projectile.velocity.Y * 0.7f, 225, Color.Purple, 0.6f);
             }
         }
 

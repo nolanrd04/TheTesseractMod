@@ -36,7 +36,7 @@ namespace TheTesseractMod.Projectiles.Magic
             {
                 alpha -= 5;
             }
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<ElectricDust>(), Projectile.velocity.X *= 0.985f, Projectile.velocity.Y *= 0.985f, alpha, Color.White, 1f);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<ElectricDust>(), 0, 0, alpha, Color.White, 1f);
         }
 
         public override bool PreDraw(ref Color lightColor)

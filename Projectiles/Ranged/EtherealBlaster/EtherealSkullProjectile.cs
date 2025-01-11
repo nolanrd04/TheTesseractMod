@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.Audio;
+using TheTesseractMod.GlobalFuncitons;
 namespace TheTesseractMod.Projectiles.Ranged.EtherealBlaster
 {
     internal class EtherealSkullProjectile : ModProjectile
@@ -35,25 +36,13 @@ namespace TheTesseractMod.Projectiles.Ranged.EtherealBlaster
             Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 15f;
             //************************************//
 
-            NPC target = Main.npc[findTarget()];
+           NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
 
-            if (target.CanBeChasedBy() && !target.friendly && target.active && IsTargetValid(target))
-            {
-                /*homing segment*/
-                float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                float distance = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-
-                if (distance < 400)
+                if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 400f))
                 {
-                    distance = 4f / distance;
-                    goToX *= distance;
-                    goToY *= distance;
-
-                    Projectile.velocity.X += goToX / 2; // higher int values make it turn slower
-                    Projectile.velocity.Y += goToY / 2;
+                    Vector2 desiredVelocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 15f;
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredVelocity, .2f);
                 }
-            }
 
         }
         public override bool PreDraw(ref Color lightColor)

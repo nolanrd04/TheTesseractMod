@@ -37,7 +37,11 @@ namespace TheTesseractMod.Projectiles.Magic.EtherealStaffProjectile
         public override void AI()
         {
            // Lighting.AddLight(Projectile.position, 255 / 255f, 48 / 255f, 20 / 255f);
-            Dust.NewDust(Projectile.position, Projectile.width/2, Projectile.height/2, 6, Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
+           for (int i = 0; i < 4; i++)
+            {
+                Dust.NewDust(Projectile. Center, 0, 0, ModContent.DustType<RadialGlowDust>(), 0, 0, 0, Color.Red, 1f);
+                Dust.NewDust(Projectile.Center, 0, 0, ModContent.DustType<RadialGlowDust>(), 0, 0, 0, Color.Yellow, .7f);
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

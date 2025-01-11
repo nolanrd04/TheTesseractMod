@@ -23,13 +23,15 @@ namespace TheTesseractMod.Dusts
         public override bool Update(Dust dust)
         {
             
-            Lighting.AddLight(dust.position, 89 / 255f, 247 / 255f, 255 / 255f);
+            Lighting.AddLight(dust.position, dust.color.R/64, dust.color.G/64, dust.color.B/64);
             dust.scale *= 0.95f;
 
             if (dust.scale < 0.03f)
             {
                 dust.active = false;
             }
+
+            dust.position += dust.velocity;
 
             return false;
         }
@@ -54,6 +56,10 @@ namespace TheTesseractMod.Dusts
                 new Vector2(dust.position.X - Main.screenPosition.X, dust.position.Y - Main.screenPosition.Y),
                 new Rectangle(0, 0, Texture2D.Value.Width, Texture2D.Value.Height),
                 new Color(color.R, color.G, color.B, 0) * (1f - dust.alpha / 255f), MathHelper.ToRadians(rotation), Texture2D.Value.Size()*0.5f, dust.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(Texture2D.Value,
+                new Vector2(dust.position.X - Main.screenPosition.X, dust.position.Y - Main.screenPosition.Y),
+                new Rectangle(0, 0, Texture2D.Value.Width, Texture2D.Value.Height),
+                new Color(255, 255, 255, 0) * (1f - dust.alpha / 255f), MathHelper.ToRadians(rotation), Texture2D.Value.Size() * 0.5f, dust.scale * 0.9f, SpriteEffects.None, 0f);
             return false;
         }
     }

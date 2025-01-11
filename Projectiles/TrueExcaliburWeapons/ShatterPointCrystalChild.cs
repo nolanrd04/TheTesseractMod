@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ModLoader;
+using Terraria.ID;
+using Terraria.Audio;
+using Terraria;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+
+namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
+{
+    internal class ShatterPointCrystalChild : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; // The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0; // The recording mode
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 10;
+            Projectile.height = 10;
+            Projectile.DamageType = DamageClass.Magic;
+            Projectile.alpha = 70;
+            Projectile.timeLeft = 10;
+            Projectile.friendly = true;
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation += 0.9f;
+            Lighting.AddLight(Projectile.position, 250f / 255, 135f / 255, 250f / 255);
+
+            if (Projectile.ai[0] % 5 == 0)
+            {
+                Dust.NewDust(Projectile.position, 1, 1, 204, Projectile.velocity.X *= 0.98f, Projectile.velocity.Y *= 0.98f, 0, default(Color), 1f);
+            }
+            Projectile.ai[0]++;
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
+
+            Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = (Projectile.oldPos[k] - Main.screenPosition) + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.EntitySpriteDraw(texture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            }
+
+            return true;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Ichor, 180);
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            Vector2 newVelocity = new Vector2(5, 0);
+            for (int i = 0; i < 10; i++)
+            {
+                Dust.NewDust(Projectile.position, 1, 1, 255, newVelocity.X, newVelocity.Y, 0, default(Color), 0.5f);
+                newVelocity = newVelocity.RotatedBy(MathHelper.ToRadians(36));
+            }
+        }
+    }
+}

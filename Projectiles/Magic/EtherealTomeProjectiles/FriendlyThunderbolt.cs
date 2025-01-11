@@ -11,6 +11,7 @@ using Terraria;
 using Terraria.ModLoader;
 using TheTesseractMod.Dusts;
 using Terraria.DataStructures;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Magic.EtherealTomeProjectiles
 {
@@ -45,18 +46,13 @@ namespace TheTesseractMod.Projectiles.Magic.EtherealTomeProjectiles
             if (Projectile.ai[0] % 10 == 0)
             {
                 float rotation = MathHelper.ToRadians((float)(rand.NextDouble() * 50 - 25));
-                NPC target = findTarget();
-                if (target != null)
+                NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center, lastHit);
+
+                if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 250f))
                 {
-                    float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                    float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                    float distanceToTarget = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-                    if (distanceToTarget < 150)
-                    {
-                        Projectile.velocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 15f;
-                        Projectile.velocity = Projectile.velocity.RotatedBy(rotation);
-                        return;
-                    }
+                    Projectile.velocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 15f;
+                    Projectile.velocity = Projectile.velocity.RotatedBy(rotation);
+                    return;
                 }
                 if (ConsecutiveNegative == 2)
                 {
@@ -90,43 +86,15 @@ namespace TheTesseractMod.Projectiles.Magic.EtherealTomeProjectiles
                 Projectile.velocity = Projectile.velocity.RotatedBy(rotation);
             }
 
-            Dust.NewDust(Projectile.Center, 15, 15, ModContent.DustType<BlueElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
             for (int i = 0; i < 3; i++)
             {
-                Dust.NewDust(Projectile.Center, 15, 15, ModContent.DustType<ElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.White, 1f);
+                Dust.NewDust(Projectile.Center, 15, 15, ModContent.DustType<ElectricDust>(), 0, 0, 0, Color.Blue, .7f);
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             lastHit = target;
-        }
-
-        public NPC findTarget() // returns the closest npc
-        {
-            NPC closestNPCIndex = null ;
-            float closestDistance = float.MaxValue;
-
-            if (Main.npc.Length > 0)
-            {
-                for (int i = 0; i < Main.npc.Length; i++)
-                {
-                    NPC npc = Main.npc[i];
-
-                    if (npc.active && !npc.townNPC && npc != lastHit && npc.type != NPCID.TargetDummy)
-                    {
-                        float distance = Vector2.Distance(Projectile.position, npc.position);
-
-                        if (distance < closestDistance)
-                        {
-                            closestDistance = distance;
-                            closestNPCIndex = Main.npc[i];
-                        }
-                    }
-                }
-            }
-            
-            return closestNPCIndex;
         }
     }
 }

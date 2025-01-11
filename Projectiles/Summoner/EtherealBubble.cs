@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Summoner
 {
@@ -30,33 +32,23 @@ namespace TheTesseractMod.Projectiles.Summoner
         public override void AI()
         {
             Lighting.AddLight(Projectile.position, 1f, 1f, 1f);
+            Vector2 newPosition = Projectile.position + new Vector2(Projectile.width * 0.5f, Projectile.height * 0.5f);
             if (Projectile.ai[0] % 2 == 0)
             {
-                Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, 204, Projectile.velocity.X, Projectile.velocity.Y, 150, default(Color), 1f);
+                Dust.NewDust(newPosition, Projectile.width, Projectile.height, ModContent.DustType<SharpRadialGlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, Color.Aqua, .6f);
+                Dust.NewDust(newPosition, Projectile.width, Projectile.height, ModContent.DustType<SharpRadialGlowDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, new Color(255 / 255f, 246 / 255f, 150 / 255f), .6f);
             }
             Projectile.ai[0]++;
             //***Will speed up proj if too slow***//
             Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 13f;
             //************************************//
 
-            NPC target = Main.npc[findTarget()];
+            NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
 
-            if (target.CanBeChasedBy() && !target.friendly && target.active && IsTargetValid(target))
+            if (GlobalProjectileFunctions.IsTargetValid(target, Projectile.Center, 600f))
             {
-                /*homing segment*/
-                float goToX = target.position.X + (float)target.width * 0.5f - Projectile.Center.X;
-                float goToY = target.position.Y + (float)target.width * 0.5f - Projectile.Center.Y;
-                float distance = (float)Math.Sqrt(goToX * goToX + goToY * goToY);
-
-                if (distance < 600)
-                {
-                    distance = 4f / distance;
-                    goToX *= distance;
-                    goToY *= distance;
-
-                    Projectile.velocity.X += goToX / 2; // higher int values make it turn slower
-                    Projectile.velocity.Y += goToY / 2;
-                }
+                Projectile.velocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 13f;
+                return;
             }
         }
         public int findTarget() // returns the closest npc
@@ -116,21 +108,13 @@ namespace TheTesseractMod.Projectiles.Summoner
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LightDustStorm>(), Projectile.damage, 0);
 
             // do chain damage if in range
-            NPC newTarget = Main.npc[findSecondClosestTarget()];
+            NPC newTarget = GlobalProjectileFunctions.findSecondClosestTarget(Projectile.Center);
 
-            if (newTarget.CanBeChasedBy() && IsTargetValid(newTarget))
+            if (GlobalProjectileFunctions.IsTargetValid(newTarget, Projectile.Center, 250))
             {
-                /*homing segment*/
-                float X = newTarget.position.X + (float)newTarget.width * 0.5f - Projectile.Center.X;
-                float Y = newTarget.position.Y + (float)newTarget.width * 0.5f - Projectile.Center.Y;
-                float distance = (float)Math.Sqrt(X * X + Y * Y);
-
-                if (distance < 400)
-                {
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(120)), ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(240)), ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
-                }
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(120)), ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(240)), ModContent.ProjectileType<ChainEtherealBubble>(), Projectile.damage, 0);
             }
         }
 

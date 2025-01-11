@@ -13,6 +13,7 @@ using ReLogic.Content;
 using Terraria.Audio;
 using TheTesseractMod.Projectiles.Melee;
 using TheTesseractMod.Projectiles.Melee.ZenithYoYoChildProjectiles;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Developer
 {
@@ -174,7 +175,7 @@ namespace TheTesseractMod.Projectiles.Developer
 
             if (attackTypeCounter % 20 == 0 && TargetInRange(200))
             {
-                NPC target = Main.npc[findTarget()];
+                NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
                 Vector2 direction = target.Center - Projectile.Center;
                 direction.Normalize();
 
@@ -276,39 +277,17 @@ namespace TheTesseractMod.Projectiles.Developer
         private bool TargetInRange(int range)
         {
             bool inRange = false;
-            int targetType = findTarget();
-            if (targetType != -1)
+            NPC target = GlobalProjectileFunctions.findClosestTarget(Projectile.Center);
+            if (target != null)
             {
-                NPC target = Main.npc[findTarget()];
                 float dist = Vector2.Distance(target.Center, Projectile.Center);
                 if (dist < range)
                 {
                     return true;
                 }
             }
+
             return inRange;
-        }
-        public int findTarget() // returns the closest npc
-        {
-            int closestNPCIndex = -1;
-            float closestDistance = float.MaxValue;
-
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                NPC npc = Main.npc[i];
-
-                if (npc.active && !npc.townNPC && npc.CanBeChasedBy())
-                {
-                    float distance = Vector2.Distance(Projectile.position, npc.position);
-
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestNPCIndex = i;
-                    }
-                }
-            }
-            return closestNPCIndex;
         }
     }
 }
