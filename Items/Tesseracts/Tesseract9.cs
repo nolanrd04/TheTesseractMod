@@ -115,12 +115,21 @@ namespace TheTesseractMod.Items.Tesseracts
             {
                 if (functionStyle % 3 == 0)
                 {
-                    //just uses the recall code
+                    return true;
                 }
                 else if (functionStyle % 3 == 1)
                 {
-                    // Mode 2: Increase time of day functionality
-                    Main.time += 60;
+
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        Main.time += 60;
+                    }
+                    else if (Main.netMode == NetmodeID.Server)
+                    {
+                        Main.time += 60;
+                        NetMessage.SendData(MessageID.WorldData);
+                    }
+                    return true;
                 }
                 else
                 {

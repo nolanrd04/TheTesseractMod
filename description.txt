@@ -8,8 +8,8 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
 - New weapons, items, and buffs.
 - Recipes for hard-to-find vanilla items.
 - COMPATIBLE WITH CALAMITY!
-- 44 new weapons.
-- 27 new items.
+- 45+ new weapons.
+- 30+ new items.
 - 12 new NPCs
 
  UPDATES:
@@ -26,10 +26,14 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
  - Some hallowed + true hallowed weapons
 
  QUALITY OF LIFE:
- - Added more recipes for harder to find vanilla items
+ - Added more recipes for harder to find vanilla items.
 
  REWORKS:
  - Apex N31 had a huge rework, give it a whirl!
  - Some texture changes for weapons and projectiles.
+
+ Bug fixes:
+ - Fixed tesseracts not working properly in multiplayer.
+ - Fixed NPCs not spawning properly in multiplayer.
 
 

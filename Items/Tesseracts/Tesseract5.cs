@@ -86,28 +86,20 @@ namespace TheTesseractMod.Items.Tesseracts
 
         public override bool? UseItem(Player player)
         {
-            /*if (player.altFunctionUse == 2)
-            {
-                functionStyle++;
-                SetDefaults();
-                Main.NewText("Function use is " + functionStyle);
-                return false;
-            }
-            if (functionStyle % 2 == 1)
-            {
-                Main.time += 5;
-            }
-            return true;*/
 
             if (player.altFunctionUse != 2)
             {
-                if (functionStyle % 2 == 0)
+                if (functionStyle % 2 == 1)
                 {
-                }
-                else
-                {
-                    // Mode 2: Increase time of day functionality
-                    Main.time += 60;
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        Main.time += 60;
+                    }
+                    else if (Main.netMode == NetmodeID.Server)
+                    {
+                        Main.time += 60;
+                        NetMessage.SendData(MessageID.WorldData);
+                    }
                     return true;
                 }
             }
