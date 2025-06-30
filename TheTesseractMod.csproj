@@ -108,7 +108,7 @@
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueExcaliburWeapons\Gigashark.png" />
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueExcaliburWeapons\ShatterPoint.png" />
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueExcaliburWeapons\TrueHolyCommander.png" />
-    <None Remove="Items\Weapons\TerraCraftingWeapons\TrueExcaliburWeapons\TrueYeletes.png" />
+    <None Remove="Items\Weapons\TerraCraftingWeapons\TrueExcaliburWeapons\TrueYelets.png" />
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueNightsWeapons\TrueNightsLegatus.png" />
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueNightsWeapons\TrueNightsLongBow.png" />
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueNightsWeapons\TrueNightsRod.png" />
@@ -117,6 +117,8 @@
     <None Remove="Items\Weapons\TerraCraftingWeapons\TrueNightsWeapons\TrueNightsTome.png" />
     <None Remove="Items\ZenithSummonStaff.png" />
     <None Remove="Items\ZenithWhip.png" />
+    <None Remove="NPCs\Bosses\GuardianOfTheRift\GuardianOfTheRiftBody.png" />
+    <None Remove="NPCs\Bosses\GuardianOfTheRift\GuardianOfTheRiftBody_.png" />
     <None Remove="NPCs\Enemies\AquaRiftElemental.png" />
     <None Remove="NPCs\Enemies\ChloroRiftElemental.png" />
     <None Remove="NPCs\Enemies\ColdRiftElemental.png" />
@@ -180,11 +182,16 @@
     <None Remove="Projectiles\Melee\ZenithYoYoProjectile.png" />
     <None Remove="Projectiles\Melee\ZenithYoYoProjectileEnergySphere.png" />
     <None Remove="Projectiles\Melee\ZenithYoYoProjectileGlow.png" />
+    <None Remove="Projectiles\NightsWeapons\NightsArrowProj.png" />
     <None Remove="Projectiles\NightsWeapons\NightsBullet.png" />
+    <None Remove="Projectiles\NightsWeapons\NightsBulletShard.png" />
     <None Remove="Projectiles\NightsWeapons\NightsCrescentProj.png" />
     <None Remove="Projectiles\NightsWeapons\NightsRodBeam.png" />
+    <None Remove="Projectiles\NightsWeapons\NightsRodJavelin.png" />
+    <None Remove="Projectiles\NightsWeapons\NightsRodSecondaryProj.png" />
     <None Remove="Projectiles\NightsWeapons\NightsSlingProj.png" />
     <None Remove="Projectiles\NightsWeapons\NightsTomeProjectile.png" />
+    <None Remove="Projectiles\NightsWeapons\SuperNightsBullet.png" />
     <None Remove="Projectiles\NoSpecificClass\PeppermintProjectile.png" />
     <None Remove="Projectiles\PrimeMeridianFlameProjectile.png" />
     <None Remove="Projectiles\PrimeMeridianProjectile.png" />
@@ -203,6 +210,7 @@
     <None Remove="Projectiles\Summoner\ShadowFlameDragon\ShadowFlameDragonMinionBG.png" />
     <None Remove="Projectiles\SuperCulminationArrow.png" />
     <None Remove="Projectiles\TerraWeapons\TerraArrow.png" />
+    <None Remove="Projectiles\TerraWeapons\TerraBullet.png" />
     <None Remove="Projectiles\TerraWeapons\TerraSpiritOffensiveMinion\Level1Attacks\TerraBlaze.png" />
     <None Remove="Projectiles\TerraWeapons\TerraSpiritOffensiveMinion\Level1Attacks\TerraDaggerLevel1.png" />
     <None Remove="Projectiles\TerraWeapons\TerraSpiritOffensiveMinion\Level2Attacks\SuperTerraBlaze.png" />
@@ -223,10 +231,13 @@
     <None Remove="Projectiles\TrueExcaliburWeapons\TrueGoldenKnightProjWings.png" />
     <None Remove="Projectiles\TrueExcaliburWeapons\TrueGoldenMageMinion.png" />
     <None Remove="Projectiles\TrueExcaliburWeapons\TrueYeletesProj.png" />
+    <None Remove="Projectiles\TrueNightsWeapons\TrueNightsArrow.png" />
     <None Remove="Projectiles\TrueNightsWeapons\TrueNightsBullet.png" />
+    <None Remove="Projectiles\TrueNightsWeapons\TrueNightsBulletExplosion.png" />
     <None Remove="Projectiles\TrueNightsWeapons\TrueNightsCrescentProj.png" />
     <None Remove="Projectiles\TrueNightsWeapons\TrueNightsSixShooterPurpleProj.png" />
     <None Remove="Projectiles\TrueNightsWeapons\TrueNightsSlingProj.png" />
+    <None Remove="Projectiles\TrueNightsWeapons\TrueNightsSlingYoYoExplosion.png" />
     <None Remove="Projectiles\TrueNightsWeapons\TrueNightsTomeProj.png" />
     <None Remove="Projectiles\ZenithMinion.png" />
     <None Remove="Projectiles\ZenithMinionRainbowMissle.png" />
@@ -236,6 +247,7 @@
     <None Remove="Textures\InwardRadialGlow.PNG" />
     <None Remove="Textures\SharpCenterOutwardRadialGlow.PNG" />
     <None Remove="Textures\TerraTurretLeg.png" />
+    <None Remove="Textures\TrailTexture.png" />
     <None Remove="Textures\VanillaBubble.png" />
     <None Remove="Textures\Vanilla\Creeper.png" />
     <None Remove="Textures\Vanilla\CreeperPurple.png" />

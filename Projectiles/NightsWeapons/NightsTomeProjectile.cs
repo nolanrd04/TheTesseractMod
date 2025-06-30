@@ -5,8 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
+using Terraria.ID;
 
 namespace TheTesseractMod.Projectiles.NightsWeapons
 {
@@ -84,10 +88,10 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
                             speed = speed.RotatedBy(i * 24);
                             Dust.NewDust(Projectile.Center, 1, 1, 27, speed.X, speed.Y, 0, default(Color), 1f);
                         }
+                        Dust.NewDust(player.MountedCenter, 15, 15, 27);
                     }
-                    
 
-                    Dust.NewDust(player.MountedCenter, 15, 15, 27);
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RadialGlowDust>(), 0, 0, 150, new Color(234 / 255f, 94 / 255f, 255 / 155f), 2f);
                 }
                 else
                 {
@@ -104,6 +108,24 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
                 return true;
             }
             return false;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+
+            NPC targetNew = GlobalProjectileFunctions.findSecondClosestTarget(Projectile.Center);
+
+            if (Vector2.Distance(Projectile.Center, targetNew.Center) < 250)
+            {
+                Vector2 direction = Vector2.Normalize(targetNew.Center - Projectile.Center);
+                Vector2 newVelocity = direction.RotatedBy(MathHelper.ToRadians(Main.rand.Next(90) - 45)) * 10f;
+
+                if (Main.rand.Next(3) == 0)
+                {
+                    SoundEngine.PlaySound(SoundID.Item103, Projectile.Center);
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<CustomShadowFlame>(), Projectile.damage, 0);
+                }
+            }
         }
     }
 }

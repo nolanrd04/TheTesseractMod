@@ -82,9 +82,9 @@ namespace TheTesseractMod.Projectiles.Melee
         }
         public override void PostAI()
         {
-            Random rand = new Random();
-            float rotation = (float)(rand.NextDouble() * 360);
-            if(counter == 15)
+            float rotation = Main.rand.Next(360);
+            
+            if (counter == 15)
             {
                 counter = 0;
             }
@@ -103,7 +103,10 @@ namespace TheTesseractMod.Projectiles.Melee
                 {
                     damage = Projectile.damage / 2;
                 }
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(speed, speed).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<ZenithYoYoProjectileEnergySphere>(), damage, Projectile.knockBack, Projectile.owner);
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(speed, speed).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<ZenithYoYoProjectileEnergySphere>(), damage, Projectile.knockBack, Projectile.owner);
+                }
             }
             counter++;
 

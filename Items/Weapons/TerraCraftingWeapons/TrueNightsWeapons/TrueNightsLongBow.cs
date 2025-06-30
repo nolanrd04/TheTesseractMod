@@ -11,6 +11,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using TheTesseractMod.Dusts;
 using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons;
+using TheTesseractMod.Projectiles.NightsWeapons;
+using TheTesseractMod.Projectiles.TrueNightsWeapons;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 {
@@ -62,24 +64,9 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
                     Dust.NewDust(position, 1, 1, ModContent.DustType<SharpRadialGlowDust>(), vel.X, vel.Y, 0, Color.Purple, 1f);
                     Dust.NewDust(position, 1, 1, ModContent.DustType<SharpRadialGlowDust>(), vel.X, vel.Y, 0, Color.Lime, 1f);
                 }
-            }
-
-            if (Main.rand.Next(6) == 0)
-            {
-                if (Main.rand.NextBool())
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15)), ProjectileID.CursedArrow, damage, knockback);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15)), ProjectileID.VenomArrow, damage, knockback);
-                    }
-                }
+                Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(4)), ModContent.ProjectileType<NightsArrowProj>(), damage, knockback);
+                Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(-4)), ModContent.ProjectileType<NightsArrowProj>(), damage, knockback);
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TrueNightsArrow>(), damage, knockback);
             }
             return true;
         }

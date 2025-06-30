@@ -22,7 +22,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         private int shotIndex = 0;
         public override void SetDefaults()
         {
-            Item.damage = 55;
+            Item.damage = 35;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 26;
             Item.height = 26;
@@ -60,8 +60,12 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            if (Main.rand.Next(6) == 0)
+            {
+                Projectile.NewProjectile(source, position, velocity * 1.3f, ModContent.ProjectileType<SuperNightsBullet>(), damage, knockback);
+            }
             Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<NightsBullet>(), damage, knockback);
-            SoundEngine.PlaySound(SoundID.Item99, position);
+            SoundEngine.PlaySound(SoundID.Item11, position);
 
             Vector2 vel; 
             vel = velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15)) / 2;

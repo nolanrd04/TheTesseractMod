@@ -13,11 +13,12 @@ using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 {
+
     internal class TrueNightsTome : ModItem
     {
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            Item.damage = 65;
             Item.DamageType = DamageClass.Magic;
             Item.width = 40;
             Item.height = 40;
@@ -35,6 +36,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
             Item.noMelee = true;
             Item.channel = true;
         }
+
 
         public override void AddRecipes()
         {
@@ -57,3 +59,5 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
         }
     }
 }
+
+

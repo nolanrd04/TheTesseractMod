@@ -53,7 +53,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<TrueNightsSling>());
-            recipe.AddIngredient(ModContent.ItemType<TrueYeletes>());
+            recipe.AddIngredient(ModContent.ItemType<TrueYelets>());
             recipe.AddIngredient(ItemID.TheEyeOfCthulhu);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();

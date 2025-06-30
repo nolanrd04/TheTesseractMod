@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.Drawing;
 
 namespace TheTesseractMod.Projectiles.NightsWeapons
 {
@@ -31,12 +33,27 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
             Projectile.localNPCHitCooldown = 25;
         }
 
+        public override void AI()
+        {
+            if (Projectile.ai[2] % 30 == 0)
+            {
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<NightsYoYoSecondaryProj>(), Projectile.damage, 0);
+            }
+
+            if (Projectile.ai[2] % 2 == 0)
+            {
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame);
+            }
+            Projectile.ai[2]++;
+        }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.rand.NextBool())
             {
                 target.AddBuff(BuffID.ShadowFlame, 120);
             }
+            ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.NightsEdge, new ParticleOrchestraSettings { PositionInWorld = Projectile.Center, MovementVector = Vector2.Zero });
         }
     }
 }

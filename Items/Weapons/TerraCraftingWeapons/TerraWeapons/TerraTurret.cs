@@ -44,6 +44,11 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
             Vector2 direction = (Main.MouseWorld - position).SafeNormalize(Vector2.Zero);
             velocity = direction * Item.shootSpeed;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback);
+
+            if (Main.rand.Next(4) == 0)
+            {
+                Projectile.NewProjectile(source, position, velocity * 1.25f, ModContent.ProjectileType<TerraBullet>(), damage, knockback);
+            }
             return false;
         }
 

@@ -10,6 +10,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using Terraria.GameContent.Drawing;
 
 namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
 {
@@ -34,10 +35,14 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
         {
             Projectile.rotation += 0.9f;
             Lighting.AddLight(Projectile.position, 250f / 255, 135f / 255, 250f / 255);
+            Vector2 offsetPosition = Projectile.Center + new Vector2(Main.rand.Next(-15, 15), Main.rand.Next(-15, 15));
+            ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings { PositionInWorld = offsetPosition, MovementVector = Vector2.Zero });
 
             if (Projectile.ai[0] % 5 == 0)
             {
                 Dust.NewDust(Projectile.position, 1, 1, 204, Projectile.velocity.X *= 0.98f, Projectile.velocity.Y *= 0.98f, 0, default(Color), 1f);
+                ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PaladinsHammer, new ParticleOrchestraSettings { PositionInWorld = offsetPosition, MovementVector = Vector2.Zero });
+
             }
             Projectile.ai[0]++;
         }
@@ -69,6 +74,14 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
             {
                 Dust.NewDust(Projectile.position, 1, 1, 255, newVelocity.X, newVelocity.Y, 0, default(Color), 0.5f);
                 newVelocity = newVelocity.RotatedBy(MathHelper.ToRadians(36));
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 offsetPosition = Projectile.Center + new Vector2(Main.rand.Next(-35, 35), Main.rand.Next(-35, 35));
+                ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings { PositionInWorld = offsetPosition, MovementVector = Vector2.Zero });
+                ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PaladinsHammer, new ParticleOrchestraSettings { PositionInWorld = offsetPosition, MovementVector = Vector2.Zero });
+
             }
         }
     }

@@ -42,5 +42,10 @@ namespace TheTesseractMod.Projectiles.JungleWeapons
 
             return false;
         }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Poisoned, 180);
+        }
     }
 }

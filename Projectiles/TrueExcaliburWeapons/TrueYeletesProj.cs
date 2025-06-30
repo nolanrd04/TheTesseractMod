@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.GameContent.Drawing;
 
 namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
 {
@@ -48,6 +49,24 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
             }
 
             return true;
+        }
+
+        public override void AI()
+        {
+            if (Projectile.ai[2] % 5 == 0)
+            {
+                if(Main.rand.NextBool())
+                {
+                    ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.StardustPunch, new ParticleOrchestraSettings { PositionInWorld = Projectile.Center, MovementVector = Vector2.Zero });
+                }
+
+                if (Main.rand.NextBool())
+                {
+                    ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.PrincessWeapon, new ParticleOrchestraSettings { PositionInWorld = Projectile.Center, MovementVector = Vector2.Zero });
+                }
+            }
+
+            Projectile.ai[2]++;
         }
     }
 }

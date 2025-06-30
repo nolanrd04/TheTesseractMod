@@ -22,7 +22,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
         private int typeIndex = 0;
         public override void SetDefaults()
         {
-            Item.damage = 70;
+            Item.damage = 45;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 26;
             Item.height = 26;
@@ -63,9 +63,12 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 
             if (typeIndex == 0) // PURPLE
             {
+                if (Main.rand.Next(4) == 0)
+                {
+                    Projectile.NewProjectile(source, position, velocity * 1.3f, ModContent.ProjectileType<SuperNightsBullet>(), damage, knockback);
+                }
                 Projectile.NewProjectile(source, position, offset, ModContent.ProjectileType<TrueNightsSixShooterPurpleProj>(), damage, knockback);
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<NightsBullet>(), damage, knockback);
-                SoundEngine.PlaySound(SoundID.Item99, position);
 
                 Vector2 vel;
                 vel = velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15));
@@ -75,7 +78,6 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
             {
                 Projectile.NewProjectile(source, position, offset, ModContent.ProjectileType<TrueNightsSixShooterGreenProj>(), damage, knockback);
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TrueNightsBullet>(), damage, knockback);
-                SoundEngine.PlaySound(SoundID.Item99, position);
 
                 Vector2 vel;
                 vel = velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15));
@@ -88,6 +90,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
                 typeIndex = (typeIndex + 1) % 2;
             }
 
+            SoundEngine.PlaySound(SoundID.Item11, position);
             return false;
         }
 

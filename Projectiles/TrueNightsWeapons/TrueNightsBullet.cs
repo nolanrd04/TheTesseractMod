@@ -63,6 +63,8 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TrueNightsBulletExplosion>(), Projectile.damage / 2, 0);
             if (Main.rand.Next(4) == 0)
             {
                 target.AddBuff(BuffID.CursedInferno, 180);
@@ -71,6 +73,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             return true;
         }

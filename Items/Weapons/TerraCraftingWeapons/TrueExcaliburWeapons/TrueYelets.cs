@@ -10,7 +10,7 @@ using TheTesseractMod.Projectiles.TrueExcaliburWeapons;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapons
 {
-    internal class TrueYeletes : ModItem
+    internal class TrueYelets : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -23,7 +23,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapon
         public override void SetDefaults()
         {
 
-            Item.damage = 71;
+            Item.damage = 76;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 4f;
             Item.value = Item.sellPrice(0, 10, 0, 0);

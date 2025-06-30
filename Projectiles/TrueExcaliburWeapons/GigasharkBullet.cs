@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using TheTesseractMod.GlobalFuncitons;
+using Terraria.GameContent.Drawing;
 
 namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
 {
@@ -97,6 +98,7 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
             {
                 Projectile.Kill();
             }
+
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

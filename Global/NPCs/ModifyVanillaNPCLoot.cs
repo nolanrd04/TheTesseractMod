@@ -32,7 +32,7 @@ namespace TheTesseractMod.Global.NPCs
 
             if (RiftFragmentsFromVanillaEnemies.ChloroCheck(npc)) // ADD TRUE YELETES TO JUNGLE NPCS
             {
-                npcLoot.Add(ItemDropRule.ByCondition(new AllMechsDefeated(), ModContent.ItemType<TrueYeletes>(), 100));
+                npcLoot.Add(ItemDropRule.ByCondition(new AllMechsDefeated(), ModContent.ItemType<TrueYelets>(), 100));
             }
 
             if (npc.type == NPCID.DarkCaster) // ADD DARK CASTER STAFF TO DARK CASTER DROPS

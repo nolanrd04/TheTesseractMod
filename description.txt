@@ -1,8 +1,8 @@
-v 1.3.0
+v 1.3.4
 The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small so I recommend playing this with Calamity, as most of the content is currently post Moon Lord. Right now the mod adds:
 
 - The Tesseract (10 Levels).
-- New Pylons (dungeon, no biome)
+- New Pylons (dungeon, tesseract)
 - Zenith Weapons.
 - Terra Crafting Trees.
 - New weapons, items, and buffs.
@@ -11,6 +11,7 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
 - 45+ new weapons.
 - 30+ new items.
 - 12 new NPCs
+- 1 new boss.
 
  UPDATES:
  Join my discord for a better update details, to give feedback, and to see previous updates:
@@ -18,22 +19,54 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
 
  In this update:
 
- NEW CONTENT:
- - TERRA CRAFTING TREES!
- - Night's Edge weapons for all classes
- - True Night's Edge weapons for all classes
- - Terra weapons for all classes
- - Some hallowed + true hallowed weapons
+ CONTENT:
+ - New post-Moonlord boss: The Guardian of the Rift.
 
- QUALITY OF LIFE:
- - Added more recipes for harder to find vanilla items.
+
+ ---------Previous Update (V1.3.3)---------
 
  REWORKS:
- - Apex N31 had a huge rework, give it a whirl!
- - Some texture changes for weapons and projectiles.
+ - True Night's Tome: Projectile also lashes out with shadowflames at nearby enemies.
+ - True Night's Tome damage: 85 -> 65
+ - Zenith Star minion does not play a sfx when spawning a minion.
 
- Bug fixes:
- - Fixed tesseracts not working properly in multiplayer.
- - Fixed NPCs not spawning properly in multiplayer.
+ BUG FIXES:
+ - Night's Tome shadow flames now target the correct target.
+ - Think some weapons with random effects might not have worked properly, I fixed some of them (Zenith YoYo)
+ 
+ PLANS:
+ - Add lore :)
+ - Add boss :o
+
+
+ ---------Previous Update (V1.3.2)---------
+
+ REWORKS:
+ - Night's Six Shooter: has a chances to shoot a super night's bullet that bounces more and travels faster. All bullets now break into shards on impact.
+ - Night's Six Shooter: damage 55->35
+ - True Night's Six Shooter: has a chance to shoot a super bullet on the purple phase and green bullets now explode and do damage on impact.
+ - True Night's Six Shooter: damage 70->45
+ - Night's Rod shoots a star that inflicts shadow flame and additional star that sticks to enemies to do extra damage.
+ - Night's Tome has a chance to shoot shadowflames at nearby enemies.
+ - Night's Tome max damage: 90 -> 60
+ - Night's Sling damage: 45 -> 30
+ - Night's Sling: Creates a stationary projectile that will continue to damage enemies.
+ - Terra Tormentor knockback: 6->8
+ - Night's long bow: shoots an additional fast-moving and piercing arrow.
+ - Night's long bow damage: 35->45
+ - True Night's Sling damage: 78 -> 55
+ - True Night's Sling: On hitting an npc, an explosion spawns to do extra damage.
+ - Gigashark: updated sprite.
+ - Shatterpoint: Improved Visuals.
+ - True Yelets: Improved Visuals.
+ - True Yelets damage: 71 -> 76
+ - True Night's Long Bow: Shoots to Night's arrows at an angle and a True Night's Arrow straight out.
+ - True Night's Rod: Shoots 3 fast-moving, controllable stars that stick to enemies.
+ - True Night's Rod damage: 75 -> 35
+ - Terra Turret: Has a chance to shoot a piercing bullet.
+
+ BUG FIXES: 
+ - Fixed the Night's Six Shooter sfx.
+ - Attempted to fix the tesseract not time warping in multiplayer, though I don't have friends to test this with...
 
 

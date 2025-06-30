@@ -90,11 +90,11 @@ namespace TheTesseractMod.Items.Tesseracts
             {
                 if (functionStyle % 2 == 1)
                 {
-                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
                     }
-                    else if (Main.netMode == NetmodeID.Server)
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);

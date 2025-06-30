@@ -7,6 +7,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Terraria.Audio;
+using TheTesseractMod.GlobalFuncitons;
+using TheTesseractMod.Projectiles.NightsWeapons;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 {
@@ -16,6 +20,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
         private int baseHeight;
         private int baseDamage;
         private float changeFactor;
+        private int modVal;
         private float NextManaFrame
         {
             get => Projectile.ai[1];
@@ -74,6 +79,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                     Projectile.width = (int)(baseWidth * changeFactor);
                     Projectile.height = (int)(baseHeight * changeFactor);
                     Projectile.localNPCHitCooldown = 20 - ((int)(10 * changeFactor));
+                    modVal = 30 - (int)(30 * changeFactor);
 
 
                     Projectile.position = Main.MouseWorld + new Vector2(-Projectile.width / 2, -Projectile.height / 2);
@@ -89,14 +95,18 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                             if (colorGreen)
                             {
                                 Dust.NewDust(Projectile.Center, 1, 1, DustID.Terra, speed.X * 2, speed.Y * 2, 0, default(Color), 1f);
-                                Dust.NewDust(player.MountedCenter, 15, 15, DustID.Terra);
                             }
                             else
                             {
                                 Dust.NewDust(Projectile.Center, 1, 1, 27, speed.X, speed.Y, 0, default(Color), 1f);
-                                Dust.NewDust(player.MountedCenter, 15, 15, 27);
                             }
                         }
+                    }
+
+                    if (Projectile.ai[0] % modVal == 0)
+                    {
+                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RadialGlowDust>(), 0, 0, 150, new Color(234 / 255f, 94 / 255f, 255 / 155f), 2f);
+                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<RadialGlowDust>(), 0, 0, 150, new Color(182 / 255f, 255 / 255f, 36 / 255f), 2f);
                     }
                 }
                 else
@@ -114,6 +124,31 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                 return true;
             }
             return false;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+
+            NPC targetNew = GlobalProjectileFunctions.findSecondClosestTarget(Projectile.Center);
+
+            if (Vector2.Distance(Projectile.Center, targetNew.Center) < 250)
+            {
+                Vector2 direction = Vector2.Normalize(targetNew.Center - Projectile.Center);
+                Vector2 newVelocity = direction.RotatedBy(MathHelper.ToRadians(Main.rand.Next(90) - 45)) * 10f;
+
+                if (Main.rand.Next(3) == 0)
+                {
+                    if (Main.rand.NextBool())
+                    {
+                        Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<CustomShadowFlame>(), Projectile.damage, 0);
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<TrueCustomCursedFlame>(), Projectile.damage, 0);
+                    }
+                    SoundEngine.PlaySound(SoundID.Item103, Projectile.Center);
+                }
+            }
         }
     }
 }

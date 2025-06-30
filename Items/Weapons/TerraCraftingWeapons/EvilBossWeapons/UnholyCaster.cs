@@ -36,7 +36,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.EvilBossWeapons
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DiamondStaff);
+            recipe.AddIngredient(ItemID.AmberStaff);
             recipe.AddRecipeGroup("EvilBar", 10);
             recipe.AddRecipeGroup("evilitem", 5);
             recipe.AddTile(TileID.Anvils);

@@ -396,7 +396,7 @@ Items: {
 
 	NightsRod: {
 		DisplayName: Night's Rod
-		Tooltip: Ayo? Shoots a controllable shadow ball.
+		Tooltip: Ayo? Shoots a controllable shadow star and another star that sticks to the enemy.
 	}
 
 	TrueNightsRod: {
@@ -410,7 +410,11 @@ Items: {
 	}
 
 	NightsTome: {
-		Tooltip: Damage and hitbox are dependent on how close the player is to the projectile.
+		Tooltip:
+			'''
+			Damage and hitbox are dependent on how close the player is to the projectile.
+			Hitting an enemy has a chance to spawn shadowflames to attack nearby enemies
+			'''
 		DisplayName: Night's Tome
 	}
 
@@ -448,7 +452,7 @@ Items: {
 		Tooltip:
 			'''
 			30% chance not to consume ammo
-			Shoots a burst of 4 arrows.
+			Shoots a burst of 4 arrows and a special, fast-moving arrow.
 			'''
 		DisplayName: Night's Long Bow
 	}
@@ -457,20 +461,21 @@ Items: {
 		Tooltip:
 			'''
 			40% chance not to consume ammo.
-			Shoots a burst of arrows. Has a chance to shoot cursed or venom arrows.
+			Shoots a burst of arrows, Two Night's Arrows, and a True Night's Arrow.
 			'''
 		DisplayName: True Night's Long Bow
 	}
 
 	TerraTalonbow: {
-		DisplayName: Terra Talonbow
+		DisplayName: Terra Tormentor
 		Tooltip: 50% chance not to consume ammo.
 	}
 
 	NightsSixShooter: {
 		Tooltip:
 			'''
-			Shoots a rapid burst of Night's Bullets. 
+			Shoots a rapid burst of Night's Bullets, with a chance to shoot a super bullet. 
+			Bullets split into shards on impact.
 			Only consumes ammo on the first shot.
 			Clutching 1v1s since 2018!
 			'''
@@ -503,7 +508,7 @@ Items: {
 	}
 
 	NightsSling: {
-		Tooltip: ""
+		Tooltip: Creates a stationary shadowball to do continuous damage.
 		DisplayName: Nights Sling
 	}
 
@@ -512,8 +517,8 @@ Items: {
 		DisplayName: True Nights Sling
 	}
 
-	TrueYeletes: {
-		DisplayName: True Yeletes
+	TrueYelets: {
+		DisplayName: True Yelets
 		Tooltip: ""
 	}
 
@@ -589,7 +594,10 @@ Items: {
 			'''
 			Summons an offensive Tiki Terra Spirit to fight for you..
 			Consumes all minion slots, and the strength of the minion is determined by how 
-			many slots are consumed.
+			many slots are consumed
+			Level 1: 0-3 slots.
+			Level 2: 4-6 slots.
+			Level 3: 7+ slots.
 			'''
 		DisplayName: Terra Totem
 	}
@@ -722,6 +730,23 @@ Projectiles: {
 	TerraSpear.DisplayName: Terra Spear
 	TerraHeal.DisplayName: Terra Heal
 	TerraTridentProjectile.DisplayName: Terra Trident Projectile
+	NightsBulletShard.DisplayName: Nights Bullet Shard
+	SuperNightsBullet.DisplayName: Super Nights Bullet
+	TrueNightsBulletExplosion.DisplayName: True Nights Bullet Explosion
+	NightsRodJavelin.DisplayName: Nights Rod Javelin
+	NightsRodSecondaryProj.DisplayName: Nights Rod Secondary Proj
+	CustomShadowFlame.DisplayName: Custom Shadow Flame
+	NightsYoYoSecondaryProj.DisplayName: Nights Yo Yo Secondary Proj
+	NightsArrowProj.DisplayName: Nights Arrow Proj
+	TrueNightsSlingYoYoExplosion.DisplayName: True Nights Sling Yo Yo Explosion
+	TrueNightsArrow.DisplayName: True Nights Arrow
+	TrueNightsRodProj.DisplayName: True Nights Rod Proj
+	TerraBullet.DisplayName: Terra Bullet
+	TrueCustomCursedFlame.DisplayName: True Custom Cursed Flame
+	HEAT_FlameBarageProj.DisplayName: H E A T_ Flame Barage Proj
+	HEAT_InfernoMissle.DisplayName: H E A T_ Inferno Missle
+	HEAT_InfernoMissleBlast.DisplayName: H E A T_ Inferno Missle Blast
+	DUST_DustNadoBase_RIGHT.DisplayName: D U S T_ Dust Nado Base_ R I G H T
 }
 
 Buffs: {
@@ -854,6 +879,11 @@ Buffs: {
 		Description: A Terra Tiki Spirit is fighting for you!
 		DisplayName: Terra Spirit Minion Buff
 	}
+
+	DimensionalIncompatability: {
+		Description: Reality is folding in on you...
+		DisplayName: Dimensional Incompatability
+	}
 }
 
 Tiles: {
@@ -880,6 +910,7 @@ NPCs: {
 	DeathRiftElemental.DisplayName: Death Rift Elemental
 	DustRiftElemental.DisplayName: Dust Rift Elemental
 	ChloroRiftElemental.DisplayName: Chloro Rift Elemental
+	GuardianOfTheRiftBody.DisplayName: Guardian Of The Rift Body
 }
 
 DropCondition.MoonlordDefeated: Mods.TheTesseractMod.DropCondition.MoonlordDefeated

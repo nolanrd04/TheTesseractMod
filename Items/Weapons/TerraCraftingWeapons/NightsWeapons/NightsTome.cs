@@ -18,7 +18,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
     {
         public override void SetDefaults()
         {
-            Item.damage = 90;
+            Item.damage = 60;
             Item.DamageType = DamageClass.Magic;
             Item.width = 30;
             Item.height = 30;

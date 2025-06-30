@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons;
+using TheTesseractMod.Projectiles.TrueNightsWeapons;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 {
@@ -13,7 +14,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 75;
+            Item.damage = 35;
             Item.DamageType = DamageClass.Magic;
             Item.width = 40;
             Item.height = 40;
@@ -25,7 +26,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.CursedFlameFriendly;
+            Item.shoot = ModContent.ProjectileType<TrueNightsRodProj>();
             Item.shootSpeed = 15;
             Item.mana = 15;
             Item.noMelee = true;
@@ -44,10 +45,8 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(30) - 15)), type, damage, knockback);
-            }
+            Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(7)), type, damage, knockback);
+            Projectile.NewProjectile(source, position, velocity.RotatedBy(MathHelper.ToRadians(-7)), type, damage, knockback);
             return true;
         }
 

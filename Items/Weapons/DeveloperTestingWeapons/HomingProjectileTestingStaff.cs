@@ -5,9 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Projectiles.Ranged.EtherealBlaster;
-using TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon;
-using TheTesseractMod.Projectiles.TerraWeapons.TerraSpiritOffensiveMinion.Level1Attacks;
+using TheTesseractMod.Projectiles.Enemy.BossProjectiles.GuardianOfTheRiftProjs;
 
 namespace TheTesseractMod.Items.Weapons.DeveloperTestingWeapons
 {
@@ -27,7 +25,7 @@ namespace TheTesseractMod.Items.Weapons.DeveloperTestingWeapons
             Item.knockBack = 9;
             Item.UseSound = SoundID.Item163;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<TerraSpear>();
+            Item.shoot = ModContent.ProjectileType<HEAT_InfernoMissle>();
             Item.shootSpeed = 10;
             Item.noMelee = true;
         }

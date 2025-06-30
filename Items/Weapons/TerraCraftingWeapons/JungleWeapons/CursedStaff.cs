@@ -28,7 +28,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.JungleWeapons
             Item.knockBack = 4;
             Item.value = Item.sellPrice(0, 0, 54, 0);
             Item.rare = ItemRarityID.Orange;
-            Item.UseSound = SoundID.Item120;
+            Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<CursedStaffProj>();
             Item.shootSpeed = 15;

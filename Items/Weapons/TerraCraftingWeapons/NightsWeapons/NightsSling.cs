@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         public override void SetDefaults()
         {
 
-            Item.damage = 45;
+            Item.damage = 30;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 4;
             Item.value = Item.sellPrice(0, 4, 0, 0);

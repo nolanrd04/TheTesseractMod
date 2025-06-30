@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework;
 using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.DungeonWeapons;
 using Terraria.Audio;
 using TheTesseractMod.Dusts;
+using TheTesseractMod.Projectiles.NightsWeapons;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
 {
@@ -63,6 +64,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
             shotIndex = (shotIndex + 1) % 4;
             if (shotIndex == 0)
             {
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<NightsArrowProj>(), damage, knockback);
                 SoundEngine.PlaySound(SoundID.Item5, position);
                 for (int i = 0; i < 9; i++)
                 {

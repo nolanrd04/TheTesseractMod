@@ -16,7 +16,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapon
     {
         public override void SetDefaults()
         {
-            Item.damage = 32;
+            Item.damage = 38;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 40;
             Item.height = 40;

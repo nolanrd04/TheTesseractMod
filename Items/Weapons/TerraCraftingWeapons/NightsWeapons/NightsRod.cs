@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using TheTesseractMod.Projectiles.NightsWeapons;
 using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.EvilBossWeapons;
 using TheTesseractMod.Items.Weapons.TerraCraftingWeapons.JungleWeapons;
+using Mono.Cecil;
 
 namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
 {
@@ -15,12 +16,12 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 40;
+            Item.damage = 30;
             Item.DamageType = DamageClass.Magic;
             Item.width = 26;
             Item.height = 26;
-            Item.useTime = 30;
-            Item.useAnimation = 30;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 4;
             Item.value = Item.sellPrice(0, 4, 0, 0);
@@ -46,6 +47,8 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            Projectile.NewProjectile(source, position, (velocity / 2f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(70) - 35)), ModContent.ProjectileType<NightsRodSecondaryProj>(), damage / 2, knockback);
+            
             return true;
         }
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

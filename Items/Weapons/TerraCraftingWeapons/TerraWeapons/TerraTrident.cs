@@ -61,7 +61,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 20);
             recipe.AddIngredient(ItemID.BrokenHeroSword);
-
+            recipe.Register();
         }
     }
 }

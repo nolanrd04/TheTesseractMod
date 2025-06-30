@@ -77,6 +77,11 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
                     Projectile.velocity.Y = -oldVelocity.Y;
                 }
 
+                for (int i = 0; i < 3; i ++)
+                {
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, Projectile.velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))) / 2f, ModContent.ProjectileType<NightsBulletShard>(), Projectile.damage/2, Projectile.knockBack);
+                }
+
                 bounces++;
                 return false;
             }
@@ -88,6 +93,11 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
             if (Main.rand.Next(4) == 0)
             {
                 target.AddBuff(BuffID.ShadowFlame, 60);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, Projectile.velocity.RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))) / 2f, ModContent.ProjectileType<NightsBulletShard>(), Projectile.damage / 2, Projectile.knockBack);
             }
         }
     }

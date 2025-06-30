@@ -20,14 +20,14 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
     {
         public override void SetDefaults()
         {
-            Item.damage = 80;
+            Item.damage = 75;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 40;
             Item.height = 40;
             Item.useTime = 17;
             Item.useAnimation = 17;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.knockBack = 6f;
+            Item.knockBack = 8f;
             Item.value = Item.sellPrice(0, 20, 0, 0);
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item60;

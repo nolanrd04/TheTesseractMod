@@ -56,6 +56,11 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
             {
                 target.AddBuff(BuffID.CursedInferno, 120);
             }
+
+            if(Main.rand.NextBool())
+            {
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TrueNightsSlingYoYoExplosion>(), Projectile.damage / 2, 0f);
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

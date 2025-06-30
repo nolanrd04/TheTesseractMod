@@ -451,7 +451,7 @@ namespace TheTesseractMod.Projectiles.Summoner
             }
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity, projectile, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             ZenithMinionSummonGlobalOverride.shotByZenithMinion = false;
-            SoundEngine.PlaySound(SoundID.Item44, Projectile.position);
+            // SoundEngine.PlaySound(SoundID.Item44, Projectile.position);
         }
     }
 }

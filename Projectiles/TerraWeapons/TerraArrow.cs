@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
 using TheTesseractMod.Dusts;
+using Terraria.GameContent.Drawing;
 
 namespace TheTesseractMod.Projectiles.TerraWeapons
 {
@@ -18,15 +19,18 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
         public override void SetDefaults()
         {
             Projectile.aiStyle = 1;
-            Projectile.width = 15;
-            Projectile.height = 15;
+            Projectile.width = 25;
+            Projectile.height = 25;
             Projectile.friendly = true;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = 4;
             Projectile.timeLeft = 600;
             Projectile.ignoreWater = false;
             Projectile.tileCollide = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.alpha = 50;
+            Projectile.scale = 1.25f;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
 
         Color color = new Color(222, 120, 255);
@@ -72,6 +76,11 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
                 velocity = velocity.RotatedBy(MathHelper.ToRadians(18));
                 Dust.NewDust(Projectile.Center, 1, 1, DustID.Terra, velocity.X, velocity.Y, 0, default(Color), 1f);
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            ParticleOrchestrator.RequestParticleSpawn(true, ParticleOrchestraType.TerraBlade, new ParticleOrchestraSettings { PositionInWorld = Projectile.Center, MovementVector = Vector2.Zero });
         }
     }
 }
