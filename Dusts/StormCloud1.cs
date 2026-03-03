@@ -51,7 +51,8 @@ namespace TheTesseractMod.Dusts
 
         public override Color? GetAlpha(Dust dust, Color lightColor)
         {
-            return new Color(lightColor.R, lightColor.G, lightColor.B, 255 - dust.alpha);
+            float opacity = 1f - (dust.alpha / 255f);
+            return lightColor * opacity;
         }
 
         public override bool PreDraw(Dust dust)

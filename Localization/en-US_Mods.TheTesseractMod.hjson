@@ -612,6 +612,45 @@ Items: {
 			'''
 		DisplayName: Terra Trident
 	}
+
+	Geom: {
+		Tooltip: ""
+		DisplayName: Geom
+	}
+
+	Sain_geom: {
+		Tooltip:
+			'''
+			Landing consecutive blows allows for different combo attacks, and greated the ATTUNED buff!
+
+			Reaching stage 3 of combos grants the user the SEALED buff, which allows the user to right-
+			click dash attack and acts as a better ATTUNED buff.
+
+			Gets buffed after defeating the Moon Lord
+			'''
+		DisplayName: Sain-Geom
+	}
+
+	Gok_Do: {
+		Tooltip:
+			'''
+			A far more dynamic spear. Land consecutive hits to build up a PARRY charge. Increase in stages
+			to have a better PARRY. Right click to PARRY. Parries will either completely destroy a projectile,
+			or if they are super high damage (death rays), they will reduce in damage.
+			Gets buffed after defeating the Moon Lord
+			'''
+		DisplayName: Gok-Do
+	}
+
+	Shin_Kal: {
+		DisplayName: Shin-Kal
+		Tooltip:
+			'''
+			Land consecutive hits to increase effectiveness. Right click to throw multiple knives and increase
+			life steal value.
+			Gets buffed after defeating the Moon Lord
+			'''
+	}
 }
 
 Projectiles: {
@@ -747,6 +786,27 @@ Projectiles: {
 	HEAT_InfernoMissle.DisplayName: H E A T_ Inferno Missle
 	HEAT_InfernoMissleBlast.DisplayName: H E A T_ Inferno Missle Blast
 	DUST_DustNadoBase_RIGHT.DisplayName: D U S T_ Dust Nado Base_ R I G H T
+	TrailProjectile.DisplayName: Trail Projectile
+	GeomSwingProjectile.DisplayName: Geom Swing Projectile
+	Sain_geom_star_1.DisplayName: Sain_geom_star_1
+	SainGeomSwingProjectile_Stage2.DisplayName: Sain Geom Swing Projectile_ Stage2
+	Sain_geom_star_2.DisplayName: Sain_geom_star_2
+	Sain_geom_projThrown.DisplayName: Sain_geom_proj Thrown
+	SainGeomSwingProjectile_Stage3.DisplayName: Sain Geom Swing Projectile_ Stage3
+	Sain_geom_star_3.DisplayName: Sain_geom_star_3
+	Sain_geom_projThrown_stage3.DisplayName: Sain_geom_proj Thrown_stage3
+	Sain_geom_dashProj.DisplayName: Sain_geom_dash Proj
+	Gok_Do_Proj.DisplayName: Gok_ Do_ Proj
+	Gok_Do_ParryProj_Stage1.DisplayName: Gok_ Do_ Parry Proj_ Stage1
+	Gok_Do_Proj_Stage2.DisplayName: Gok_ Do_ Proj_ Stage2
+	Gok_Do_ParryProj_Stage2.DisplayName: Gok_ Do_ Parry Proj_ Stage2
+	Gok_Do_Star_Stage2.DisplayName: Gok_ Do_ Star_ Stage2
+	Gok_Do_Proj_Stage3.DisplayName: Gok_ Do_ Proj_ Stage3
+	Gok_Do_Star_Stage3.DisplayName: Gok_ Do_ Star_ Stage3
+	Gok_Do_ParryProj_Stage3.DisplayName: Gok_ Do_ Parry Proj_ Stage3
+	Shin_Kal_Proj_Stage1.DisplayName: Shin_ Kal_ Proj_ Stage1
+	Shin_Kal_Proj_Stage2.DisplayName: Shin_ Kal_ Proj_ Stage2
+	Shin_Kal_Proj_Stage3.DisplayName: Shin_ Kal_ Proj_ Stage3
 }
 
 Buffs: {
@@ -883,6 +943,21 @@ Buffs: {
 	DimensionalIncompatability: {
 		Description: Reality is folding in on you...
 		DisplayName: Dimensional Incompatability
+	}
+
+	Attuned: {
+		Description: Increased life regen, defense, and endurance.
+		DisplayName: Attuned
+	}
+
+	Sealed: {
+		DisplayName: Sealed
+		Description: Increased life regen, defense, and endurance.
+	}
+
+	ParryReady: {
+		DisplayName: Parry Ready
+		Description: Right click to parry an attack!
 	}
 }
 

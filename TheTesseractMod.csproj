@@ -8,6 +8,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <AdditionalFiles Remove="Effects\TrailShaders\SimpleTrail.fx" />
+    <AdditionalFiles Remove="Effects\TrailShaders\TrailShaderTest.fx" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Buffs\ApexOverclockBuff.png" />
     <None Remove="Buffs\CreeperMinionBuff.png" />
     <None Remove="Buffs\CreeperMinionBuffPurple.png" />
@@ -34,6 +38,7 @@
     <None Remove="Buffs\TimePunchBuff.png" />
     <None Remove="Buffs\ZenithMinionBuff.png" />
     <None Remove="Dusts\BlueElectricDust.PNG" />
+    <None Remove="Dusts\DustCloud.png" />
     <None Remove="Dusts\ElectricDust.PNG" />
     <None Remove="Dusts\MoltenSphereDust.png" />
     <None Remove="Dusts\RadialGlowDust.PNG" />
@@ -252,6 +257,11 @@
     <None Remove="Textures\Vanilla\Creeper.png" />
     <None Remove="Textures\Vanilla\CreeperPurple.png" />
     <None Remove="Textures\Vanilla\Water_Sphere.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Effects\TrailShaders\SimpleTrail.fx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />

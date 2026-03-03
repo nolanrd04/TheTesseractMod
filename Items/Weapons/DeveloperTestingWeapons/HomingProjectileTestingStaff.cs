@@ -1,11 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheTesseractMod.Projectiles.Enemy.BossProjectiles.GuardianOfTheRiftProjs;
+using TheTesseractMod.Projectiles;
+using TheTesseractMod.Projectiles.Melee.KPDH_projectiles.Sain_geom;
 
 namespace TheTesseractMod.Items.Weapons.DeveloperTestingWeapons
 {
@@ -25,8 +27,9 @@ namespace TheTesseractMod.Items.Weapons.DeveloperTestingWeapons
             Item.knockBack = 9;
             Item.UseSound = SoundID.Item163;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<HEAT_InfernoMissle>();
-            Item.shootSpeed = 10;
+            Item.shoot = ModContent.ProjectileType<TrailProjectile>();
+            // Item.shoot = ProjectileID.BeeArrow;
+            Item.shootSpeed = 5;
             Item.noMelee = true;
         }
 

@@ -13,6 +13,7 @@ using TheTesseractMod.Projectiles.Enemy.BossProjectiles.GuardianOfTheRiftProjs;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
 {
@@ -62,7 +63,7 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
             NPC.height = 100;
             NPC.damage = 120;
             NPC.defense = 50;
-            NPC.lifeMax = 300;
+            NPC.lifeMax = 300000;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath5;
             NPC.knockBackResist = 0f;
@@ -260,7 +261,7 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
                     // initialize values
                     attackIdx = 0;
                     projShootSpeed = 20f;
-                    projDamage = 100;
+                    projDamage = 50;
                 }
                 if (elementIdxTimer >= 420) // second part of heat attacks
                 {
@@ -272,7 +273,7 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
                     }
                     attackIdx = 1;
                     projShootSpeed = 10f;
-                    projDamage = 150;
+                    projDamage = 65;
                 }
                 if (attackIdx == 1 && shotProjectiles >= 12) // Move onto next element
                 {
@@ -289,7 +290,7 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
                     {
                         SoundEngine.PlaySound(SoundID.Item20, NPC.Center);
                         Vector2 direction = (player.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * projShootSpeed, ModContent.ProjectileType<HEAT_FlameBarageProj>(), 100, 8f);
+                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * projShootSpeed, ModContent.ProjectileType<HEAT_FlameBarageProj>(), projDamage, 8f);
                     }
                 }
 
@@ -320,6 +321,16 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
         }
         private void Dust_Movement(Player player)
         {
+            if (attackPhaseTimer == 45)
+            {
+                fixedGoToPosition = player.Center + new Vector2(0, -300);
+                NPC.Center = fixedGoToPosition;
+                for (int i = 0; i < 30; i++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<DustCloud>(), 0, 0, Main.rand.Next(50), Color.Orange, 1f);
+                }
+            }
+
             if (!assignedGoToPosition)
             {
                 fixedGoToPosition = NPC.Center;
@@ -338,7 +349,7 @@ namespace TheTesseractMod.NPCs.Bosses.GuardianOfTheRift
         {
             attackPhaseTimer++;
 
-            if (attackPhaseTimer > 45)
+            if (attackPhaseTimer > 65)
             {
 
                 if (!shotTornado)

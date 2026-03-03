@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace TheTesseractMod.Projectiles.NightsWeapons
 {
@@ -32,6 +34,14 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
         private const int StickTime = 240;
 
         private bool hasHit = false;
+
+        private VertexStrip strip = new VertexStrip();
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public override void SetDefaults()
         {
             Projectile.DamageType = DamageClass.Magic;
@@ -79,6 +89,18 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
 
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => new Color(255, 130, 251, 0) * (1f - progress),
+                progress => MathHelper.Lerp(30f, 16f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
             Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];

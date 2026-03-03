@@ -1,11 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace TheTesseractMod.Projectiles.EvilWeapons;
 
@@ -58,13 +60,27 @@ internal class UnholyCasterProj : ModProjectile
             Vector2 velocity = new Vector2(2f, 2f).RotatedBy(MathHelper.ToRadians(rotation));
             if (color) // purple
             {
-                Dust.NewDust(Projectile.position, 0, 0, 27, velocity.X, velocity.Y, 0, default(Color), 1f);
+                Dust.NewDust(Projectile.Center, 0, 0, 27, velocity.X, velocity.Y, 0, default(Color), 1f);
             }
             else // red
             {
-                int dustID = Dust.NewDust(Projectile.position, 1, 1, DustID.GemRuby, velocity.X, velocity.Y, 0, default(Color), 1f);
+                int dustID = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemRuby, velocity.X, velocity.Y, 0, default(Color), 1f);
                 Main.dust[dustID].noGravity = true;
             }
         }
+    }
+    public override bool PreDraw(ref Color lightColor)
+    {
+        Color stripColor;
+        if(color)
+        {
+            stripColor = Color.Purple;
+        }
+        else
+        {
+            stripColor = Color.Red;
+        }
+
+        return true;
     }
 }

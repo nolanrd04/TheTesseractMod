@@ -1,14 +1,23 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
 using System;
+using Terraria;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using TheTesseractMod.Global.Projectiles.Magic;
 
 namespace TheTesseractMod.Projectiles.Magic
 {
     internal class ConjuringClimaxProjectile : ModProjectile
     {
+        private VertexStrip strip = new VertexStrip();
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40; // store 20 positions
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;      // normal trailing
+        }
         public override void SetDefaults() // first projectile ever made. Forgive the messiness
         {
             Projectile.DamageType = DamageClass.Magic;
@@ -54,6 +63,23 @@ namespace TheTesseractMod.Projectiles.Magic
             ConjuringClimaxCalamityOverrider.shotByConjuringClimax = false;
         }
 
+        public override bool PreDraw(ref Color lightColor)
+        {
+            GameShaders.Misc["RainbowRod"].Apply();
+
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => Color.Pink * (1f - progress),
+                progress => MathHelper.Lerp(20f, 10f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+            return true;
+        }
         public override void AI()
         {
             Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 62, Projectile.velocity.X, Projectile.velocity.Y, 150, default(Color), 0.9f);

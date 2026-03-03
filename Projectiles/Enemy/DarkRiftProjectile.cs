@@ -1,13 +1,15 @@
-﻿using Terraria;
-using System;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Microsoft.CodeAnalysis;
-using TheTesseractMod.GlobalFuncitons;
+using System;
+using Terraria;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
 using TheTesseractMod.Dusts;
+using TheTesseractMod.GlobalFuncitons;
 
 namespace TheTesseractMod.Projectiles.Enemy
 {
@@ -18,6 +20,13 @@ namespace TheTesseractMod.Projectiles.Enemy
         private int timer;
         private float begin = 0.2f;
         private float end = 0.35f;
+        private VertexStrip strip = new VertexStrip();
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public override void SetDefaults()
         {
             Projectile.CloneDefaults(ProjectileID.NebulaSphere);
@@ -31,6 +40,21 @@ namespace TheTesseractMod.Projectiles.Enemy
         
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => new Color(92, 0, 204, 0) * (1f - progress),
+                progress => MathHelper.Lerp(30f, 26f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+
             timer++;
             float fade = (float)Math.Sin(timer * MathHelper.TwoPi / 120f);
             fade = (fade + 1f) / 2f;

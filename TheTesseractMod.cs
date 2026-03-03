@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using NATUPNPLib;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.Localization;
 using System.IO;
+using Terraria;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace TheTesseractMod
 {
@@ -30,6 +31,11 @@ namespace TheTesseractMod
 
             RecipeGroup dungeonStaff = new RecipeGroup(() => $"Any Dungeon Sorcerer staff", ItemID.ShadowbeamStaff, ItemID.InfernoFork, ItemID.SpectreStaff);
             RecipeGroup.RegisterGroup("DungeonStaff", dungeonStaff);
+        }
+
+        public override void PostSetupContent()
+        {
+            
         }
 
     }

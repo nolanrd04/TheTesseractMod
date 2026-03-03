@@ -20,6 +20,14 @@ internal class NightsRodBeam : ModProjectile
     private Vector2[] oldPositions = new Vector2[TrailLength];
     private float[] oldRotations = new float[TrailLength];
 
+    private VertexStrip strip = new VertexStrip();
+
+    public override void SetStaticDefaults()
+    {
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+    }
+
     public override void SetDefaults()
     {
         Projectile.DamageType = DamageClass.Magic;
@@ -48,15 +56,6 @@ internal class NightsRodBeam : ModProjectile
 
     public override void AI()
     {
-        // Store the position and rotation BEFORE updating movement
-        for (int i = TrailLength - 1; i > 0; i--)
-        {
-            oldPositions[i] = oldPositions[i - 1];
-            oldRotations[i] = oldRotations[i - 1];
-        }
-
-        oldPositions[0] = Projectile.Center;
-        oldRotations[0] = Projectile.velocity.ToRotation();
 
         //************************************//
         if (Projectile.ai[0] > 10)
@@ -108,7 +107,20 @@ internal class NightsRodBeam : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        // DrawTrail();
+        GameShaders.Misc["RainbowRod"].Apply();
+
+        strip.PrepareStrip(
+            Projectile.oldPos,
+            Projectile.oldRot,
+            progress => new Color(102, 9, 217, 0) * (1f - progress),
+            progress => MathHelper.Lerp(30f, 16f, progress),
+            -Main.screenPosition + Projectile.Size / 2f,
+            Projectile.oldPos.Length,
+            includeBacksides: true
+        );
+
+        strip.DrawTrail();
+        Main.pixelShader.CurrentTechnique.Passes[0].Apply();
 
         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
        

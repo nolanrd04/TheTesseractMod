@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria;
-using TheTesseractMod.Dusts;
+using Terraria.Graphics;
+using Terraria.ID;
+using Terraria.ModLoader;
 using TheTesseractMod.Buffs;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
 {
@@ -20,7 +21,10 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
         {
             Projectile.CloneDefaults(ProjectileID.Spear);
             Projectile.width = 50;
+            Projectile.scale = 1.3f;
         }
+
+        
         public override bool PreAI()
         {
             Player player = Main.player[Projectile.owner]; // Since we access the owner player instance so much, it's useful to create a helper local variable for this

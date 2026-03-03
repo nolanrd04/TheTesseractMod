@@ -1,16 +1,18 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.GameContent.Drawing;
-using Terraria.GameContent;
-using Terraria.ID;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.GameContent.Drawing;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 {
@@ -18,7 +20,12 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
     {
         const int textureHeight = 14;
         float incrementalAngle = (float)Math.PI / 2;
-
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
+        private VertexStrip strip = new VertexStrip();
         public override void SetDefaults()
         {
             Projectile.DamageType = DamageClass.Ranged;
@@ -73,6 +80,20 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => Color.Lime * (1f - progress),
+                progress => MathHelper.Lerp(15f, 8f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 
             Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);

@@ -24,15 +24,12 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
         private List<float> oldRotations = new List<float>(); // Store past rotations
         private List<Vector2> oldPositions = new List<Vector2>(); // Store past positions
 
-        /* vertex strip creation attempt 2 */
-        private const int MaxTrailLength = 10;
-        private readonly Vector2[] oldPos = new Vector2[MaxTrailLength];
-        private readonly float[] oldRot = new float[MaxTrailLength];
-        private float StripWidth(float progress) => MathHelper.Lerp(30f, 0f, progress); // Thinner toward end
-        private Color StripColor(float progress)
+        private VertexStrip strip = new VertexStrip();
+
+        public override void SetStaticDefaults()
         {
-            Color baseColor = Color.Cyan;
-            return baseColor * (1f - progress); // Fade out toward end
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
         public override void SetDefaults()
         {
@@ -46,29 +43,6 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
 
         public override void AI()
         {
-            /* vertex strip creation attempt 1 */
-            // Store the position and rotation BEFORE updating movement
-            oldPositions.Insert(0, Projectile.Center);
-            oldRotations.Insert(0, Projectile.rotation);
-
-            // Limit trail length
-            if (oldPositions.Count > 10)
-            {
-                oldPositions.RemoveAt(oldPositions.Count - 1);
-                oldRotations.RemoveAt(oldRotations.Count - 1);
-            }
-
-            /* vertex strip creation attempt 2 */
-            // Shift previous positions back
-            for (int i = MaxTrailLength - 1; i > 0; i--)
-            {
-                oldPos[i] = oldPos[i - 1];
-                oldRot[i] = oldRot[i - 1];
-            }
-
-            oldPos[0] = Projectile.Center;
-            oldRot[0] = Projectile.rotation;
-
             Projectile.rotation = Projectile.velocity.ToRotation();
             // --- Spawn fluctuating dust --- //
             float sineFactor = (float)(Math.Sin(incrementalAngle) * textureHeight / 2); // Adjust 0.1f to change fluctuation speed
@@ -108,6 +82,21 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
 
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => new Color(105, 13, 224, 0) * (1f - progress),
+                progress => MathHelper.Lerp(15f, 8f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+
             // DrawTrail();
             Texture2D texture = TextureAssets.Projectile[Type].Value;
 

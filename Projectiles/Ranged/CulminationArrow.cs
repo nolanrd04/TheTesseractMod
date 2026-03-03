@@ -1,16 +1,25 @@
-﻿using Terraria;
-using System;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.CodeAnalysis;
+using System;
+using Terraria;
 using Terraria.Audio;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace TheTesseractMod.Projectiles.Ranged
 {
     public class CulminationArrow : ModProjectile
     {
+        private VertexStrip strip = new VertexStrip();
+        Color color = new Color(222, 120, 255);
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public override void SetDefaults()
         {
             Projectile.extraUpdates = 1;
@@ -26,8 +35,6 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 25;
         }
-
-        Color color = new Color(222, 120, 255);
         public override void AI()
         {
 
@@ -39,6 +46,21 @@ namespace TheTesseractMod.Projectiles.Ranged
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => new Color(238, 179, 255, 0) * (1f - progress),
+                progress => MathHelper.Lerp(10f, 3f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+            
+
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
             {

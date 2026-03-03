@@ -22,7 +22,6 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.height = 20;
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
-            //Projectile.hostile = false;
             Projectile.penetrate = 2;
             Projectile.timeLeft = 120;
             Projectile.light = 0.9f;

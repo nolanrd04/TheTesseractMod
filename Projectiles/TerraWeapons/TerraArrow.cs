@@ -1,21 +1,29 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
-using TheTesseractMod.Dusts;
 using Terraria.GameContent.Drawing;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
+using TheTesseractMod.Dusts;
 
 namespace TheTesseractMod.Projectiles.TerraWeapons
 {
     internal class TerraArrow : ModProjectile
     {
+        private VertexStrip strip = new VertexStrip();
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public override void SetDefaults()
         {
             Projectile.aiStyle = 1;
@@ -44,6 +52,20 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            GameShaders.Misc["RainbowRod"].Apply();
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => Color.Lime * (1f - progress),
+                progress => MathHelper.Lerp(15f, 8f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
             {

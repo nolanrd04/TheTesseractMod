@@ -8,10 +8,10 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
 - New weapons, items, and buffs.
 - Recipes for hard-to-find vanilla items.
 - COMPATIBLE WITH CALAMITY!
-- 45+ new weapons.
+- 48+ new weapons.
 - 30+ new items.
 - 12 new NPCs
-- 1 new boss.
+- 1 new boss COMING.
 
  UPDATES:
  Join my discord for a better update details, to give feedback, and to see previous updates:
@@ -19,8 +19,11 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
 
  In this update:
 
+ REWORKS:
+ - Added new visual effects for: Rift slime projectiles, Night's arrow, Night's Rod beams, Conjuring Climax projectile, Etheral Lance star, Etheral Sword stars, Culmination magic arrows, Terra arrow, and 
+
  CONTENT:
- - New post-Moonlord boss: The Guardian of the Rift.
+ - Kpop Demon Hunter Weapons :/
 
 
  ---------Previous Update (V1.3.3)---------
