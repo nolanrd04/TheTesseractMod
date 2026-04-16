@@ -29,10 +29,14 @@ namespace TheTesseractMod.Items.Weapons.Summoner
             Item.height = 74;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 200;
+            Item.damage = 150;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 50;
+            }
             Item.knockBack = 5f;
             Item.mana = 15;
             Item.noMelee = true;

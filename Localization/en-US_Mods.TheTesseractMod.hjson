@@ -115,8 +115,8 @@ Items: {
 		Tooltip:
 			'''
 			You need at least a level 3 tesseract to use this. Doesn't
-			require NPC's.
-			(Doesn't work in mutiplayer and idk why).
+			require NPC's, but you must be at a valid pylon to teleport
+			to this pylon.
 			'''
 		DisplayName: Tesseract Pylon
 	}
@@ -523,8 +523,8 @@ Items: {
 	}
 
 	TerraThrow: {
-		Tooltip: Every 10 hits will spawn damaging stars.
-		DisplayName: Terra Throw
+		Tooltip: Every 5 hits will spawn damaging stars.
+		DisplayName: Terra Tosser
 	}
 
 	CreeperStaff: {
@@ -650,6 +650,108 @@ Items: {
 			life steal value.
 			Gets buffed after defeating the Moon Lord
 			'''
+	}
+
+	EnchantedSunStone: {
+		DisplayName: Enchanted Sun Stone
+		Tooltip: Summons a baby time dude to light the way.
+	}
+
+	TemporalGuardianRelic: {
+		Tooltip: ""
+		DisplayName: Temporal Guardian Relic
+	}
+
+	TemporalGuardianTreasureBag: {
+		Tooltip: ""
+		DisplayName: Temporal Guardian Treasure Bag
+	}
+
+	TemporalOre: {
+		Tooltip: ""
+		DisplayName: Temporal Ore
+	}
+
+	TemporalBar: {
+		DisplayName: Temporal Bar
+		Tooltip: ""
+	}
+
+	SoliumOre: {
+		Tooltip: ""
+		DisplayName: Solium Ore
+	}
+
+	SoliumBar: {
+		Tooltip: ""
+		DisplayName: Solium Bar
+	}
+
+	PowerHammer: {
+		DisplayName: Power Hammer
+		Tooltip: Strikes enemies with lightning on collision
+	}
+
+	DragonsBreath: {
+		Tooltip:
+			'''
+			80% chance not to consume ammo.
+			Uses gel as ammo.
+			'''
+		DisplayName: Dragons Breath
+	}
+
+	SquidOfTheAbyssScepter: {
+		Tooltip:
+			'''
+			Summons a single Squid of the Abyss to fight for you.
+			The squid grows in strength and can attack more enemies
+			if more minion slots are consumed.
+			'''
+		DisplayName: Squid Of The Abyss Scepter
+	}
+
+	StormOfThorns: {
+		Tooltip:
+			'''
+			Shoots a primary thorn vine straight ahead and 3 more
+			mini vines in random directions.
+			'''
+		DisplayName: Storm Of Thorns
+	}
+
+	SiphonAxes: {
+		Tooltip: Heals the player after hitting an enemy.
+		DisplayName: Siphon Axes
+	}
+
+	BlizzardCannon: {
+		Tooltip:
+			'''
+			Releases the power of the blizzard into the sky to rain
+			down on your enemies.
+			80% chance not to consume ammo
+			'''
+		DisplayName: Blizzard Cannon
+	}
+
+	RiftFracture: {
+		DisplayName: Rift Fracture
+		Tooltip: ""
+	}
+
+	WhipOfTheWildWest: {
+		Tooltip:
+			'''
+			Tag damage: +{0}
+			Striking enemies hurls rocks at them.
+			'''
+		DisplayName: Whip Of The Wild West
+	}
+
+	SuspiciousLookingSundial: {
+		Tooltip: ""
+		DisplayName: Suspicious Looking Sundial
 	}
 }
 
@@ -782,31 +884,61 @@ Projectiles: {
 	TrueNightsRodProj.DisplayName: True Nights Rod Proj
 	TerraBullet.DisplayName: Terra Bullet
 	TrueCustomCursedFlame.DisplayName: True Custom Cursed Flame
-	HEAT_FlameBarageProj.DisplayName: H E A T_ Flame Barage Proj
-	HEAT_InfernoMissle.DisplayName: H E A T_ Inferno Missle
-	HEAT_InfernoMissleBlast.DisplayName: H E A T_ Inferno Missle Blast
-	DUST_DustNadoBase_RIGHT.DisplayName: D U S T_ Dust Nado Base_ R I G H T
+	HEAT_FlameBarageProj.DisplayName: Flaming Barage
+	HEAT_InfernoMissle.DisplayName: Inferno Blast
+	HEAT_InfernoMissleBlast.DisplayName: Inferno Blast
+	DUST_DustNadoBase_RIGHT.DisplayName: Dustnado Base
 	TrailProjectile.DisplayName: Trail Projectile
 	GeomSwingProjectile.DisplayName: Geom Swing Projectile
-	Sain_geom_star_1.DisplayName: Sain_geom_star_1
-	SainGeomSwingProjectile_Stage2.DisplayName: Sain Geom Swing Projectile_ Stage2
-	Sain_geom_star_2.DisplayName: Sain_geom_star_2
-	Sain_geom_projThrown.DisplayName: Sain_geom_proj Thrown
-	SainGeomSwingProjectile_Stage3.DisplayName: Sain Geom Swing Projectile_ Stage3
-	Sain_geom_star_3.DisplayName: Sain_geom_star_3
-	Sain_geom_projThrown_stage3.DisplayName: Sain_geom_proj Thrown_stage3
-	Sain_geom_dashProj.DisplayName: Sain_geom_dash Proj
-	Gok_Do_Proj.DisplayName: Gok_ Do_ Proj
-	Gok_Do_ParryProj_Stage1.DisplayName: Gok_ Do_ Parry Proj_ Stage1
-	Gok_Do_Proj_Stage2.DisplayName: Gok_ Do_ Proj_ Stage2
-	Gok_Do_ParryProj_Stage2.DisplayName: Gok_ Do_ Parry Proj_ Stage2
-	Gok_Do_Star_Stage2.DisplayName: Gok_ Do_ Star_ Stage2
-	Gok_Do_Proj_Stage3.DisplayName: Gok_ Do_ Proj_ Stage3
-	Gok_Do_Star_Stage3.DisplayName: Gok_ Do_ Star_ Stage3
-	Gok_Do_ParryProj_Stage3.DisplayName: Gok_ Do_ Parry Proj_ Stage3
-	Shin_Kal_Proj_Stage1.DisplayName: Shin_ Kal_ Proj_ Stage1
-	Shin_Kal_Proj_Stage2.DisplayName: Shin_ Kal_ Proj_ Stage2
-	Shin_Kal_Proj_Stage3.DisplayName: Shin_ Kal_ Proj_ Stage3
+	Sain_geom_star_1.DisplayName: Sain Geom Star
+	SainGeomSwingProjectile_Stage2.DisplayName: Sain Geom Swing Projectile
+	Sain_geom_star_2.DisplayName: Sain Geom Star
+	Sain_geom_projThrown.DisplayName: Sain Geom Thrown
+	SainGeomSwingProjectile_Stage3.DisplayName: Sain Geom Swing Projectile
+	Sain_geom_star_3.DisplayName: Sain Geom Star
+	Sain_geom_projThrown_stage3.DisplayName: Sain Geom Thrown
+	Sain_geom_dashProj.DisplayName: Sain Geom Dash
+	Gok_Do_Proj.DisplayName: Gok Do
+	Gok_Do_ParryProj_Stage1.DisplayName: Gok Do Parry
+	Gok_Do_Proj_Stage2.DisplayName: Gok Do
+	Gok_Do_ParryProj_Stage2.DisplayName: Gok Do Parry
+	Gok_Do_Star_Stage2.DisplayName: Gok Do Star
+	Gok_Do_Proj_Stage3.DisplayName: Gok Do
+	Gok_Do_Star_Stage3.DisplayName: Gok Do Star
+	Gok_Do_ParryProj_Stage3.DisplayName: Gok Do Parry
+	Shin_Kal_Proj_Stage1.DisplayName: Shin Kal
+	Shin_Kal_Proj_Stage2.DisplayName: Shin Kal
+	Shin_Kal_Proj_Stage3.DisplayName: Shin Kal
+	ZenithWhipBurstController.DisplayName: Zenith Whip
+	DUST_Dustcloud.DisplayName: Dust Cloud
+	DUST_dustcloud.DisplayName: Dust Cloud
+	LIGHT_lightDeathRay.DisplayName: Light Ray of Death
+	CHLORO_LeafCrystal.DisplayName: Chlororift Crystal
+	CHLORO_NatureEssence.DisplayName: Essence Drain
+	CHLORO_HealBeam.DisplayName: Essence Gain
+	AQUA_AquadoBolt.DisplayName: Aquanado Bolt
+	AQUA_Aquanado.DisplayName: Aquanado
+	AQUA_AquanadoBolt.DisplayName: Aquanado Bolt
+	AQUA_AscendingBubble.DisplayName: Ascending Bubble
+	COLD_IceShieldSpike.DisplayName: Ice Shield Spike
+	DARK_DarkDeathRay.DisplayName: Dark Ray of Death
+	ELECTRIC_ElectricThunderbolt.DisplayName: Electrorift Bolt
+	DEATH_SinisterSkull.DisplayName: Sinister Skull
+	BabyTimeDude.DisplayName: Baby Time Dude
+	PowerHammerProjectile.DisplayName: Power Hammer Projectile
+	PowerHammerLightning.DisplayName: Power Hammer Lightning
+	DragonsBreathProjectile.DisplayName: Dragons Breath Projectile
+	SquidOfTheAbyssMinionTentacle.DisplayName: Squid of the Abyss Tentacle
+	SquidOfTheAbyssMinion.DisplayName: Squid of the Abyss
+	ThornStormMainHead.DisplayName: Thorn Storm Main Head
+	ThornStormMini.DisplayName: Thorn Storm Mini
+	SiphonAxesProj.DisplayName: Siphon Axes Proj
+	SiphonAxeHealBeam.DisplayName: Siphon Axe Heal Beam
+	BlizzardCannonProj.DisplayName: Blizzard Cannon Proj
+	BlizzardSnowflake.DisplayName: Blizzard Snowflake
+	RiftFractureProj.DisplayName: Rift Fracture Proj
+	WhipOfTheWestProj.DisplayName: Whip Of The West Proj
+	WhipOfTheWestRock.DisplayName: Whip Of The West Rock
 }
 
 Buffs: {
@@ -959,12 +1091,28 @@ Buffs: {
 		DisplayName: Parry Ready
 		Description: Right click to parry an attack!
 	}
+
+	BabyTimeDudeBuff: {
+		Description: A baby time dude is lighting the way!
+		DisplayName: Baby Time Dude Buff
+	}
+
+	SquidOfTheAbyssMinionBuff: {
+		Description: A Squid of the Abyss is fighting for you!
+		DisplayName: Squid Of The Abyss Minion Buff
+	}
+
+	WhipOfTheWestTagBuff: {
+		Description: Mods.TheTesseractMod.Buffs.WhipOfTheWestTagBuff.Description
+		DisplayName: Whip Of The West Tag Buff
+	}
 }
 
 Tiles: {
-	Tesseract3.MapEntry: Tesseract3
+	TemporalOreTile.MapEntry: Temporal Ore
 	TesseractPylon.MapEntry: Tesseract Pylon
 	DungeonPylon.MapEntry: Dungeon Pylon
+	SoliumOreTile.MapEntry: Solium Ore
 }
 
 Keybinds: {
@@ -985,7 +1133,12 @@ NPCs: {
 	DeathRiftElemental.DisplayName: Death Rift Elemental
 	DustRiftElemental.DisplayName: Dust Rift Elemental
 	ChloroRiftElemental.DisplayName: Chloro Rift Elemental
-	GuardianOfTheRiftBody.DisplayName: Guardian Of The Rift Body
+	GuardianOfTheRiftBody.DisplayName: Temporal Guardian
+	DustBoulderMinion.DisplayName: Dust Boulder Minion
+	TrueMiniGuardian.DisplayName: True Mini Guardian
+	MiniGuardian.DisplayName: Mini Guardian
+	IceShield.DisplayName: Ice Shield
+	LifeMinion.DisplayName: Life Minion
 }
 
 DropCondition.MoonlordDefeated: Mods.TheTesseractMod.DropCondition.MoonlordDefeated

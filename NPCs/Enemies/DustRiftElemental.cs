@@ -50,10 +50,10 @@ namespace TheTesseractMod.NPCs.Enemies
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            int chance = 0;
+            float chance = 0f;
             if (spawnInfo.Player.ZoneDesert || spawnInfo.Player.ZoneUndergroundDesert)
             {
-                chance = 1;
+                chance = 0.3f;
             }
             return (NPC.downedMoonlord.ToInt() * chance * 0.2f);
         }

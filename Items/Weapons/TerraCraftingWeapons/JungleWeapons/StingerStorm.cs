@@ -16,7 +16,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.JungleWeapons
     {
         public override void SetDefaults()
         {
-            Item.damage = 11;
+            Item.damage = 17;
             Item.DamageType = DamageClass.Magic;
             Item.width = 28;
             Item.height = 30;
@@ -30,7 +30,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.JungleWeapons
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<StingerStormProj>();
             Item.shootSpeed = 10;
-            Item.mana = 20;
+            Item.mana = 17;
             Item.noMelee = true;
         }
 

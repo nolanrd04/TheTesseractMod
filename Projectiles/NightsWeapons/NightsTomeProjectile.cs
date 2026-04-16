@@ -120,7 +120,7 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
                 Vector2 direction = Vector2.Normalize(targetNew.Center - Projectile.Center);
                 Vector2 newVelocity = direction.RotatedBy(MathHelper.ToRadians(Main.rand.Next(90) - 45)) * 10f;
 
-                if (Main.rand.Next(3) == 0)
+                if (Main.rand.Next(5) == 0)
                 {
                     SoundEngine.PlaySound(SoundID.Item103, Projectile.Center);
                     Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<CustomShadowFlame>(), Projectile.damage, 0);

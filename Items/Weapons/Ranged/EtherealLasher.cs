@@ -23,14 +23,18 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         public override void SetDefaults()
         {
 
-            Item.damage = 150;
+            Item.damage = 160;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 130;
+            }
             Item.useAmmo = AmmoID.Arrow;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 42;
             Item.height = 96;
             Item.useTime = 15;
             Item.useAnimation = 15;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 3f;
             Item.value = Item.sellPrice(gold: 25);
             Item.rare = ItemRarityID.Red;
@@ -39,7 +43,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 20;
             Item.noMelee = true;
-            Item.crit = 15;
+            Item.crit = 17;
         }
 
         public override void AddRecipes()

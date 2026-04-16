@@ -17,7 +17,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
     {
         public override void SetDefaults()
         {
-            Item.damage = 30;
+            Item.damage = 34;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 40;
             Item.height = 40;
@@ -33,6 +33,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 13f;
             Item.noMelee = true;
+            Item.crit = 8;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -51,7 +51,7 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
             Projectile.friendly = true;
             Projectile.timeLeft = 450;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 60;
+            Projectile.localNPCHitCooldown = 120;
             Projectile.extraUpdates = 1;
             Projectile.alpha = 75;
         }

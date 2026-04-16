@@ -23,7 +23,7 @@ namespace TheTesseractMod.Projectiles.Ranged
         public override void SetDefaults()
         {
             Projectile.extraUpdates = 1;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.width = 13;
             Projectile.height = 13;
             Projectile.friendly = true;
@@ -33,15 +33,15 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.tileCollide = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 25;
+            Projectile.localNPCHitCooldown = 45;
         }
         public override void AI()
         {
 
             Projectile.rotation = Projectile.velocity.ToRotation();
             Lighting.AddLight(Projectile.position, 0.9f, 0.5f, 1f);
-            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 112, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.8f);
-            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 27, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.4f);
+            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CorruptSpray, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.8f);
+            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CorruptSpray, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.4f);
             Main.dust[dust].noGravity = true;
         }
         public override bool PreDraw(ref Color lightColor)
@@ -80,7 +80,7 @@ namespace TheTesseractMod.Projectiles.Ranged
         {
             for (int i = 0; i < 20; i++)
             {
-                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 112, Projectile.velocity.X *= 0.9f, Projectile.velocity.Y *= 0.9f, 150, color, 0.8f);
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CorruptSpray, Projectile.velocity.X *= 0.9f, Projectile.velocity.Y *= 0.9f, 150, color, 0.8f);
             }
 
             SoundEngine.PlaySound(SoundID.NPCDeath3, Projectile.position);

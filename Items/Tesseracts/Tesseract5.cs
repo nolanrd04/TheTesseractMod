@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using TheTesseractMod.Items.Materials;
 using Terraria.Audio;
 using ReLogic.Content;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts
 {
@@ -92,10 +93,6 @@ namespace TheTesseractMod.Items.Tesseracts
                 if (functionStyle % 2 == 1)
                 {
                     if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        Main.time += 60;
-                    }
-                    else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);
@@ -232,10 +229,11 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<Tesseract4>(), 1);
-            recipe.AddIngredient(ItemID.SoulofNight);
-            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddIngredient(ItemID.SoulofNight, 3);
+            recipe.AddIngredient(ItemID.SoulofLight, 3);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             recipe.Register();
         }
         public float Lerp(float x, float y, float amount)

@@ -57,11 +57,11 @@ namespace TheTesseractMod.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            int chance = 0;
+            float chance = 0f;
             int position = spawnInfo.Player.position.ToTileCoordinates().Y;
             if (position < Main.worldSurface * 0.35f)
             {
-                chance = 1;
+                chance = 0.3f;
             }
 
             return (NPC.downedMoonlord.ToInt() * chance * 0.5f);
@@ -79,7 +79,7 @@ namespace TheTesseractMod.NPCs.Enemies
                 timer = 0;
             }
 
-            if (distance < 500 && timer % 120 == 0)
+            if (distance > 300 && timer % 120 == 0)
             {
                 Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
                 bool lineOfSight = Collision.CanHitLine(NPC.position, NPC.width, NPC.height, target.position, target.width, target.height);
@@ -87,7 +87,7 @@ namespace TheTesseractMod.NPCs.Enemies
                 {
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 15f, ModContent.ProjectileType<DeadlyThunderbolt>(), NPC.damage / 4, 1f);
+                        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 5f, ModContent.ProjectileType<DeadlyThunderbolt>(), NPC.damage / 4, 1f);
                     }
                     SoundEngine.PlaySound(SoundID.Thunder, NPC.Center);
                 }
@@ -101,9 +101,9 @@ namespace TheTesseractMod.NPCs.Enemies
             if (timer % 6 == 0)
             {
                 //Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<BlueElectricDust>(), NPC.velocity.X, NPC.velocity.Y, 0, default(Color), 0.4f);
-                Dust.NewDust(NPC.position, NPC.width-20, NPC.height-20, ModContent.DustType<ElectricDust>(), NPC.velocity.X, NPC.velocity.Y, 0, Color.White, 1f);
+                Dust.NewDust(NPC.position, NPC.width-20, NPC.height-20, ModContent.DustType<ElectricDust>(), NPC.velocity.X, NPC.velocity.Y, 0, Color.Indigo, 1f);
             }
-            Lighting.AddLight(NPC.position, new Vector3(1f, 1f, 1f));
+            Lighting.AddLight(NPC.position, new Vector3(.2f, .05f, 4f));
 
             return true;
         }

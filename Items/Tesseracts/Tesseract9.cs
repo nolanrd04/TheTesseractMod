@@ -123,10 +123,6 @@ namespace TheTesseractMod.Items.Tesseracts
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
-                    }
-                    else if (Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);
                     }
                     return true;
@@ -273,8 +269,9 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 20);
+            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 15);
             recipe.AddIngredient(ModContent.ItemType<Tesseract8>(), 1);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("DivineGeode", out ModItem DivineGeode))
             {
                 recipe.AddIngredient(DivineGeode.Type, 5);

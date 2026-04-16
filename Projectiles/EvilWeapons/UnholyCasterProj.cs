@@ -20,7 +20,7 @@ internal class UnholyCasterProj : ModProjectile
         Projectile.width = 16;
         Projectile.height = 16;
         Projectile.friendly = true;
-        Projectile.penetrate = 2;
+        Projectile.penetrate = 3;
         Projectile.timeLeft = 180;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;
@@ -34,7 +34,7 @@ internal class UnholyCasterProj : ModProjectile
             Lighting.AddLight(Projectile.position, 127 / 255f, 54 / 255f, 255 / 255f);
             for (int i = 0; i < 3; i++)
             {
-                int dustID = Dust.NewDust(Projectile.position, 1, 1, 27, 0, 0, 0, default(Color), 1f);
+                int dustID = Dust.NewDust(Projectile.position, 1, 1, DustID.Shadowflame, 0, 0, 0, default(Color), 1f);
                 Main.dust[dustID].noGravity = true;
             }
             
@@ -60,7 +60,7 @@ internal class UnholyCasterProj : ModProjectile
             Vector2 velocity = new Vector2(2f, 2f).RotatedBy(MathHelper.ToRadians(rotation));
             if (color) // purple
             {
-                Dust.NewDust(Projectile.Center, 0, 0, 27, velocity.X, velocity.Y, 0, default(Color), 1f);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame, velocity.X, velocity.Y, 0, default(Color), 1f);
             }
             else // red
             {

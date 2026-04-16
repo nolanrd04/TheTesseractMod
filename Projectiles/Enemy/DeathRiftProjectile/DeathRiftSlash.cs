@@ -37,7 +37,7 @@ namespace TheTesseractMod.Projectiles.Enemy.DeathRiftProjectile
             Projectile.rotation += 0.2f;
             Player target = Main.player[GetClosetPlayer()];
             
-            if (Projectile.ai[0] % 2 == 0)
+            if (Projectile.ai[0] % 2 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 //orange
                 if (random == 0)
@@ -51,7 +51,7 @@ namespace TheTesseractMod.Projectiles.Enemy.DeathRiftProjectile
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.UnitX);
                     Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, direction, ModContent.ProjectileType<OrangeDeathSickle>(), 70, 2f);
                 }
-                
+
             }
             Projectile.ai[0]++;
             if (Projectile.ai[0] > 5)

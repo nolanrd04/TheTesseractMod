@@ -21,7 +21,7 @@ namespace TheTesseractMod.Projectiles.EvilWeapons
         public override string Texture => "TheTesseractMod/Textures/Vanilla/Creeper";
         float speed = 30f;          // Speed multiplier of the minion
         float farSpeed = 60f;       // Temporary speed value used in distance calculations (So we don't change our original speed)
-        float inertia = 25f;        // Determines how long an object will move after having velocity applied
+        float inertia = 15f;        // Determines how long an object will move after having velocity applied
         float farInertia = 30f;     // Temporary intertia used in distance calculations (So we don't change our original interia)
         float attackSight = 700f;   // How far away an enemy must be for the minion to "see" it
         float idleRange = 60f;      // The range in which the minion will idle over the player

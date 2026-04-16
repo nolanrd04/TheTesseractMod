@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,7 @@ namespace TheTesseractMod.Projectiles.Enemy.BossProjectiles.GuardianOfTheRiftPro
             Projectile.penetrate = 1;
             Projectile.friendly = false;
             Projectile.hostile = true;
-            Projectile.timeLeft = Main.rand.Next(60) + 60;
+            Projectile.timeLeft = Main.rand.Next(24, 36);
             Projectile.alpha = 255;
         }
 
@@ -43,7 +43,10 @@ namespace TheTesseractMod.Projectiles.Enemy.BossProjectiles.GuardianOfTheRiftPro
 
         public override void OnKill(int timeLeft)
         {
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<HEAT_InfernoMissleBlast>(), Projectile.damage, 10f);
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<HEAT_InfernoMissleBlast>(), Projectile.damage, 10f);
+            }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)

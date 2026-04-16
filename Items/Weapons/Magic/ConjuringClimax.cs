@@ -20,11 +20,7 @@ namespace TheTesseractMod.Items.Weapons.Magic
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 135;
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-            {
-                Item.damage += (int)(Item.damage * 0.55f);
-            }
+            Item.damage = 145;
             Item.DamageType = DamageClass.Magic;
             Item.width = 20;
             Item.height = 20;
@@ -73,24 +69,24 @@ namespace TheTesseractMod.Items.Weapons.Magic
                 multiplier = 2.2f;
                 ConjuringClimaxCalamityOverrider.shotByConjuringClimax = true;
             }
-            Projectile.NewProjectile(source, position, velocity, 79, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity, ProjectileID.RainbowRodBullet, damage, knockback, player.whoAmI);
 
             Vector2 shot = new Vector2(velocity.X, velocity.Y);
-            Projectile.NewProjectile(source, position, shot, 294, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
             Projectile.NewProjectile(source, position, shot, type, damage, knockback, player.whoAmI);
             shot = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.ToRadians(-3));
-            Projectile.NewProjectile(source, position, shot, 294, (int)(damage * multiplier), knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, shot * 5, 521, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot * 5, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
             Projectile.NewProjectile(source, position, shot, type, damage, knockback, player.whoAmI);
             shot = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.ToRadians(3)); ;
-            Projectile.NewProjectile(source, position, shot, 294, (int)(damage * multiplier), knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, shot * 5, 521, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot * 5, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
             Projectile.NewProjectile(source, position, shot, type, damage, knockback, player.whoAmI);
             shot = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.ToRadians(7));
-            Projectile.NewProjectile(source, position, shot, 294, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
             Projectile.NewProjectile(source, position, shot, type, damage, knockback, player.whoAmI);
             shot = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.ToRadians(-7));
-            Projectile.NewProjectile(source, position, shot, 294, (int)(damage * multiplier), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, shot, ProjectileID.ShadowBeamFriendly, (int)(damage * multiplier), knockback, player.whoAmI);
             Projectile.NewProjectile(source, position, shot, type, damage, knockback, player.whoAmI);
             ConjuringClimaxCalamityOverrider.shotByConjuringClimax = false;
             return false;

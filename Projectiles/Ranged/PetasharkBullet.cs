@@ -40,7 +40,7 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.rotation = Projectile.velocity.ToRotation();
             if (Projectile.ai[0] % 8 == 0)
             {
-                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 217, Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.FishronWings, Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
                 Main.dust[dust].noGravity = true;
             }
             Projectile.ai[0]++;

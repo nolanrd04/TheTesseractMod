@@ -26,7 +26,11 @@ namespace TheTesseractMod.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 7;
             Item.autoReuse = true;
-            Item.damage = 410;
+            Item.damage = 460;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 410;
+            }
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
             Item.noUseGraphic = true;

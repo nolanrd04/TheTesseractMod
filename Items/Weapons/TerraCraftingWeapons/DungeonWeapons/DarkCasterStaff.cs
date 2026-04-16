@@ -31,16 +31,17 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.DungeonWeapons
             Item.height = 30;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 25;
+            Item.damage = 30;
             Item.knockBack = 4f;
             Item.mana = 15;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<DarkCaster>();
             Item.buffType = ModContent.BuffType<DarkCasterMinionBuff>();
             Item.autoReuse = true;
+            Item.crit = 6;
         }
 
         public override void AddRecipes()

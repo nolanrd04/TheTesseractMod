@@ -272,7 +272,7 @@ namespace TheTesseractMod.Projectiles.DungeonWeapons
             Tile tile = Framing.GetTileSafely(tileX, tileY);
             Tile tile2 = Framing.GetTileSafely(tileX2, tileY);
 
-            if (((tile != null && tile.HasTile) || tile.TileType == TileID.Platforms) || ((tile2 != null && tile2.HasTile) || tile2.TileType == TileID.Platforms))
+            if (WorldGen.SolidTile(tile) || tile.TileType == TileID.Platforms || WorldGen.SolidTile(tile2) || tile2.TileType == TileID.Platforms)
             {
                 float platformTop = (tileY * 16f) - Projectile.height;
                 if (Projectile.position.Y + Projectile.height >= platformTop)
@@ -294,7 +294,7 @@ namespace TheTesseractMod.Projectiles.DungeonWeapons
             Tile tile = Framing.GetTileSafely(tileX, tileY);
             Tile tile2 = Framing.GetTileSafely(tileX2, tileY);
 
-            if ((tile != null && tile.HasTile && tile.TileType == TileID.Platforms) || (tile2 != null && tile2.HasTile && tile2.TileType == TileID.Platforms))
+            if ((tile.HasTile && tile.TileType == TileID.Platforms) || (tile2.HasTile && tile2.TileType == TileID.Platforms))    
             {
                 float platformTop = (tileY * 16f) - Projectile.height;
                 if (Projectile.position.Y + Projectile.height >= platformTop)

@@ -33,7 +33,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapon
             Item.useStyle = 1;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 55;
+            Item.damage = 51;
             Item.knockBack = 3.5f;
             Item.mana = 15;
             Item.noMelee = true;

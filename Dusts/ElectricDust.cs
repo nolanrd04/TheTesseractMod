@@ -17,21 +17,21 @@ namespace TheTesseractMod.Dusts
         public override void OnSpawn(Dust dust)
         {
             dust.noGravity = true;
-            dust.scale = 0.1f;
+            dust.scale = 0.05f;
             dust.frame = new Rectangle(0, 0, 424, 424);
         }
         public override bool Update(Dust dust)
         {
-            
-            Lighting.AddLight(dust.position, dust.color.R/64, dust.color.G/64, dust.color.B/64);
-            dust.scale *= 0.95f;
+            float lightingMultiplier = 1f - dust.alpha / 255f;
+            Lighting.AddLight(dust.position, dust.color.R/64 * lightingMultiplier, dust.color.G/64 * lightingMultiplier, dust.color.B/64 * lightingMultiplier);
+            dust.alpha += 5;
 
-            if (dust.scale < 0.03f)
+            if (dust.alpha > 230)
             {
                 dust.active = false;
             }
 
-            dust.position += dust.velocity;
+           // dust.position += dust.velocity;
 
             return false;
         }

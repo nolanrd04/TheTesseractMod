@@ -20,11 +20,10 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         public override void SetDefaults()
         {
 
-            Item.damage = 315;
+            Item.damage = 180;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Item.damage = 285;
-                Item.damage += (int)(Item.damage * 0.105f);
+                Item.damage = 200;
             }
             Item.useAmmo = AmmoID.Arrow;
             Item.DamageType = DamageClass.Ranged;
@@ -33,10 +32,10 @@ namespace TheTesseractMod.Items.Weapons.Ranged
             Item.scale = 0.85f;
             Item.useTime = 18;
             Item.useAnimation = 18;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 2;
             Item.value = 1500000;
-            Item.rare = 10;
+            Item.rare = ItemRarityID.Red;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<CulminationArrow>();
@@ -54,8 +53,8 @@ namespace TheTesseractMod.Items.Weapons.Ranged
             recipe.AddIngredient(ItemID.ShadowFlameBow, 1);
             recipe.AddIngredient(ItemID.Marrow, 1);
             recipe.AddIngredient(ItemID.DaedalusStormbow, 1);
-            recipe.AddIngredient(3854, 1); //phantom pheonix
-            recipe.AddIngredient(4953, 1); //eventide
+            recipe.AddIngredient(ItemID.DD2PhoenixBow, 1); //phantom pheonix
+            recipe.AddIngredient(ItemID.FairyQueenRangedItem, 1); //eventide
             recipe.AddIngredient(ModContent.ItemType<TerraTalonbow>());
             recipe.AddIngredient(ItemID.Tsunami, 1);
             recipe.AddIngredient(ItemID.Phantasm, 1);
@@ -87,13 +86,13 @@ namespace TheTesseractMod.Items.Weapons.Ranged
             int randomArrowType = random.Next(0, 4);
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Projectile.NewProjectile(source, position, velocity * 0.8f, ModContent.ProjectileType<SuperCulminationArrow>(), damage * 4, knockback * 2, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity * 0.8f, ModContent.ProjectileType<SuperCulminationArrow>(), damage * 2, knockback * 2, player.whoAmI);
             }
             else
             {
                 if (randomArrowType == 1)
                 {
-                    Projectile.NewProjectile(source, position, velocity * 0.8f, ModContent.ProjectileType<SuperCulminationArrow>(), damage * 4, knockback * 2, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity * 0.8f, ModContent.ProjectileType<SuperCulminationArrow>(), damage * 2, knockback * 2, player.whoAmI);
                 }
                 else
                 {
@@ -101,7 +100,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
                 }
             }
             
-            Projectile.NewProjectile(source, position, velocity * 1.2f, 706, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity * 1.2f, ProjectileID.DD2PhoenixBowShot, damage, knockback, player.whoAmI);
             /*************************************/
 
 

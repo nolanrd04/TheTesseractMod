@@ -35,7 +35,7 @@ namespace TheTesseractMod.Projectiles.Melee
                 ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 750f;
                 ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 10f;
             }
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 20f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 35f;
         }
         public override void SetDefaults()
         {
@@ -62,7 +62,7 @@ namespace TheTesseractMod.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (attackType == 3) // chik
+            if (attackType == 3 && Main.netMode != NetmodeID.MultiplayerClient) // chik
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -157,7 +157,7 @@ namespace TheTesseractMod.Projectiles.Melee
             }
 
 
-            if (attackTypeCounter % 30 == 0)
+            if (attackTypeCounter % 30 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.GoldenShowerFriendly, Projectile.damage, 0f);
             }
@@ -182,7 +182,10 @@ namespace TheTesseractMod.Projectiles.Melee
                 direction.Normalize();
 
                 SoundEngine.PlaySound(SoundID.Item17, Projectile.position);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ZenithYoYoStinger>(), Projectile.damage, 0f);
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ZenithYoYoStinger>(), Projectile.damage, 0f);
+                }
             }
             attackTypeCounter++;
         }
@@ -197,7 +200,7 @@ namespace TheTesseractMod.Projectiles.Melee
                 }
             }
 
-            if (attackTypeCounter % 20 == 0 && TargetInRange(300))
+            if (attackTypeCounter % 20 == 0 && TargetInRange(300) && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + new Vector2(20f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.Bee, Projectile.damage, 0f);
             }
@@ -252,10 +255,13 @@ namespace TheTesseractMod.Projectiles.Melee
 
             if (attackTypeCounter % 20 == 0)
             {
-                Vector2 offset = Projectile.Center + new Vector2(60, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
-                Vector2 direction = Projectile.Center - offset;
-                direction.Normalize();
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), offset, direction * 20f, ModContent.ProjectileType<ZenithYoYoEye>(), Projectile.damage, 0f);
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Vector2 offset = Projectile.Center + new Vector2(60, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
+                    Vector2 direction = Projectile.Center - offset;
+                    direction.Normalize();
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), offset, direction * 20f, ModContent.ProjectileType<ZenithYoYoEye>(), Projectile.damage, 0f);
+                }
             }
             attackTypeCounter++;
         }
@@ -269,9 +275,9 @@ namespace TheTesseractMod.Projectiles.Melee
                 }
             }
 
-            if (attackTypeCounter % 30 == 0)
+            if (attackTypeCounter % 30 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CursedFlameFriendly, Projectile.damage, 0f); 
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(15f, 0f).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360))), ProjectileID.CursedFlameFriendly, Projectile.damage, 0f);
             }
             attackTypeCounter++;
         }

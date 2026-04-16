@@ -55,10 +55,11 @@ namespace TheTesseractMod.Projectiles.Ranged.ApexN31New
                 Projectile.Kill();
                 return;
             }
-            if (Projectile.ai[0] == 0)
+            if (Projectile.ai[0] == 0 && Main.myPlayer == Projectile.owner)
             {
                 int index = Main.rand.Next(15);
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(20f, 0).RotatedBy((Main.MouseWorld - Owner.MountedCenter).ToRotation()), arrayBulletID[index], Projectile.damage, Projectile.knockBack);
+                Projectile.ai[0] = 1; // Mark that we've already spawned
             }
 
             //Projectile.spriteDirection = Main.MouseWorld.X > Owner.MountedCenter.X ? 1 : -1;

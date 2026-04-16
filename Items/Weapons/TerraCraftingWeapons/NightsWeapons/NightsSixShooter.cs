@@ -22,7 +22,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         private int shotIndex = 0;
         public override void SetDefaults()
         {
-            Item.damage = 35;
+            Item.damage = 31;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 26;
             Item.height = 26;

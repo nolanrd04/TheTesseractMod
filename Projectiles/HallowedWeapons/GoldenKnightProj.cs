@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace TheTesseractMod.Projectiles.HallowedWeapons
     internal class GoldenKnightProj : ModProjectile
     {
         int phase = 1; // 0 = attack, 1 = defend
-        float attackSight = 900f;
+        float attackSight = 700f;
         float movementSpeed = 7f;
         float projectileSpeed = 3f;
         NPC target;
@@ -94,7 +94,7 @@ namespace TheTesseractMod.Projectiles.HallowedWeapons
 
             if (timeForPhase == 0)
             {
-                timeForPhase = Main.rand.Next(600, 1800);
+                timeForPhase = Main.rand.Next(420, 720);
                 phase = (phase + 1) % 2;
             }
             else
@@ -165,44 +165,50 @@ namespace TheTesseractMod.Projectiles.HallowedWeapons
 
         private void Attack()
         {
-            Vector2 targetCenter = target.Center;
-            Vector2 direction = targetCenter - Projectile.Center;
-            direction.Normalize();
-            direction *= projectileSpeed;
-            Vector2 offset;
-
-            if (direction.X > 0)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                offset = new Vector2(10, 15);
-            }
-            else
-            {
-                offset = new Vector2(-10, 15);
-            }
+                Vector2 targetCenter = target.Center;
+                Vector2 direction = targetCenter - Projectile.Center;
+                direction.Normalize();
+                direction *= projectileSpeed;
+                Vector2 offset;
 
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<GoldenKnightMagic>(), Projectile.damage, Projectile.knockBack);
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+                if (direction.X > 0)
+                {
+                    offset = new Vector2(10, 15);
+                }
+                else
+                {
+                    offset = new Vector2(-10, 15);
+                }
+
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<GoldenKnightMagic>(), Projectile.damage, Projectile.knockBack);
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+            }
         }
 
         private void Buff(Player owner)
         {
-            Vector2 ownerCenter = owner.Center;
-            Vector2 direction = ownerCenter - Projectile.Center;
-            direction.Normalize();
-            direction *= projectileSpeed;
-            Vector2 offset;
-
-            if (direction.X > 0)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                offset = new Vector2(10, 15);
-            }
-            else
-            {
-                offset = new Vector2(-10, 15);
-            }
+                Vector2 ownerCenter = owner.Center;
+                Vector2 direction = ownerCenter - Projectile.Center;
+                direction.Normalize();
+                direction *= projectileSpeed;
+                Vector2 offset;
 
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<GoldenKnightFriendlyMagic>(), Projectile.damage, Projectile.knockBack);
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+                if (direction.X > 0)
+                {
+                    offset = new Vector2(10, 15);
+                }
+                else
+                {
+                    offset = new Vector2(-10, 15);
+                }
+
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<GoldenKnightFriendlyMagic>(), Projectile.damage, Projectile.knockBack);
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+            }
         }
 
         private void Movement(Player owner, Vector2 vectorToIdlePosition, float distanceToIdlePosition)

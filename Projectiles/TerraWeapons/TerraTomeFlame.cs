@@ -17,15 +17,17 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
 
         public override void SetDefaults()
         {
-            Projectile.width = 35;
-            Projectile.height = 35;
+            Projectile.width = 52;
+            Projectile.height = 52;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.tileCollide = true;
+            Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.penetrate = 5;
             Projectile.friendly = true;
             Projectile.timeLeft = 35;
             Projectile.alpha = 255;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 45;
         }
 
         public override void AI()

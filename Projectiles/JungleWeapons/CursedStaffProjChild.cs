@@ -34,5 +34,15 @@ namespace TheTesseractMod.Projectiles.JungleWeapons
         {
             target.AddBuff(BuffID.Poisoned, 120);
         }
+
+        public override void AI()
+        {
+            // Lighting.AddLight(Projectile.position, 255 / 255f, 48 / 255f, 20 / 255f);
+            if (Projectile.ai[0] % 2 == 0)
+            {
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<ElectricDust>(), 0, 0, 0, Color.DarkGreen, .7f);
+            }
+            Projectile.ai[0]++;
+        }
     }
 }

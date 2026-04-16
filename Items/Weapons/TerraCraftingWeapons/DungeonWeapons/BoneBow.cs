@@ -16,14 +16,14 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.DungeonWeapons
         public override void SetDefaults()
         {
 
-            Item.damage = 29;
+            Item.damage = 32;
             Item.useAmmo = AmmoID.Arrow;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 32;
             Item.height = 32;
             Item.useTime = 19;
             Item.useAnimation = 19;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 4.5f;
             Item.value = Item.sellPrice(0, 1, 75, 0);
             Item.rare = ItemRarityID.Green;
@@ -33,6 +33,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.DungeonWeapons
             Item.shootSpeed = 8;
 
             Item.noMelee = true;
+            Item.crit = 8;
 
         }
 

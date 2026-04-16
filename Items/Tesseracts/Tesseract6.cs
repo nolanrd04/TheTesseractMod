@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using TheTesseractMod.Items.Materials;
 using Terraria.Audio;
 using ReLogic.Content;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts
 {
@@ -91,10 +92,6 @@ namespace TheTesseractMod.Items.Tesseracts
                 if (functionStyle % 2 == 1)
                 {
                     if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        Main.time += 60;
-                    }
-                    else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);
@@ -237,9 +234,10 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 10);
             recipe.AddIngredient(ModContent.ItemType<Tesseract5>(), 1);
             recipe.AddRecipeGroup("BossSoul", 5);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             recipe.Register();
         }
     }

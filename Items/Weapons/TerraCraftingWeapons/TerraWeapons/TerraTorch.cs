@@ -14,7 +14,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 90;
+            Item.damage = 100;
             Item.DamageType = DamageClass.Magic;
             Item.width = 82;
             Item.height = 82;
@@ -30,6 +30,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
             Item.shootSpeed = 16f;
             Item.mana = 12;
             Item.noMelee = true;
+            Item.crit = 14;
         }
 
         public override void AddRecipes()

@@ -67,10 +67,10 @@ namespace TheTesseractMod.Items.Materials
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(Item.Center, Color.LightBlue.ToVector3());
+            Lighting.AddLight(Item.Center, Color.Indigo.ToVector3());
             if (dustTimer % 12 == 0)
             {
-                Dust.NewDust(Item.Center, 10, 10, DustID.Electric);
+                Dust.NewDust(Item.Center, 10, 10, DustID.Electric, 0f, 0f, 0, Color.Indigo, 1f);
             }
             dustTimer++;
         }

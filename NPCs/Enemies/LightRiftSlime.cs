@@ -32,7 +32,7 @@ namespace TheTesseractMod.NPCs.Enemies
             NPC.CloneDefaults(NPCID.GoldenSlime);
             NPC.damage = 115;
             NPC.defense = 100;
-            NPC.lifeMax = 1000;
+            NPC.lifeMax = 300;
             NPC.value = 10000;
             NPC.knockBackResist = 0.5f;
             NPC.velocity = new Vector2(10f, 10f);
@@ -45,7 +45,7 @@ namespace TheTesseractMod.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return (SpawnCondition.OverworldDay.Chance * NPC.downedMoonlord.ToInt()) * 0.17f;
+            return (SpawnCondition.OverworldDay.Chance * NPC.downedMoonlord.ToInt()) * 0.13f;
         }
 
         public override void AI()

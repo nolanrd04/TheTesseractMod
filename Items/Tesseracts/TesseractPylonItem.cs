@@ -10,6 +10,7 @@ using System.Linq;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using TheTesseractMod.Items.TileEntities;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts;
 
@@ -48,7 +49,7 @@ public class TesseractPylonItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 5);
+        recipe.AddIngredient(ModContent.ItemType<TemporalOre>(), 45);
         recipe.AddIngredient(ItemID.StoneBlock, 20);
         recipe.AddRecipeGroup("evilitem", 5);
         recipe.Register();

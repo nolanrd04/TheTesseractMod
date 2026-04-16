@@ -14,6 +14,7 @@ using Terraria.Audio;
 using TheTesseractMod.Buffs;
 using System.Collections;
 using ReLogic.Content;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts
 {
@@ -121,10 +122,6 @@ namespace TheTesseractMod.Items.Tesseracts
                 {
 
                     if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        Main.time += 60;
-                    }
-                    else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);
@@ -294,7 +291,7 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 15);
             recipe.AddIngredient(ModContent.ItemType<Tesseract7>(), 1);
             recipe.AddIngredient(ItemID.LunarBar, 5);
             recipe.AddIngredient(ItemID.FragmentStardust, 10);

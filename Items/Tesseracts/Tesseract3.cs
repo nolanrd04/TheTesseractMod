@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using TheTesseractMod.Items.Materials;
 using static Humanizer.In;
 using ReLogic.Content;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts
 {
@@ -142,8 +143,9 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<Tesseract2>(), 1);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             recipe.AddRecipeGroup("evilitem", 5);
             recipe.Register();
         }

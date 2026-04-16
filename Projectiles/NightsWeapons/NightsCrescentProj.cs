@@ -284,7 +284,7 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
             {
                 Projectile.rotation += MathHelper.ToRadians(9);
                 Projectile.frame = 0;
-                if (Projectile.ai[0] % 4 == 0)
+                if (Projectile.ai[0] % 12 == 0)
                 {
                     Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Corruption, 0, 0, Main.rand.Next(45) + 80, default(Color), 1f);
                     Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, 0, 0, 0, default(Color), 1f);
@@ -294,7 +294,7 @@ namespace TheTesseractMod.Projectiles.NightsWeapons
             {
                 Projectile.rotation += MathHelper.ToRadians(18);
                 Projectile.frame = 1;
-                if (Projectile.ai[0] % 2 == 0)
+                if (Projectile.ai[0] % 4 == 0)
                 {
                     for (int i = 0; i < 3; i++)
                     {

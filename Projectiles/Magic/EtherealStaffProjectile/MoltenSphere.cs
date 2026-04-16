@@ -77,11 +77,19 @@ namespace TheTesseractMod.Projectiles.Magic.EtherealStaffProjectile
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-            float rotation = 0f;
-            for (int i = 0; i < 16; i ++)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(4f, 4f).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<HotMetalShard>(), Projectile.damage/3, Projectile.knockBack);
-                rotation += 22.5f;
+                int divisionFactor = 2;
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                {
+                    divisionFactor = 4;
+                }
+                float rotation = 0f;
+                for (int i = 0; i < 16; i ++)
+                {
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.position, new Vector2(4f, 4f).RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<HotMetalShard>(), Projectile.damage/divisionFactor, Projectile.knockBack);
+                    rotation += 22.5f;
+                }
             }
         }
     }

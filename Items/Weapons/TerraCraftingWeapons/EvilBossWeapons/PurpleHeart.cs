@@ -16,7 +16,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.EvilBossWeapons
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.ShadowFlameHexDoll);
-            Item.damage = 10;
+            Item.damage = 14;
             Item.crit = 4;
             Item.DamageType = DamageClass.Magic;
             Item.width = 28;

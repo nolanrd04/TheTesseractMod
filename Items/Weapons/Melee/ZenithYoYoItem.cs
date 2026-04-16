@@ -28,11 +28,12 @@ namespace TheTesseractMod.Items.Weapons.Melee
         public override void SetDefaults()
         {
 
-            Item.damage = 180;
+            Item.damage = 200;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
                 Item.damage = 210;
             }
+            Item.damage = 210;
             Item.DamageType = DamageClass.Melee;
             Item.value = 1500000;
             Item.rare = ItemRarityID.Red;

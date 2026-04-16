@@ -20,6 +20,10 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 16f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 432f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18f;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 23f;
+            }
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3; // The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0; // The recording mode
         }
@@ -34,6 +38,10 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 25;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Projectile.localNPCHitCooldown = 15;
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)

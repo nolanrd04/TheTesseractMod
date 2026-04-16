@@ -93,7 +93,7 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
 
             if (timeForPhase == 0)
             {
-                timeForPhase = Main.rand.Next(600, 1800);
+                timeForPhase = Main.rand.Next(420, 720);
                 phase = (phase + 1) % 2;
             }
             else
@@ -164,45 +164,51 @@ namespace TheTesseractMod.Projectiles.TrueExcaliburWeapons
 
         private void Attack()
         {
-            Vector2 targetCenter = target.Center;
-            Vector2 direction = targetCenter - Projectile.Center;
-            direction.Normalize();
-            direction *= projectileSpeed;
-            Vector2 offset;
-
-            if (direction.X > 0)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                offset = new Vector2(10, 15);
-            }
-            else
-            {
-                offset = new Vector2(-10, 15);
-            }
+                Vector2 targetCenter = target.Center;
+                Vector2 direction = targetCenter - Projectile.Center;
+                direction.Normalize();
+                direction *= projectileSpeed;
+                Vector2 offset;
 
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<TrueGoldenMageMagic>(), Projectile.damage, Projectile.knockBack);
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+                if (direction.X > 0)
+                {
+                    offset = new Vector2(10, 15);
+                }
+                else
+                {
+                    offset = new Vector2(-10, 15);
+                }
+
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<TrueGoldenMageMagic>(), Projectile.damage, Projectile.knockBack);
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+            }
         }
 
         private void Buff(Player owner)
         {
-            Vector2 ownerCenter = owner.Center;
-            Vector2 direction = ownerCenter - Projectile.Center;
-            direction.Normalize();
-            direction *= projectileSpeed;
-
-            Vector2 offset;
-
-            if (direction.X > 0)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                offset = new Vector2(10, 15);
-            }
-            else
-            {
-                offset = new Vector2(-10, 15);
-            }
+                Vector2 ownerCenter = owner.Center;
+                Vector2 direction = ownerCenter - Projectile.Center;
+                direction.Normalize();
+                direction *= projectileSpeed;
 
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<TrueGoldenMageFriendlyMagic>(), Projectile.damage, Projectile.knockBack);
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+                Vector2 offset;
+
+                if (direction.X > 0)
+                {
+                    offset = new Vector2(10, 15);
+                }
+                else
+                {
+                    offset = new Vector2(-10, 15);
+                }
+
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + offset, direction, ModContent.ProjectileType<TrueGoldenMageFriendlyMagic>(), Projectile.damage, Projectile.knockBack);
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
+            }
         }
 
         private void Movement(Player owner, Vector2 vectorToIdlePosition, float distanceToIdlePosition)

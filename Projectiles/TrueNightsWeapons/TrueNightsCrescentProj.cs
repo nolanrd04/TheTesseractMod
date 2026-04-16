@@ -214,7 +214,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                     direction.Normalize();
                     Projectile.velocity = direction * speed;
                     attackStageCounter++;
-                    if (attackStageCounter > 180)
+                    if (attackStageCounter > 120)
                     {
                         attackStageCounter = 0;
                         attackStage = 1;
@@ -232,7 +232,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                     Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
                     attackStageCounter++;
 
-                    if (attackStageCounter > 180)
+                    if (attackStageCounter > 240)
                     {
                         attackStage = 0;
                         attackStageCounter = 0;

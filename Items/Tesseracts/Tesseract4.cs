@@ -11,6 +11,7 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
 using TheTesseractMod.Items.Materials;
 using ReLogic.Content;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts
 {
@@ -139,9 +140,10 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 5);
             recipe.AddIngredient(ModContent.ItemType<Tesseract3>(), 1);
-            recipe.AddIngredient(ItemID.Bone, 5);
+            recipe.AddIngredient(ItemID.Bone, 20);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             recipe.Register();
         }
     }

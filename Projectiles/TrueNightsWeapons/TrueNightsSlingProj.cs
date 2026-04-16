@@ -19,6 +19,11 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 368f;
             ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 23f;
+                ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 40f;
+            }
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7; // The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0; // The recording mode
@@ -48,11 +53,11 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.NextBool(4))
             {
                 target.AddBuff(BuffID.ShadowFlame, 120);
             }
-            else if (Main.rand.Next(4) == 1)
+            else if (Main.rand.NextBool(4))
             {
                 target.AddBuff(BuffID.CursedInferno, 120);
             }

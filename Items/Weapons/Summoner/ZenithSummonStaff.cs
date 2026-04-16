@@ -35,8 +35,7 @@ namespace TheTesseractMod.Items.Weapons.Summoner
             Item.damage = 100;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Item.damage = 160;
-                Item.damage += (int)(Item.damage * 0.105f);
+                Item.damage = 130;
             }
             Item.knockBack = 5f;
             Item.mana = 15;

@@ -14,7 +14,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.EvilBossWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 32;
+            Item.damage = 27;
             Item.crit = 4;
             Item.DamageType = DamageClass.Magic;
             Item.width = 30;

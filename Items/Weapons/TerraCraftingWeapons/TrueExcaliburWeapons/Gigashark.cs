@@ -16,7 +16,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapon
     {
         public override void SetDefaults()
         {
-            Item.damage = 38;
+            Item.damage = 40;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 40;
             Item.height = 40;
@@ -32,6 +32,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueExcaliburWeapon
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 15f;
             Item.noMelee = true;
+            Item.crit= 7;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -22,7 +22,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
         private int typeIndex = 0;
         public override void SetDefaults()
         {
-            Item.damage = 45;
+            Item.damage = 52;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 26;
             Item.height = 26;
@@ -63,7 +63,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
 
             if (typeIndex == 0) // PURPLE
             {
-                if (Main.rand.Next(4) == 0)
+                if (Main.rand.NextBool(4))
                 {
                     Projectile.NewProjectile(source, position, velocity * 1.3f, ModContent.ProjectileType<SuperNightsBullet>(), damage, knockback);
                 }

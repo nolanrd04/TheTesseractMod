@@ -19,6 +19,10 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         {
 
             Item.damage = 190;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 150;
+            }
             Item.useAmmo = AmmoID.Bullet;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 56;

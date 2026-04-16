@@ -10,6 +10,7 @@ using System.Linq;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using TheTesseractMod.Items.TileEntities;
+using TheTesseractMod.Items.Ores;
 
 namespace TheTesseractMod.Items.Tesseracts;
 
@@ -49,8 +50,9 @@ public class DungeonPylonItem : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 5);
+        recipe.AddIngredient(ModContent.ItemType<TemporalBar>(), 10);
         recipe.AddIngredient(ItemID.Bone, 10);
+        recipe.AddTile(ModContent.TileType<TesseractPylon>());
         recipe.Register();
     }
 }

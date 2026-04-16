@@ -30,10 +30,10 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.EvilBossWeapons
             Item.height = 30;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 9;
+            Item.damage = 14;
             Item.knockBack = 2.5f;
             Item.mana = 15;
             Item.noMelee = true;

@@ -54,15 +54,18 @@ namespace TheTesseractMod.Projectiles.Ranged.ApexN31New
                 Projectile.Kill();
                 return;
             }
-            if (Projectile.ai[0] == 0)
-            {
-                int index = Main.rand.Next(15);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(20f, 0).RotatedBy((Main.MouseWorld - Owner.MountedCenter).ToRotation()), arrayBulletID[index], Projectile.damage, Projectile.knockBack);
-            }
 
             //Projectile.spriteDirection = Main.MouseWorld.X > Owner.MountedCenter.X ? 1 : -1;
             Projectile.Center = Owner.Center + new Vector2(0, Owner.gfxOffY) + new Vector2(26, 38);
             Projectile.rotation = (Main.MouseWorld - Owner.MountedCenter).ToRotation();
+
+            if (Projectile.ai[0] == 0 && Main.myPlayer == Projectile.owner)
+            {
+                int index = Main.rand.Next(15);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(20f, 0).RotatedBy((Main.MouseWorld - Owner.MountedCenter).ToRotation()), arrayBulletID[index], Projectile.damage, Projectile.knockBack);
+                Projectile.ai[0] = 1; // Mark that we've already spawned so we don't spawn again
+            }
+
             Owner.heldProj = Projectile.whoAmI;
         }
         public override bool PreDraw(ref Color lightColor)

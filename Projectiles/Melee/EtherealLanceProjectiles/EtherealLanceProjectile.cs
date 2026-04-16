@@ -21,7 +21,7 @@ namespace TheTesseractMod.Projectiles.Melee.EtherealLanceProjectiles
         {
             Projectile.CloneDefaults(ProjectileID.Spear);
             Projectile.width = 50;
-            Projectile.scale = 1.3f;
+            Projectile.scale = 1.45f;
         }
 
         

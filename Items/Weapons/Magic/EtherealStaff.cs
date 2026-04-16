@@ -20,6 +20,10 @@ namespace TheTesseractMod.Items.Weapons.Magic
 
             Item.staff[Item.type] = true;
             Item.damage = 165;
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                Item.damage = 110;
+            }
             Item.DamageType = DamageClass.Magic;
             Item.width = 64;
             Item.height = 64;

@@ -27,10 +27,10 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         public override void SetDefaults()
         {
 
-            Item.damage = 113;
+            Item.damage = 143;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                Item.damage += (int)(Item.damage * 0.15f);
+                Item.damage = 230;
             }
             Item.useAmmo = AmmoID.Bullet;
             Item.DamageType = DamageClass.Ranged;
@@ -78,7 +78,6 @@ namespace TheTesseractMod.Items.Weapons.Ranged
         {
             damage /= 2;
             Vector2 dustVelocity = new Vector2(2, 0);
-            int randomIdx;
 
             // Shoot top right
             Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<SDMGGunProj>(), damage, knockback);
@@ -89,7 +88,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
 
             // shoot right
             Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<Candy_Corn_RifleGunProj>(), damage, knockback);
-            Projectile.NewProjectile(source, position + new Vector2(52, 0), velocity, type, damage, knockback);
+            // Projectile.NewProjectile(source, position + new Vector2(52, 0), velocity, type, damage, knockback);
 
             // shoot bottom right
             Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<UziGunProj>(), damage, knockback);
@@ -99,7 +98,7 @@ namespace TheTesseractMod.Items.Weapons.Ranged
 
             // shoot left
             Projectile.NewProjectile(source, position, new Vector2(-52, 0), ModContent.ProjectileType<TerraTurretProj>(), damage, knockback);
-            Projectile.NewProjectile(source, position + new Vector2(-52, 0), velocity, type, damage, knockback);
+            // Projectile.NewProjectile(source, position + new Vector2(-52, 0), velocity, type, damage, knockback);
             
 
             return false;

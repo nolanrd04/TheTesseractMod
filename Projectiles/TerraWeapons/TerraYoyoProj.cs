@@ -21,7 +21,15 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
         {
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
             ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 450f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 18f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 21f;
+            
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 26f;
+                ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 480f;
+            }
+
+
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4; // The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0; // The recording mode
         }
@@ -56,7 +64,7 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
             }
 
             hits++;
-            if (hits % 10 == 0)
+            if (hits % 5 == 0)
             {
                 SoundEngine.PlaySound(SoundID.Item27, Projectile.position);
                 for (int i = 0; i < 4; i++)

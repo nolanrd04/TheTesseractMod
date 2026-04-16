@@ -16,7 +16,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 30;
+            Item.damage = 37;
             Item.DamageType = DamageClass.Magic;
             Item.width = 26;
             Item.height = 26;

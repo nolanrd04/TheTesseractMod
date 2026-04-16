@@ -21,7 +21,7 @@ namespace TheTesseractMod.Items.Weapons.Magic
     {
         public override void SetDefaults()
         {
-            Item.damage = 150;
+            Item.damage = 125;
             Item.DamageType = DamageClass.Magic;
             Item.width = 28;
             Item.height = 30;

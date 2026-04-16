@@ -1,23 +1,95 @@
-v 1.3.4
+v 1.4.0
 The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small so I recommend playing this with Calamity, as most of the content is currently post Moon Lord. Right now the mod adds:
 
-- The Tesseract (10 Levels).
+- 1 Post Moon Lord BOSS
+- The Tesseract (10 Levels)
 - New Pylons (dungeon, tesseract)
-- Zenith Weapons.
-- Terra Crafting Trees.
-- New weapons, items, and buffs.
-- Recipes for hard-to-find vanilla items.
+- Zenith Weapons
+- Terra Crafting Trees
+- New weapons, items, and buffs
+- Recipes for hard-to-find vanilla items
 - COMPATIBLE WITH CALAMITY!
-- 48+ new weapons.
-- 30+ new items.
-- 12 new NPCs
-- 1 new boss COMING.
+- 56+ new weapons
+- 30+ new items
+- 1 new boss
+- 13 new NPCs
+- 2 new ores and bars
 
  UPDATES:
  Join my discord for a better update details, to give feedback, and to see previous updates:
  https://discord.gg/DWBSnJYyPt
 
- In this update:
+---------Current Update (V1.4.0)---------
+FIRST BOSS: TEMPORAL GUARDIAN
+- Post Moonlord
+- Rift based attacks
+- 12 attacks to cycle through
+- Drops new weapons
+- Compatible with multiplayer and Calamity
+- Full attack information available in my discord
+
+CONTENT:
+- 1 new post-ml boss
+- 2 new ores and bars
+- 1 new light Pet
+- 1 new relic
+- 8 new weapons
+
+Bug Fixes:
+- Lots of multiplayer bug fixes for weapons and npcs. Please let me know if something does not work on multiplayer.
+
+Reworks:
+- Bye Bye atom of time! This has been replaced with temporal ore, which you can get from killing bosses or by mining after kiling a boss.
+- Overhauled the visuals of the Zenith Star minion
+- Fixed lightning visuals
+- Most items rebalanced with vanilla and Calamity.
+- Buffed Golem: +25 defense and +50% life
+
+Buffs and Nerfs:
+- Pinnacle (zenith whip): Now shoots a rapid burst of whips
+- Apogaios: Base damage += 30 with CALAMITY MOD enabled; Minion move speed buffed with calamity; Minion attack sight increased from 400 to 1000
+- Apex N31: +26 base damage; +87 base damage with the CALAMITY MOD enabled
+- Conjuring Climax: +10 base damage; balanced with calamity
+- Culmination: -20 base damage; -115 base damage with CALAMITY MOD enabled
+- Prime Meridian: +15 base damage; improved projectile cooldown mechanics
+- Etheral Blaster: -40 base damage with the CALAMITY MOD enabled
+- Ethereal Lasher: +20 base damage; +2% crit chance; -10 damage with the CALAMITY MOD enabled
+- Ethereal Spell: -25 base damage
+- Ethereal Caster: -55 base damage if the CALAMITY MOD is enabled; reduced shard damage
+- Ethereal Lance: +15% projectile size; +100% damage to the stars
+- Etheral Spell: -23 base damage
+- Etheral Sword: +60 base damage without the CALAMITY MOD enabled
+- Ethereal Commander: Minions move faster; Reduced hit cooldown; Reduced flame breath hit cooldown; Longer breath range; Base damage reduced from 200 to 150 (50 for the CALAMITY MOD)
+- Petashark: +4 base damage; +4% crit chance
+- Bone Bow: +3 base damage; +4% crit chance
+- Dark Caster Staff: +5 base damage; +2% crit chance
+- Purple Heart: +4 base damage
+- Unholy Caster: +1 pierce, -5 base damage
+- Creeper Staff: +5 base damage; -10 minion intertia (this is a buff)
+- Holy Commander: +3 base damage; Minion sight: -200 units
+- Cursed Staff: +7 base damage
+- Stinger Storm: +6 base damage; -3 mana consumption
+- Night's Six-shooter: -4 base damage
+- Night's Long-bow: +2 base damage
+- Night's Tome: -13% chance of spawning shadowflame on enemy hit
+- Night's Rod: +7 base damage
+- Night's Sling: -10 base damage; +60 shadowflame ball hit cooldown
+- Night's Legatus: +3 base damage
+- Holy Commander: Reduced phase times for the minion, it will now switch between offense/defense more frequently
+- Gigashark: +3% crit chance
+- True Night's Six Shooter: +7 base damage
+- True Night's Tome: -13% chance of spawning shadowflame on enemy hit
+- True Night's Sling: With the CALAMITY MOD enabled, throw time limited to 23s and range increased to 25 tiles
+- True Yeletes: With the CALAMITY MOD enabled, throw time increased to 23s and hit cooldown reduced from 25 to 15
+- True Holy Commander: -4 base damage; Reduced phase times for the minion, it will now switch between offense/defense more frequently
+- True Night's Legatus: +3 base damage; -1s in the ricochete phase and +1s in the dash phase
+- Terra Throw: renamed to Terra Tosser; hits to spawn stars reduced from 10 to 5; With the CALAMITY MOD enabled, throw time limited to 26s and range increased to 30 tiles
+- Terra Totem (tiki): Will only enter consecutive melee frenzies if the player marks with the Terra Trident; impoved phase switching
+- Terra Tormentor: +8 base damage; +4% crit chance
+- Terra Tome: +50% Projectile size; projectiles go through walls
+- Terra Torch: +10 base damage; +10% crit chance
+
+---------Previous Update (V1.3.4)---------
 
  REWORKS:
  - Added new visual effects for: Rift slime projectiles, Night's arrow, Night's Rod beams, Conjuring Climax projectile, Etheral Lance star, Etheral Sword stars, Culmination magic arrows, Terra arrow, and 
@@ -40,36 +112,5 @@ The tesseract mod focuses primarly on the post Moon Lord Game. The mod is small 
  PLANS:
  - Add lore :)
  - Add boss :o
-
-
- ---------Previous Update (V1.3.2)---------
-
- REWORKS:
- - Night's Six Shooter: has a chances to shoot a super night's bullet that bounces more and travels faster. All bullets now break into shards on impact.
- - Night's Six Shooter: damage 55->35
- - True Night's Six Shooter: has a chance to shoot a super bullet on the purple phase and green bullets now explode and do damage on impact.
- - True Night's Six Shooter: damage 70->45
- - Night's Rod shoots a star that inflicts shadow flame and additional star that sticks to enemies to do extra damage.
- - Night's Tome has a chance to shoot shadowflames at nearby enemies.
- - Night's Tome max damage: 90 -> 60
- - Night's Sling damage: 45 -> 30
- - Night's Sling: Creates a stationary projectile that will continue to damage enemies.
- - Terra Tormentor knockback: 6->8
- - Night's long bow: shoots an additional fast-moving and piercing arrow.
- - Night's long bow damage: 35->45
- - True Night's Sling damage: 78 -> 55
- - True Night's Sling: On hitting an npc, an explosion spawns to do extra damage.
- - Gigashark: updated sprite.
- - Shatterpoint: Improved Visuals.
- - True Yelets: Improved Visuals.
- - True Yelets damage: 71 -> 76
- - True Night's Long Bow: Shoots to Night's arrows at an angle and a True Night's Arrow straight out.
- - True Night's Rod: Shoots 3 fast-moving, controllable stars that stick to enemies.
- - True Night's Rod damage: 75 -> 35
- - Terra Turret: Has a chance to shoot a piercing bullet.
-
- BUG FIXES: 
- - Fixed the Night's Six Shooter sfx.
- - Attempted to fix the tesseract not time warping in multiplayer, though I don't have friends to test this with...
 
 

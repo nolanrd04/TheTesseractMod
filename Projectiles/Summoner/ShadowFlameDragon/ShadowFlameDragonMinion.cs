@@ -52,6 +52,8 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
             Projectile.DamageType = DamageClass.Summon;
             Projectile.minionSlots = 1f;
             Projectile.penetrate = -1;
+            Projectile.localNPCHitCooldown = 60;
+            Projectile.usesLocalNPCImmunity = true;
         }
 
         public override bool? CanCutTiles()
@@ -199,7 +201,7 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
         private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition, NPC target)
         {
             // Default movement parameters (here for attacking)
-            float speed = 17f;
+            float speed = 25f;
             float inertia = 10f;
             Vector2 goToPosition;
             float distanceFromPosition;
@@ -208,10 +210,11 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
             {
                 if (attackStage == 0) // FIRE BREATH STAGE
                 {
+                    Projectile.friendly = false; // Disable contact damage during fire breath
                     goToPosition = targetCenter + new Vector2(100, 0).RotatedBy(rotation); // The desired position is a spot 100 pixels away at a random angle.
                     distanceFromPosition = Vector2.Distance(Projectile.Center, goToPosition);
 
-                    if (distanceFromPosition > 100f) // go to desired position
+                    if (distanceFromPosition > 200f) // go to desired position
                     {
                         Vector2 direction = goToPosition - Projectile.Center;
                         direction.Normalize();
@@ -222,7 +225,7 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
                         {
                             direction = targetCenter - Projectile.Center;
                             direction.Normalize();
-                            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ShadowFlameBreath>(), Projectile.damage, 0f);
+                            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 4f, ModContent.ProjectileType<ShadowFlameBreath>(), Projectile.damage, 0f);
                             SoundEngine.PlaySound(SoundID.Item34, Projectile.Center);
                         }
                     }
@@ -233,7 +236,7 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
                         {
                             Vector2 direction = targetCenter - Projectile.Center;
                             direction.Normalize();
-                            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 10f, ModContent.ProjectileType<ShadowFlameBreath>(), Projectile.damage, 0f);
+                            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, direction * 4f, ModContent.ProjectileType<ShadowFlameBreath>(), Projectile.damage, 0f);
                             SoundEngine.PlaySound(SoundID.Item34, Projectile.Center);
                         }
                     }
@@ -247,25 +250,23 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
                 }
                 else // DASH STAGE
                 {
+                    Projectile.friendly = true; // Enable contact damage during dash
                     distanceFromPosition = Vector2.Distance(Projectile.Center, targetCenter);
 
                     // first, check if dashing to avoid idle movement
                     if (dashing)
                     {
 
-                        Projectile.usesLocalNPCImmunity = true;
-                        Projectile.localNPCHitCooldown = 3;
-
                         Vector2 direction = targetCenter - Projectile.Center;
                         direction.Normalize();
                         if (attackStageCounter == 0)
                         {
-                            dashDirection = direction * 25f;
+                            dashDirection = direction * 45f;
                         }
                         Projectile.velocity = dashDirection;
                         attackStageCounter++;
                         
-                        if (attackStageCounter > 10)
+                        if (attackStageCounter > 5)
                         {
                             dashCount++;
                             dashing = false; // stop dashing
@@ -289,7 +290,6 @@ namespace TheTesseractMod.Projectiles.Summoner.ShadowFlameDragon
                     }
                     if (dashCount >= 3)
                     {
-                        Projectile.usesLocalNPCImmunity = false;
                         attackStage--;
                         dashCount = 0;
                         dashing = false;

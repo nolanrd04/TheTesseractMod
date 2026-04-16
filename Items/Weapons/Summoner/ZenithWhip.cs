@@ -10,13 +10,13 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheTesseractMod.Projectiles;
+using TheTesseractMod.Projectiles.Summoner;
 
 namespace TheTesseractMod.Items.Weapons.Summoner
 {
     internal class ZenithWhip : ModItem
     {
         private int whipPicker = 0;
-        private float whipSize = 1.3f;
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -28,9 +28,10 @@ namespace TheTesseractMod.Items.Weapons.Summoner
             {
                 damage = 200;
                 damage += (int)(Item.damage * 0.105f);
-                whipSize = 1.7f;
             }
             Item.DefaultToWhip(ProjectileID.RainbowWhip, damage, 4, 4);
+            Item.useTime = 45;
+            Item.useAnimation = 45;
             Item.autoReuse = true;
             Item.rare = 10;
             Item.value = 1500000;
@@ -66,14 +67,28 @@ namespace TheTesseractMod.Items.Weapons.Summoner
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity * whipSize, 849, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, velocity * whipSize, type, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, (velocity + (velocity * (0.5f))) * whipSize, 913, damage, knockback, player.whoAmI);
+            // Check if a burst controller already exists for this player
+            bool burstControllerExists = false;
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile proj = Main.projectile[i];
+                if (proj.active && proj.type == ModContent.ProjectileType<ZenithWhipBurstController>() && proj.owner == player.whoAmI)
+                {
+                    burstControllerExists = true;
+                    break;
+                }
+            }
 
-            Projectile.NewProjectile(source, position, -0.5f * velocity * whipSize, 849, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, -0.5f * velocity * whipSize, type, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(source, position, -0.5f * (velocity + (velocity * (0.5f))) * whipSize, 913, damage, knockback, player.whoAmI);
-            
+            // Only spawn if no burst is already active
+            if (!burstControllerExists)
+            {
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ZenithWhipBurstController>(), 0, knockback, player.whoAmI,
+                    velocity.X, velocity.Y, type);
+
+                // Lock player out until burst finishes (stagger interval * 2 + buffer)
+                int burstDuration = (Item.useTime / 3) * 2 + 5;
+                player.itemTime = burstDuration;
+            }
 
             return false;
         }

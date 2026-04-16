@@ -118,10 +118,6 @@ namespace TheTesseractMod.Items.Tesseracts
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Main.time += 60;
-                    }
-                    else if (Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        Main.time += 60;
                         NetMessage.SendData(MessageID.WorldData);
                     }
                     return true;
@@ -266,8 +262,9 @@ namespace TheTesseractMod.Items.Tesseracts
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 25);
+            recipe.AddIngredient(ModContent.ItemType<AtomOfTime>(), 20);
             recipe.AddIngredient(ModContent.ItemType<Tesseract9>(), 1);
+            recipe.AddTile(ModContent.TileType<TesseractPylon>());
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && calamityMod.TryFind("YharonSoulFragment", out ModItem YharonSoulFragment))
             {
                 recipe.AddIngredient(YharonSoulFragment.Type, 5);

@@ -56,7 +56,7 @@ namespace TheTesseractMod.NPCs.Enemies
             {
                 chance = 1;
             }
-            return (NPC.downedMoonlord.ToInt() * chance * 0.1f);
+            return (NPC.downedMoonlord.ToInt() * chance * 0.07f);
         }
 
         public override void AI()
@@ -84,7 +84,8 @@ namespace TheTesseractMod.NPCs.Enemies
             {
                 if ((timer - 300) % 10 == 0 && Main.netMode != NetmodeID.MultiplayerClient && countOfMinions < 10)
                 {
-                    NPC.NewNPC(NPC.InheritSource(NPC), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<LifeRiftElementalLarva>());
+                    int npcIndex = NPC.NewNPC(NPC.InheritSource(NPC), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<LifeRiftElementalLarva>());
+                    Main.npc[npcIndex].netUpdate = true;
                 }
             }
             timer++;

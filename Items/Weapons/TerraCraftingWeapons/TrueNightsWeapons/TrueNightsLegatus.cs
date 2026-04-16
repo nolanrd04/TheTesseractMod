@@ -34,7 +34,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TrueNightsWeapons
             Item.useStyle = 1;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 37;
+            Item.damage = 40;
             Item.knockBack = 4f;
             Item.mana = 15;
             Item.noMelee = true;

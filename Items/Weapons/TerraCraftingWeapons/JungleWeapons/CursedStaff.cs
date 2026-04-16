@@ -18,7 +18,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.JungleWeapons
         {
 
             Item.staff[Item.type] = true;
-            Item.damage = 15;
+            Item.damage = 22;
             Item.DamageType = DamageClass.Magic;
             Item.width = 32;
             Item.height = 32;

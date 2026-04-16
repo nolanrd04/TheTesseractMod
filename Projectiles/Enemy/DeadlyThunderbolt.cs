@@ -19,7 +19,7 @@ namespace TheTesseractMod.Projectiles.Enemy
         {
             Projectile.damage = 100;
             Projectile.alpha = 0;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = 300;
             Projectile.light = 0.9f;
             Projectile.hostile = true;
             Projectile.penetrate = 1;
@@ -27,33 +27,36 @@ namespace TheTesseractMod.Projectiles.Enemy
             Projectile.tileCollide = true;
             Projectile.width = 30;
             Projectile.height = 30;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 5;
         }
 
         public override void AI()
         {
             Projectile.ai[0]++;
-            if (Projectile.ai[0] % 10 == 0)
+            if (Projectile.ai[0] % 50 == 0)
             {
                 Random rand = new Random();
                 float rotation = (float)(rand.NextDouble() * 100 - 50);
                 Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation));
             }
             //Dust.NewDust(Projectile.position, Projectile.width-15, Projectile.height-15, ModContent.DustType<BlueElectricDust>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default(Color), 1f);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width-15, Projectile.height-15, ModContent.DustType<ElectricDust>(), 0, 0, 0, Color.Blue, 1f);
+                Dust.NewDust(Projectile.position, 1, 1, ModContent.DustType<ElectricDust>(), 0, 0, 0, Color.Indigo, 1f);
             }
 
 
             if (Projectile.ai[0] == 20)
             {
-                Random rand = new Random();
-                float rotation = (float)(rand.NextDouble() * 180 - 90);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<DeadlyThunderboltBranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Random rand = new Random();
+                    float rotation = (float)(rand.NextDouble() * 180 - 90);
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<DeadlyThunderboltBranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 
-                rotation = (float)(rand.NextDouble() * 180 - 90);
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<DeadlyThunderboltBranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    rotation = (float)(rand.NextDouble() * 180 - 90);
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.ToRadians(rotation)), ModContent.ProjectileType<DeadlyThunderboltBranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                }
             }
         }
     }

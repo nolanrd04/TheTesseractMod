@@ -33,7 +33,7 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.tileCollide = false;
             Projectile.scale = 1.4f;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 40;
             Projectile.DamageType = DamageClass.Ranged;
         }
         public override void AI()
@@ -42,7 +42,7 @@ namespace TheTesseractMod.Projectiles.Ranged
             Projectile.rotation = Projectile.velocity.ToRotation();
             Lighting.AddLight(Projectile.position, 0f, 1f, 0.3f);
             
-            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.9f);
+            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Projectile.velocity.X, Projectile.velocity.Y, 150, color, 0.9f);
             Main.dust[dust2].noGravity = true;
         }
         public override bool PreDraw(ref Color lightColor)
@@ -80,7 +80,7 @@ namespace TheTesseractMod.Projectiles.Ranged
         {
             for (int i = 0; i < 20; i++)
             {
-                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Projectile.velocity.X * 0.95f, Projectile.velocity.Y * 0.95f, 150, color, 1f);
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Projectile.velocity.X * 0.95f, Projectile.velocity.Y * 0.95f, 150, color, 1f);
             }
             SoundEngine.PlaySound(SoundID.Item74, Projectile.position);
         }
@@ -88,7 +88,7 @@ namespace TheTesseractMod.Projectiles.Ranged
         {
             for (int i = 0; i < 40; i ++)
             {
-                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Projectile.velocity.X *=0.95f, Projectile.velocity.Y*=0.95f, 150, color, 1f);
+                int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Projectile.velocity.X *=0.95f, Projectile.velocity.Y*=0.95f, 150, color, 1f);
             }
 
             SoundEngine.PlaySound(SoundID.NPCDeath3, Projectile.position);

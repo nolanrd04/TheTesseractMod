@@ -28,10 +28,10 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.HallowedWeapons
             Item.height = 30;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item44;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 45;
+            Item.damage = 48;
             Item.knockBack = 3.5f;
             Item.mana = 15;
             Item.noMelee = true;

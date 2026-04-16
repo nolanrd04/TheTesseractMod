@@ -10,20 +10,30 @@ using TheTesseractMod.Buffs.MinionBuffs;
 using TheTesseractMod.Global.Projectiles.Summon;
 using TheTesseractMod.Projectiles.EvilWeapons;
 using TheTesseractMod.Projectiles.TrueExcaliburWeapons;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Graphics;
+using Terraria.Graphics.Shaders;
+using Terraria.DataStructures;
+using Microsoft.VisualBasic.FileIO;
 
 namespace TheTesseractMod.Projectiles.Summoner
 {
     internal class ZenithMinion : ModProjectile
     {
+        private VertexStrip strip = new VertexStrip();
+        private Color lerpedColor;
+        private bool isAttacking = false;
         Vector2 rainbowMissleSpeed = new Vector2(4f, 4f);
         List <Color> colorsForDust = new List <Color> ();
+        List<Color> rainbowColors = new List<Color> { Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Blue, new Color(75, 0, 130), Color.Violet };
         int colorsIDX = 0;
         int counterForRainbowMissle = 0;
-        float speed = 60f;          // Speed multiplier of the minion
-        float farSpeed = 60f;       // Temporary speed value used in distance calculations (So we don't change our original speed)
-        float inertia = 20f;        // Determines how long an object will move after having velocity applied
-        float farInertia = 20f;     // Temporary intertia used in distance calculations (So we don't change our original interia)
-        float attackSight = 400f;   // How far away an enemy must be for the minion to "see" it
+        int colorLerpCounter = 0;
+        float speed = 40f;         // Speed multiplier of the minion
+        float idleSpeed = 20f;      // Speed when idling
+        float farIdleSpeed = 60f;   // Speed when far from player while idling
+        float inertia = 5f;        // Determines how long an object will move after having velocity applied
+        float attackSight = 1000f;   // How far away an enemy must be for the minion to "see" it
         float idleRange = 60f;      // The range in which the minion will idle over the player
         float deadzoneRange = 40f;  // The deadzone range in which the minion will not latch onto an enemy
         float orbitSpeed = 0.125f;  // degrees of position of minion incremented each update. Used in Movement()
@@ -33,7 +43,7 @@ namespace TheTesseractMod.Projectiles.Summoner
 
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 16;
+            // Main.projFrames[Projectile.type] = 16;
 
             // This is necessary for right-click targeting
             ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
@@ -41,11 +51,13 @@ namespace TheTesseractMod.Projectiles.Summoner
 
             ProjectileID.Sets.MinionSacrificable[Projectile.type] = true; // This is needed so your minion can properly spawn when summoned and replaced when other minions are summoned
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public sealed override void SetDefaults()
         {
-            Projectile.scale = 1.7f;
+            Projectile.scale = 1f;
             Projectile.width = 25;
             Projectile.height = 25;
             Projectile.tileCollide = false; 
@@ -56,10 +68,6 @@ namespace TheTesseractMod.Projectiles.Summoner
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-            {
-                Projectile.localNPCHitCooldown = 15;
-            }
             colorsForDust.Add(Color.Red); colorsForDust.Add(Color.Orange); colorsForDust.Add(Color.Yellow); colorsForDust.Add(Color.Green); colorsForDust.Add(Color.Turquoise); colorsForDust.Add(Color.Blue); colorsForDust.Add(Color.Purple); colorsForDust.Add(Color.Magenta);
             colorsForDust.Add(Color.Red); colorsForDust.Add(Color.Orange); colorsForDust.Add(Color.Yellow); colorsForDust.Add(Color.Green); colorsForDust.Add(Color.Turquoise); colorsForDust.Add(Color.Blue); colorsForDust.Add(Color.Purple); colorsForDust.Add(Color.Magenta);
         }
@@ -74,12 +82,16 @@ namespace TheTesseractMod.Projectiles.Summoner
         {
             return true;
         }
+        public override void OnSpawn(IEntitySource source)
+        {
 
+        }
         
         public override void AI()
         {
-            Projectile.rotation += 0.15f * (float)Projectile.direction;
-            
+            Projectile.rotation += 0.1f;
+            colorLerpCounter++;
+
             Player owner = Main.player[Projectile.owner];
             if (!CheckActive(owner))
             {
@@ -95,6 +107,7 @@ namespace TheTesseractMod.Projectiles.Summoner
 
             GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
+            isAttacking = foundTarget;
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
             Visuals();
         }
@@ -305,6 +318,7 @@ namespace TheTesseractMod.Projectiles.Summoner
         {
             if (foundTarget)
             {
+                
                 //counterForRainbowMissle++;
                 if (counterForRainbowMissle % 300 == 0)
                 {
@@ -320,26 +334,19 @@ namespace TheTesseractMod.Projectiles.Summoner
                     Vector2 direction = targetCenter - Projectile.Center;
                     direction.Normalize();
                     direction *= speed;
-                    Projectile.velocity = (Projectile.velocity * (inertia-1) + direction) / inertia;
-                    Projectile.rotation += 0.5f * (float)Projectile.direction;
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction, .05f);
+                    Projectile.rotation += 0.2f * (float)Projectile.direction;
                 }
             }
             else
             {
                 // Minion doesn't have a target: return to player and idle
+                float currentIdleSpeed = idleSpeed;
                 if (distanceToIdlePosition > attackSight)
                 {
                     // Speed up the minion if it's away from the player
-                    speed = farSpeed;
-                    inertia = farInertia;
+                    currentIdleSpeed = farIdleSpeed;
                 }
-                else
-                {
-                    // Slow down the minion if closer to the player
-                    speed = farSpeed / 3;
-                    inertia = farInertia / 1.25f;
-                }
-
 
                 if (distanceToIdlePosition > idleRange)
                 {
@@ -347,7 +354,7 @@ namespace TheTesseractMod.Projectiles.Summoner
 
                     // This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
                     vectorToIdlePosition.Normalize();
-                    vectorToIdlePosition *= speed;
+                    vectorToIdlePosition *= currentIdleSpeed;
                     Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
                 }
                 else if (Projectile.velocity == Vector2.Zero)
@@ -361,28 +368,6 @@ namespace TheTesseractMod.Projectiles.Summoner
 
         private void Visuals()
         {
-            // So it will lean slightly towards the direction it's moving
-            //Projectile.rotation = Projectile.velocity.X * 0.05f;
-            
-            int frameSpeed = 4;
-            Projectile.frameCounter++;
-
-            if (Projectile.frameCounter >= frameSpeed)
-            {
-                //Lighting.AddLight(Projectile.position, colorsForDust[colorsIDX].ToVector3());
-                //Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 263, Projectile.velocity.X, Projectile.velocity.Y, 150, colorsForDust[colorsIDX], 1f);
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 63, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
-                Projectile.frameCounter = 0;
-                Projectile.frame++;
-                colorsIDX++;
-
-                if (Projectile.frame >= Main.projFrames[Projectile.type])
-                {
-                    Projectile.frame = 0;
-                    colorsIDX = 0;
-                }
-                
-            }
             Lighting.AddLight(Projectile.position, Color.White.ToVector3());
         }
 
@@ -452,6 +437,60 @@ namespace TheTesseractMod.Projectiles.Summoner
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity, projectile, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             ZenithMinionSummonGlobalOverride.shotByZenithMinion = false;
             // SoundEngine.PlaySound(SoundID.Item44, Projectile.position);
+        }
+
+        private void DrawTrail(Color color)
+        {
+            GameShaders.Misc["RainbowRod"].Apply();
+            strip.PrepareStrip(
+                Projectile.oldPos,
+                Projectile.oldRot,
+                progress => color * (1f - progress),
+                progress => MathHelper.Lerp(25f, 8f, progress),
+                -Main.screenPosition + Projectile.Size / 2f,
+                Projectile.oldPos.Length,
+                includeBacksides: true
+            );
+
+            strip.DrawTrail();
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // Calculate which colors to lerp between
+            int cycleLength = 60; // Number of frames per color transition
+            int colorIndex = (colorLerpCounter / cycleLength) % rainbowColors.Count;
+            int nextColorIndex = (colorIndex + 1) % rainbowColors.Count;
+            float lerpProgress = (colorLerpCounter % cycleLength) / (float)cycleLength;
+
+            // Lerp between current and next color
+            lerpedColor = Color.Lerp(rainbowColors[colorIndex], rainbowColors[nextColorIndex], lerpProgress);
+
+            float velocityLength = Projectile.velocity.Length();
+            float minVelocity = 5f;    // Velocity at which trail becomes invisible
+            float maxVelocity = 10f;   // Velocity at which trail is fully visible
+            float trailAlpha = MathHelper.Clamp((velocityLength - minVelocity) / (maxVelocity - minVelocity), 0f, 1f);
+
+            if (trailAlpha > 0f)
+            {
+                DrawTrail(lerpedColor * trailAlpha);
+            }
+
+            Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
+
+            // BackgroundColor with lerped rainbow color
+            Main.EntitySpriteDraw(texture,
+                new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width * 0.5f, Projectile.position.Y - Main.screenPosition.Y + Projectile.height * 0.5f),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                new Color (lerpedColor.R, lerpedColor.G, lerpedColor.B, 0) * (1f - Projectile.alpha / 255f), Projectile.rotation, texture.Size() * 0.5f, Projectile.scale /* * 0.02f*/, SpriteEffects.None, 0f);
+
+            // Foreground white
+            Main.EntitySpriteDraw(texture,
+                new Vector2(Projectile.position.X - Main.screenPosition.X + Projectile.width * 0.5f, Projectile.position.Y - Main.screenPosition.Y + Projectile.height * 0.5f),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                new Color(255, 255, 255, 0) * (1f - Projectile.alpha / 255f), Projectile.rotation, texture.Size() * 0.5f, Projectile.scale * 0.8f /* * 0.018f*/, SpriteEffects.None, 0f);
+
+            return false;
         }
     }
 }

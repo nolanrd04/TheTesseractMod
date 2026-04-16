@@ -20,7 +20,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
     {
         public override void SetDefaults()
         {
-            Item.damage = 75;
+            Item.damage = 83;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 40;
             Item.height = 40;
@@ -36,6 +36,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.TerraWeapons
             Item.useAmmo = AmmoID.Arrow;
             Item.shootSpeed = 20f;
             Item.noMelee = true;
+            Item.crit = 8;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

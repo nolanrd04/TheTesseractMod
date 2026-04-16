@@ -26,7 +26,7 @@ namespace TheTesseractMod.Projectiles.TerraWeapons
         }
         public override void SetDefaults()
         {
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.width = 25;
             Projectile.height = 25;
             Projectile.friendly = true;

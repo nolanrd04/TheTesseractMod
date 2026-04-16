@@ -48,6 +48,9 @@ namespace TheTesseractMod.Projectiles.TerraWeapons.TerraSpiritOffensiveMinion
         int idleCounter = 0;
         int timeForPhase = 0;
         int frameCounter;
+        int phaseTimer = 0;  // Stores the random duration for the current phase (phase duration)
+        int phaseTime = 0;   // Tracks how long we've been in the current phase
+        int phase3Cooldown = 0;  // Prevents immediately re-entering phase 3 after it expires
 
         bool attacking = false;
         bool dashing = false;
@@ -158,18 +161,19 @@ namespace TheTesseractMod.Projectiles.TerraWeapons.TerraSpiritOffensiveMinion
             if (target != null)
             {
                 idleCounter = 0;
-                if (targetMarked)
+                // Only switch to phase 3 if targetMarked AND not in phase 3 AND cooldown expired AND been in current phase for at least 30 frames
+                if (targetMarked && phase != 3 && phase3Cooldown <= 0 && phaseTime >= 30)
                 {
                     phase = 3;
+                    phaseTimer = Main.rand.Next(240, 360); // Phase duration
+                    phaseTime = 0;
                 }
 
                 else if (phase == 0)
                 {
                     phase = Main.rand.Next(1, 4);
-                }
-                if (Projectile.ai[0] % 300 == 0)
-                {
-                    phase = Main.rand.Next(1, 4);
+                    SetPhaseTimer();
+                    phaseTime = 0;
                 }
                 
                 
@@ -183,31 +187,52 @@ namespace TheTesseractMod.Projectiles.TerraWeapons.TerraSpiritOffensiveMinion
             Visuals();
             Projectile.ai[0]++;
             Projectile.ai[1]++;
+            phaseTime++;
+            phase3Cooldown--; // Decrement phase 3 cooldown
+            
+            // Attack cooldown reset (20/60/60 frames)
             if (phase == 1)
             {
-                if (Projectile.ai[1] > 20 )
+                if (Projectile.ai[1] > 20)
                 {
                     Projectile.ai[1] = 0;
-                    attacking = false;
                 }
             }
             else if (phase == 2)
             {
-
                 if (Projectile.ai[1] > 60)
                 {
                     Projectile.ai[1] = 0;
-                    attacking = false;
                 }
             }
             else if (phase == 3)
             {
-
                 if (Projectile.ai[1] > 60)
                 {
                     Projectile.ai[1] = 0;
-                    attacking = false;
                 }
+            }
+            
+            // Phase switching (based on phaseTime, not attack cooldown)
+            if (phaseTime > phaseTimer)
+            {
+                Projectile.ai[1] = 0;
+                attacking = false;
+                
+                // If phase 3 expires, switch to 1 or 2 only (no consecutive melee frenzies)
+                if (phase == 3)
+                {
+                    phase = Main.rand.Next(1, 3);
+                    phase3Cooldown = 120; // Prevent re-entering phase 3 for 120 frames
+                }
+                else
+                {
+                    // In phase 1 or 2, can switch to any phase
+                    phase = Main.rand.Next(1, 4);
+                }
+                
+                SetPhaseTimer();
+                phaseTime = 0;
             }
 
             // collision reset
@@ -735,10 +760,16 @@ namespace TheTesseractMod.Projectiles.TerraWeapons.TerraSpiritOffensiveMinion
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (targetMarked && Main.rand.Next(4) == 0)
+            if (targetMarked && Main.rand.NextBool(4))
             {
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, new Vector2(10, 0), ModContent.ProjectileType<TerraHeal>(), Projectile.damage, 0f);
             }
+        }
+
+        private void SetPhaseTimer()
+        {
+            // Phase duration (how long to stay in this phase before switching)
+            phaseTimer = Main.rand.Next(240, 360);
         }
     }
 }

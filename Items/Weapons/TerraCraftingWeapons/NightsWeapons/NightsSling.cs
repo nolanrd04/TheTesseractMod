@@ -25,7 +25,7 @@ namespace TheTesseractMod.Items.Weapons.TerraCraftingWeapons.NightsWeapons
         public override void SetDefaults()
         {
 
-            Item.damage = 30;
+            Item.damage = 20;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 4;
             Item.value = Item.sellPrice(0, 4, 0, 0);

@@ -28,12 +28,8 @@ namespace TheTesseractMod.Projectiles.Magic
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.scale = 0.8f;
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-            {
-                Projectile.usesLocalNPCImmunity = true;
-                Projectile.localNPCHitCooldown = 4;
-                Projectile.penetrate = 8;
-            }
+            Projectile.usesLocalNPCImmunity = true;
+             Projectile.localNPCHitCooldown = 25;
         }
         public override void AI()
         {
@@ -72,7 +68,6 @@ namespace TheTesseractMod.Projectiles.Magic
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             lastHit = target;
-            counterForNoHoming = 7;
         }
 
         public override bool PreDraw(ref Color lightColor)

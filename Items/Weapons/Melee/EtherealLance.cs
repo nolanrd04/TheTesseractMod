@@ -49,7 +49,7 @@ namespace TheTesseractMod.Items.Weapons.Melee
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 muzzleOffset = Vector2.Normalize(velocity) * 60;
-            Projectile.NewProjectile(source, position + muzzleOffset, new Vector2(7f, 0f).RotatedBy((Main.MouseWorld - player.MountedCenter).ToRotation()), ModContent.ProjectileType<EtherealLanceStar>(), damage / 2, knockback);
+            Projectile.NewProjectile(source, position + muzzleOffset, new Vector2(7f, 0f).RotatedBy((Main.MouseWorld - player.MountedCenter).ToRotation()), ModContent.ProjectileType<EtherealLanceStar>(), damage, knockback);
             
             return true;
         }

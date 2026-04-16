@@ -136,7 +136,7 @@ namespace TheTesseractMod.Projectiles.TrueNightsWeapons
                 Vector2 direction = Vector2.Normalize(targetNew.Center - Projectile.Center);
                 Vector2 newVelocity = direction.RotatedBy(MathHelper.ToRadians(Main.rand.Next(90) - 45)) * 10f;
 
-                if (Main.rand.Next(3) == 0)
+                if (Main.rand.NextBool(5))
                 {
                     if (Main.rand.NextBool())
                     {
